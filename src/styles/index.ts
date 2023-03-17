@@ -1,7 +1,7 @@
 import { icon, IconType } from './icons';
 import { colors, ColorType } from './colors';
 import { ViewType } from './types';
-import { FontWeight, FontSize, LineHeight } from './fonts';
+import { FontWeight, FontSize, LineHeight, getLineHeight } from './fonts';
 import {
   os,
   screenHeight,
@@ -20,6 +20,7 @@ export {
   deviceHeight,
   deviceWidth,
   statusBar,
+  getLineHeight,
   statusBarHeight,
   navigationBarHeight,
 };
