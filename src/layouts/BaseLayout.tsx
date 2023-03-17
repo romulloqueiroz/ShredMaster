@@ -1,25 +1,21 @@
-// import { PlayCard } from 'components/PlayCard';
-// import { ScrollView, View } from 'native-base';
-import { View, Scroll } from 'components/Design';
+import { View, Scroll } from '@components';
 
 interface BaseLayoutProps {
-  playCardShown?: boolean;
   type?: typeof Scroll | typeof View;
   view?: boolean;
   ph?: number;
+  children: React.ReactNode;
 }
 
-const BaseLayout: React.FCX<BaseLayoutProps> = ({
+const BaseLayout: React.FC<BaseLayoutProps> = ({
   children,
   view = false,
   ph = 16,
   type: Container = view ? View : Scroll,
 }) => (
-  <Container ph={ph} flex1 bgc="black" hideIndicator>
+  <Container ph={ph} flex1 bgc="background" hideIndicator>
     {children}
   </Container>
 );
 
 export default BaseLayout;
-
-/* {playCardShown && <PlayCard />} */

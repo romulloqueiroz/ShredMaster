@@ -1,8 +1,6 @@
 import { icon, IconType } from './icons';
-import { shadow, ShadowType } from './shadow';
 import { colors, ColorType } from './colors';
 import { ViewType } from './types';
-import { gradient, GradientType } from './gradients';
 import { FontWeight, FontSize, LineHeight } from './fonts';
 import {
   os,
@@ -26,13 +24,11 @@ export {
   navigationBarHeight,
 };
 
-export { icon, shadow, gradient, colors };
+export { icon, colors };
 export type {
   IconType,
   ColorType,
-  ShadowType,
   ViewType,
-  GradientType,
   FontWeight,
   FontSize,
   LineHeight,

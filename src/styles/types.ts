@@ -1,6 +1,5 @@
 import { LayoutChangeEvent, StyleProp, ViewStyle } from 'react-native';
 import { ColorType } from './colors';
-import { ShadowType } from './shadow';
 export interface ViewType {
   children: React.ReactNode;
 
@@ -25,9 +24,6 @@ export interface ViewType {
   // sizes
   h: number | string;
   w: number | string;
-
-  // shadow
-  s: ShadowType;
 
   // border radius
   br: number;
