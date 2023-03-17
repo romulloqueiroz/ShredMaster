@@ -1,4 +1,4 @@
-export type IconType = keyof typeof icon;
+export type IconType = keyof typeof icon
 export const icon = {
   accountCircle: [
     '0 0 25 24',
@@ -125,4 +125,4 @@ export const icon = {
     '0 0 25 24',
     'M8.49992 11.5135L12.6199 14.0002L11.5266 9.3135L15.1666 6.16016L10.3733 5.7535L8.49992 1.3335L6.62659 5.7535L1.83325 6.16016L5.47325 9.3135L4.37992 14.0002L8.49992 11.5135Z',
   ],
-} as const;
+} as const

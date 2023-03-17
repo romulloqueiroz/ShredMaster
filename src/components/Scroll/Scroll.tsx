@@ -1,7 +1,7 @@
-import React from 'react';
-import { ScrollView } from 'react-native';
-import View from '../View/View';
-import { ScrollProps } from './Scroll.types';
+import React from 'react'
+import { ScrollView } from 'react-native'
+import View from '../View/View'
+import { ScrollProps } from './Scroll.types'
 
 const Scroll: React.FC<Partial<ScrollProps>> = ({
   children,
@@ -18,6 +18,6 @@ const Scroll: React.FC<Partial<ScrollProps>> = ({
       {children}
     </ScrollView>
   </View>
-);
+)
 
-export default Scroll;
+export default Scroll

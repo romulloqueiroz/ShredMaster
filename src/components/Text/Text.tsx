@@ -1,7 +1,7 @@
-import React from 'react';
-import { Text } from 'react-native';
-import { colors, getLineHeight } from '@styles';
-import { TextComponentProps } from './Text.types';
+import React from 'react'
+import { Text } from 'react-native'
+import { colors, getLineHeight } from '@styles'
+import { TextComponentProps } from './Text.types'
 
 const TextComponent = ({
   children,
@@ -40,6 +40,6 @@ const TextComponent = ({
   >
     {children}
   </Text>
-);
+)
 
-export default TextComponent;
+export default TextComponent

@@ -1,6 +1,6 @@
-import React from 'react';
-import { View as RNView } from 'react-native';
-import { ViewType, shadow, colors } from '@styles';
+import React from 'react'
+import { View as RNView } from 'react-native'
+import { ViewType, colors } from '@styles'
 
 const View: React.FC<Partial<ViewType>> = ({
   children,
@@ -20,7 +20,6 @@ const View: React.FC<Partial<ViewType>> = ({
   m,
   h,
   w,
-  s,
   br,
   btlr,
   btrr,
@@ -76,7 +75,6 @@ const View: React.FC<Partial<ViewType>> = ({
         borderBottomLeftRadius: bblr,
         borderBottomRightRadius: bbrr,
         ...(!!flex1 && !flex && { flex: 1 }),
-        ...(!!s && { ...shadow[s] }),
         ...(!!cross && { alignItems: cross }),
         ...(!!row && { flexDirection: 'row' }),
         ...(bc && { borderColor: colors[bc] }),
@@ -95,6 +93,6 @@ const View: React.FC<Partial<ViewType>> = ({
   >
     {children}
   </RNView>
-);
+)
 
-export default View;
+export default View

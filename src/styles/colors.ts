@@ -1,4 +1,4 @@
-export type ColorType = typeof colors;
+export type ColorType = typeof colors
 export const colors = {
   black: '#121212',
   white:'#fff',
@@ -16,4 +16,4 @@ export const colors = {
   gray: '#636e72',
   red: '#C4475A',
   pink: '#e84393'
-} as const;
+} as const

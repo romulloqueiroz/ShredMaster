@@ -1,6 +1,6 @@
-import { ViewType } from '@styles';
+import { ViewType } from '@styles'
 
 export interface ScrollProps extends ViewType {
-  hideIndicator?: boolean;
-  horizontal?: boolean;
+  hideIndicator?: boolean
+  horizontal?: boolean
 }

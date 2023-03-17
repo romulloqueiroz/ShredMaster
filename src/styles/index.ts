@@ -1,7 +1,7 @@
-import { icon, IconType } from './icons';
-import { colors, ColorType } from './colors';
-import { ViewType } from './types';
-import { FontWeight, FontSize, LineHeight, getLineHeight } from './fonts';
+import { icon, IconType } from './icons'
+import { colors, ColorType } from './colors'
+import { ViewType } from './types'
+import { FontWeight, FontSize, LineHeight, getLineHeight } from './fonts'
 import {
   os,
   screenHeight,
@@ -11,7 +11,7 @@ import {
   statusBar,
   statusBarHeight,
   navigationBarHeight,
-} from './dimensions';
+} from './dimensions'
 
 export {
   os,
@@ -23,9 +23,9 @@ export {
   getLineHeight,
   statusBarHeight,
   navigationBarHeight,
-};
+}
 
-export { icon, colors };
+export { icon, colors }
 export type {
   IconType,
   ColorType,
@@ -33,4 +33,4 @@ export type {
   FontWeight,
   FontSize,
   LineHeight,
-};
+}
