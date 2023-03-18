@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
 import View from '../View/View'
-import { PADDING, COLORS, CHART_HEIGHT, buildGraph, useGraphTouchHandler } from './Chart.utils'
+import { PADDING, COLORS, CHART_HEIGHT, buildGraph, useGraphTouchHandler } from './Utils'
 import {
   Canvas,
   Path,
@@ -16,7 +16,6 @@ import { Math } from '@helpers'
 import { Cursor } from './Cursor/Cursor'
 
 type SectionByBPMList = [number, number][]
-
 const values = sectionByBpm as SectionByBPMList
 
 const Chart = () => {
