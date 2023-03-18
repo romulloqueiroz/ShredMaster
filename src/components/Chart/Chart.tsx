@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
 import View from '../View/View'
-import { PADDING, COLORS, buildGraph } from './Model'
+import { PADDING, COLORS, buildGraph } from './Chart.utils'
 import {
   Canvas,
   Path,
@@ -11,14 +11,14 @@ import {
   LinearGradient,
   vec,
 } from '@shopify/react-native-skia'
-import { bpms } from './data'
+import { sectionByBpm } from './data'
 import { useGraphTouchHandler } from './useGraphTouchHandler'
-import { getYForX } from './Math'
-import { Cursor } from './Cursor'
+import { Math } from '@helpers'
+import { Cursor } from './Cursor/Cursor'
 
-type BPMList = [number, number][]
+type SectionByBPMList = [number, number][]
 
-const values = bpms as BPMList
+const values = sectionByBpm as SectionByBPMList
 
 const CHART_HEIGHT = 320
 
@@ -36,7 +36,7 @@ const Chart = () => {
   // x and y values of the cursor
   const x = useValue(1)
   const y = useComputedValue(
-    () => getYForX(path.toCmds(), x.current),
+    () => Math.getYForX(path.toCmds(), x.current),
     [x, path]
   )
   const onTouch = useGraphTouchHandler(x, y, CHART_WIDTH, CHART_HEIGHT)

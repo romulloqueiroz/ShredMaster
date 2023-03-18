@@ -11,6 +11,7 @@
 			"@routes": ["src/routes/index"],
 			"@layouts": ["src/layouts/index"],
 			"@hooks": ["src/hooks/index"],
+			"@helpers": ["src/helpers/index"],
 			"@src/*": ["src/*"]
 		}
   }

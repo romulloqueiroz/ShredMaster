@@ -8,7 +8,7 @@ import {
 } from '@shopify/react-native-skia'
 import React from 'react'
 
-import { COLORS } from './Model'
+import { COLORS } from '../Chart.utils'
 
 interface CursorProps {
   x: SkiaValue<number>

@@ -9,7 +9,7 @@ import {
   useTouchHandler,
 } from '@shopify/react-native-skia'
 
-import { PADDING } from './Model'
+import { PADDING } from './Chart.utils'
 
 export const useGraphTouchHandler = (
   x: SkiaMutableValue<number>,

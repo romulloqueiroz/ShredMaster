@@ -1,7 +1,6 @@
 import { Skia } from '@shopify/react-native-skia'
 import { colors } from '@styles'
-
-import { curveLines } from './Math'
+import { Math as HMath } from '@helpers'
 
 export const PADDING = 16
 
@@ -31,7 +30,7 @@ export const buildGraph = (
   })
 
   points.push({ x: WIDTH + 10, y: points[points.length - 1].y })
-  const path = curveLines(points, 0.1, 'complex')
+  const path = HMath.curveLines(points, 0.1, 'complex')
 
   return { minBpm, maxBpm, path }
 }
