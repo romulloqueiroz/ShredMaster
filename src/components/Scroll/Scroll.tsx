@@ -1,4 +1,3 @@
-import React from 'react'
 import { ScrollView } from 'react-native'
 import View from '../View/View'
 import { ScrollProps } from './Scroll.types'

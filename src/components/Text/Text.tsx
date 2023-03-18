@@ -1,4 +1,3 @@
-import React from 'react'
 import { Text } from 'react-native'
 import { colors, getLineHeight } from '@styles'
 import { TextComponentProps } from './Text.types'

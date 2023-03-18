@@ -1,4 +1,3 @@
-import React from 'react'
 import { View as RNView } from 'react-native'
 import { ViewType, colors } from '@styles'
 

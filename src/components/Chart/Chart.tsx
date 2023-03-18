@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
 import View from '../View/View'
-import { PADDING, COLORS, buildGraph } from './Chart.utils'
+import { PADDING, COLORS, CHART_HEIGHT, buildGraph, useGraphTouchHandler } from './Chart.utils'
 import {
   Canvas,
   Path,
@@ -11,16 +11,13 @@ import {
   LinearGradient,
   vec,
 } from '@shopify/react-native-skia'
-import { sectionByBpm } from './data'
-import { useGraphTouchHandler } from './useGraphTouchHandler'
+import { sectionByBpm } from './mock'
 import { Math } from '@helpers'
 import { Cursor } from './Cursor/Cursor'
 
 type SectionByBPMList = [number, number][]
 
 const values = sectionByBpm as SectionByBPMList
-
-const CHART_HEIGHT = 320
 
 const Chart = () => {
   const window = useWindowDimensions()

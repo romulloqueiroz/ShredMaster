@@ -1,4 +1,3 @@
-import type { SkiaValue } from '@shopify/react-native-skia'
 import {
   interpolateColors,
   Circle,
@@ -6,15 +5,8 @@ import {
   useComputedValue,
   Paint,
 } from '@shopify/react-native-skia'
-import React from 'react'
-
 import { COLORS } from '../Chart.utils'
-
-interface CursorProps {
-  x: SkiaValue<number>
-  y: SkiaValue<number>
-  width: number
-}
+import { CursorProps } from './Cursor.types'
 
 export const Cursor = ({ x, y, width }: CursorProps) => {
   const color = useComputedValue(
