@@ -1,4 +1,3 @@
-import type { SkPath } from '@shopify/react-native-skia'
 import { Skia } from '@shopify/react-native-skia'
 import { colors } from '@styles'
 
@@ -8,33 +7,31 @@ export const PADDING = 16
 
 export const COLORS = [colors.aqua, colors.green].map(Skia.Color)
 
-type PriceList = [string, number][]
-
-const POINTS = 20
+type BPMList = [number, number][]
 
 export const buildGraph = (
-  datapoints: PriceList,
+  datapoints: BPMList,
   WIDTH: number,
   HEIGHT: number
 ) => {
   const AJUSTED_SIZE = HEIGHT - PADDING * 2
-  const priceList = datapoints.slice(0, POINTS)
-  const formattedValues = priceList
-    .map((price) => [parseFloat(price[0]), price[1]] as [number, number])
-    .reverse()
-  const prices = formattedValues.map((value) => value[0])
-  const dates = formattedValues.map((value) => value[1])
-  const minDate = Math.min(...dates)
-  const maxDate = Math.max(...dates)
-  const minPrice = Math.min(...prices)
-  const maxPrice = Math.max(...prices)
-  const points = formattedValues.map(([price, date]) => {
-    const x = ((date - minDate) / (maxDate - minDate)) * WIDTH
-    const y = ((price - minPrice) / (maxPrice - minPrice)) * AJUSTED_SIZE
+
+  const bpms = datapoints.map((value) => value[0])
+  const session = datapoints.map((value) => value[1])
+
+  const minSession = Math.min(...session)
+  const maxSession = Math.max(...session)
+  const minBpm = Math.min(...bpms)
+  const maxBpm = Math.max(...bpms)
+
+  const points = datapoints.map(([bpm, session]) => {
+    const x = ((session - minSession) / (maxSession - minSession)) * WIDTH
+    const y = ((bpm - minBpm) / (maxBpm - minBpm)) * AJUSTED_SIZE
     return { x, y }
   })
+
   points.push({ x: WIDTH + 10, y: points[points.length - 1].y })
   const path = curveLines(points, 0.1, 'complex')
 
-  return { minPrice, maxPrice, path }
+  return { minBpm, maxBpm, path }
 }
