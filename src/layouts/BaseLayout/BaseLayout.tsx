@@ -1,11 +1,5 @@
 import { View, Scroll } from '@components'
-
-interface BaseLayoutProps {
-  type?: typeof Scroll | typeof View
-  view?: boolean
-  ph?: number
-  children: React.ReactNode
-}
+import { BaseLayoutProps } from './BaseLayout.types'
 
 const BaseLayout: React.FC<BaseLayoutProps> = ({
   children,

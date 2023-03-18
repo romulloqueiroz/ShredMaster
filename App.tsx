@@ -4,9 +4,9 @@ import { BaseLayout } from '@layouts'
 const App = () => {
   return (
     <BaseLayout>
-      <View h='100%' main='center' cross='center' flex1 bw={2} bc='red' mt={62}>
-        <Text>Open up App.tsx to start working on your app!</Text>
+      <View h='100%' main='center' cross='center' flex1 bw={1} bc='orange' mt={62}>
         <Chart />
+        <Text mt={20}>APP</Text>
       </View>
     </BaseLayout>
   )
