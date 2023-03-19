@@ -5,7 +5,7 @@ import {
   useComputedValue,
   Paint,
 } from '@shopify/react-native-skia'
-import { COLORS } from '../Chart.utils'
+import { COLORS } from '../../utils'
 import { CursorProps } from './Cursor.types'
 
 export const Cursor = ({ x, y, width }: CursorProps) => {

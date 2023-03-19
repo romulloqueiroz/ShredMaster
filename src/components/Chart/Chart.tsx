@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
 import View from '../View/View'
-import { PADDING, COLORS, CHART_HEIGHT, buildGraph, useGraphTouchHandler } from './Utils'
+import { PADDING, COLORS, CHART_HEIGHT, buildGraph, useGraphTouchHandler } from './utils'
 import {
   Canvas,
   Path,
@@ -13,7 +13,7 @@ import {
 } from '@shopify/react-native-skia'
 import { sectionByBpm } from './mock'
 import { Math } from '@helpers'
-import { Cursor } from './Cursor/Cursor'
+import { Cursor } from './components'
 
 type SectionByBPMList = [number, number][]
 const values = sectionByBpm as SectionByBPMList
