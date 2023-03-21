@@ -4,6 +4,7 @@ import Scroll from './Scroll/Scroll'
 import Chart from './Chart/Chart'
 import Tabata from './Tabata/Tabata'
 import Metronome from './Metronome/Metronome'
+import Button from './Button/Button'
 
 export {
   View,
@@ -12,4 +13,5 @@ export {
   Chart,
   Tabata,
   Metronome,
+  Button,
 }
