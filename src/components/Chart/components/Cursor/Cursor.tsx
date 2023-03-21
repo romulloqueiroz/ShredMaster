@@ -12,7 +12,7 @@ export const Cursor = ({ x, y, width }: CursorProps) => {
   const color = useComputedValue(
     () =>
       interpolateColors(
-        x.current / width,
+        x / width,
         COLORS.map((_, i) => i / COLORS.length),
         COLORS
       ),
@@ -20,7 +20,7 @@ export const Cursor = ({ x, y, width }: CursorProps) => {
   )
 
   const transform = useComputedValue(
-    () => [{ translateX: x.current }, { translateY: y.current }],
+    () => [{ translateX: x }, { translateY: y }],
     [x, y]
   )
 

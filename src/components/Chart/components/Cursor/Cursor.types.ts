@@ -1,7 +1,9 @@
-import { SkiaValue } from '@shopify/react-native-skia';
+// import { SkiaValue } from '@shopify/react-native-skia'
 
 export interface CursorProps {
-  x: SkiaValue<number>;
-  y: SkiaValue<number>;
-  width: number;
+  x: number
+  y: number
+  // x: SkiaValue<number>
+  // y: SkiaValue<number>
+  width: number
 }

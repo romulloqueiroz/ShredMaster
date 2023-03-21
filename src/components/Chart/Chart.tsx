@@ -1,16 +1,8 @@
 import { useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
 import View from '../View/View'
-import { PADDING, COLORS, CHART_HEIGHT, buildGraph, useGraphTouchHandler } from './utils'
-import {
-  Canvas,
-  Path,
-  Group,
-  useValue,
-  useComputedValue,
-  LinearGradient,
-  vec,
-} from '@shopify/react-native-skia'
+import { PADDING, COLORS, CHART_HEIGHT, buildGraph } from './utils'
+import { Canvas, Path, Group, LinearGradient, vec } from '@shopify/react-native-skia'
 import { sectionByBpm } from './mock'
 import { Math } from '@helpers'
 import { Cursor } from './components'
@@ -29,19 +21,14 @@ const Chart = () => {
   // path to display
   const path = graphs.path
 
-  // x and y values of the cursor
-  const x = useValue(1)
-  const y = useComputedValue(
-    () => Math.getYForX(path.toCmds(), x.current),
-    [x, path]
-  )
-  const onTouch = useGraphTouchHandler(x, y, CHART_WIDTH, CHART_HEIGHT)
+  console.log('Xs', values.map((value) => value[0]))
+  console.log('Ys', values.map((value) => Math.getYForX(path.toCmds(), value[0])))
 
   const translateY = PADDING
  
   return (
     <View h={CHART_HEIGHT} w='100%' bw={2} bc='purple' mt={62}>
-      <Canvas style={{ flex: 1 }} onTouch={onTouch}>
+      <Canvas style={{ flex: 1 }}>
         <Group transform={[{ translateY }]}>
           <Path
             style='stroke'
@@ -56,7 +43,15 @@ const Chart = () => {
               colors={COLORS}
             />
           </Path>
-          <Cursor x={x} y={y} width={CHART_WIDTH} />
+          {
+            values.map((value, index) => {
+              const x = value[0]
+              const y = Math.getYForX(path.toCmds(), x)
+              return (
+                <Cursor key={index} x={x} y={y} width={CHART_WIDTH} />
+              )
+            })
+          }
         </Group>
       </Canvas>
     </View>
