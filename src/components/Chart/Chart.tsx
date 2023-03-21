@@ -44,11 +44,11 @@ const Chart = () => {
       <Canvas style={{ flex: 1 }} onTouch={onTouch}>
         <Group transform={[{ translateY }]}>
           <Path
-            style="stroke"
+            style='stroke'
             path={path}
             strokeWidth={2}
-            strokeJoin="round"
-            strokeCap="round"
+            strokeJoin='round'
+            strokeCap='round'
           >
             <LinearGradient
               start={vec(0, 0)}

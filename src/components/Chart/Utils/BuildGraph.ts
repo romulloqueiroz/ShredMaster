@@ -24,7 +24,6 @@ export const buildGraph = (
     return { x, y }
   })
   
-
   points.push({ x: WIDTH + 10, y: points[points.length - 1].y })
   const path = HMath.curveLines(points, 0.1, 'complex')
 
