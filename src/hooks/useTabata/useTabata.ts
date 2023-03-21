@@ -15,11 +15,8 @@ export const useTabata = ({ workTime, restTime, rounds }: TabataTimerProps): Tab
         if (timeLeft === 0) {
           setIsWorking((prevIsWorking) => !prevIsWorking);
           if (!isWorking) {
-            if (currentRound === rounds) {
-              setIsRunning(false);
-            } else {
-              setCurrentRound((prevRound) => prevRound + 1);
-            }
+            if (currentRound === rounds) setIsRunning(false)
+            else setCurrentRound((prevRound) => prevRound + 1)
           }
           setTimeLeft(!isWorking ? restTime : workTime);
         } else {
