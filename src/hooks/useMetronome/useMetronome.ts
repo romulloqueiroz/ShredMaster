@@ -1,12 +1,12 @@
-import { useState, useEffect, useRef } from 'react'
 import { Audio } from 'expo-av'
+import { useState, useEffect, useRef } from 'react'
 
-export const useMetronome = (bpmInit: number) => {
+export const useMetronome = (beatsPerMeasure: number, noteValue: number, tempo: number) => {
   const [soundLoaded, setSoundLoaded] = useState(false)
   const [headLoaded, setHeadLoaded] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [bpm, setBpm] = useState(bpmInit)
-  const [_, setCurrentBeat] = useState(0) // we use the prevBeat so we don't need the currentBeat
+  const [bpm, setBpm] = useState(0)
+  const [_, setCurrentBeat] = useState(0)
 
   const tickSound = useRef(new Audio.Sound()).current
   const headSound = useRef(new Audio.Sound()).current
@@ -34,6 +34,10 @@ export const useMetronome = (bpmInit: number) => {
     loadTickSound()
     loadHeadSound()
   }, [])
+
+  useEffect(() => {
+    setBpm(tempo * (beatsPerMeasure / 4))
+  }, [beatsPerMeasure, tempo])
 
   const playClick = async () => {
     if (soundLoaded) {
@@ -67,16 +71,7 @@ export const useMetronome = (bpmInit: number) => {
     }
   }
 
-  const handleBpmChange = (value: number) => {
-    setBpm(value)
-    if (isPlaying) {
-      tickSound.stopAsync()
-      setCurrentBeat(0)
-      playClick()
-    }
-  }
-
-  const calculateInterval = () => (60 / bpm) * 1000
+  const calculateInterval = () => (60 / tempo) * 1000 * (4 / noteValue)
 
   const startInterval = () => {
     setCurrentBeat(0)
@@ -85,7 +80,7 @@ export const useMetronome = (bpmInit: number) => {
       setCurrentBeat((prevBeat) => {
         if (prevBeat === 0) playHead()
         else playClick()
-        return (prevBeat + 1) % 4
+        return (prevBeat + 1) % beatsPerMeasure
       })
     }, calculateInterval())
   }
@@ -111,6 +106,5 @@ export const useMetronome = (bpmInit: number) => {
     isPlaying,
     bpm,
     handlePlayStopPress,
-    handleBpmChange,
   }
 }
