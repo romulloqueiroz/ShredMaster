@@ -4,7 +4,7 @@ import View from '../View/View'
 import { PADDING, COLORS, CHART_HEIGHT, buildGraph } from './utils'
 import { Canvas, Path, Group, LinearGradient, vec } from '@shopify/react-native-skia'
 import { sectionByBpm } from './mock'
-import { Cursor } from './components'
+import { Dots } from './components'
 
 type SectionByBPMList = [number, number][]
 const values = sectionByBpm as SectionByBPMList
@@ -36,16 +36,14 @@ const Chart = () => {
             />
           </Path>
 
-          {graphs.xValues.map((x, idx) => {
-              return (
-                <Cursor 
-                  key={idx} 
-                  x={x} 
-                  y={graphs.yValues[idx]}
-                  width={CHART_WIDTH} 
-                />
-              )
-            })}
+          {graphs.xValues.map((x, idx) => (
+            <Dots 
+              key={idx} 
+              x={x} 
+              y={graphs.yValues[idx]}
+              width={CHART_WIDTH} 
+            />
+          ))}
 
         </Group>
       </Canvas>

@@ -6,9 +6,9 @@ import {
   Paint,
 } from '@shopify/react-native-skia'
 import { COLORS } from '../../utils'
-import { CursorProps } from './Cursor.types'
+import { DotsProps } from './Dots.types'
 
-export const Cursor = ({ x, y, width }: CursorProps) => {
+export const Dots = ({ x, y, width }: DotsProps) => {
   const color = useComputedValue(
     () =>
       interpolateColors(

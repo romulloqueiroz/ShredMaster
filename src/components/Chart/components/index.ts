@@ -1,5 +1,5 @@
-import { Cursor } from './Cursor/Cursor'
+import { Dots } from './Dots/Dots'
 
 export {
-  Cursor,
+  Dots,
 }
