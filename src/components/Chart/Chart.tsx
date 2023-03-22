@@ -4,7 +4,6 @@ import View from '../View/View'
 import { PADDING, COLORS, CHART_HEIGHT, buildGraph } from './utils'
 import { Canvas, Path, Group, LinearGradient, vec } from '@shopify/react-native-skia'
 import { sectionByBpm } from './mock'
-import { Math } from '@helpers'
 import { Cursor } from './components'
 
 type SectionByBPMList = [number, number][]
@@ -13,23 +12,16 @@ const values = sectionByBpm as SectionByBPMList
 const Chart = () => {
   const window = useWindowDimensions()
   const { width } = window
-
   const CHART_WIDTH = width - PADDING * 2
-
   const graphs = useMemo(() => buildGraph(values, CHART_WIDTH, CHART_HEIGHT), [values, CHART_WIDTH])
 
   // path to display
   const path = graphs.path
 
-  console.log('Xs', values.map((value) => value[0]))
-  console.log('Ys', values.map((value) => Math.getYForX(path.toCmds(), value[0])))
-
-  const translateY = PADDING
- 
   return (
-    <View h={CHART_HEIGHT} w='100%' bw={2} bc='purple' mt={62}>
+    <View h={CHART_HEIGHT} w='100%' bw={1} bc='purple'>
       <Canvas style={{ flex: 1 }}>
-        <Group transform={[{ translateY }]}>
+        <Group transform={[{ translateY: PADDING }]}>
           <Path
             style='stroke'
             path={path}
@@ -43,15 +35,18 @@ const Chart = () => {
               colors={COLORS}
             />
           </Path>
-          {
-            values.map((value, index) => {
-              const x = value[0]
-              const y = Math.getYForX(path.toCmds(), x)
+
+          {graphs.xValues.map((x, idx) => {
               return (
-                <Cursor key={index} x={x} y={y} width={CHART_WIDTH} />
+                <Cursor 
+                  key={idx} 
+                  x={x} 
+                  y={graphs.yValues[idx]}
+                  width={CHART_WIDTH} 
+                />
               )
-            })
-          }
+            })}
+
         </Group>
       </Canvas>
     </View>
@@ -59,3 +54,4 @@ const Chart = () => {
 }
 
 export default Chart
+

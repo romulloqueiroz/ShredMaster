@@ -1,4 +1,4 @@
-import { Math as HMath } from '@helpers'
+import { Skia } from '@shopify/react-native-skia'
 
 const PADDING = 16
 type BPMList = [number, number][]
@@ -24,8 +24,14 @@ export const buildGraph = (
     return { x, y }
   })
   
-  points.push({ x: WIDTH + 10, y: points[points.length - 1].y })
-  const path = HMath.curveLines(points, 0.1, 'complex')
+  const path = Skia.Path.Make()
+  path.moveTo(points[0].x, points[0].y)
+  for (let i = 1; i < points.length; i++) {
+    path.lineTo(points[i].x, points[i].y)
+  }
 
-  return { minBpm, maxBpm, path }
+  const xValues = points.map(point => point.x)
+  const yValues = points.map(point => point.y)
+
+  return { minBpm, maxBpm, path, xValues, yValues }
 }
