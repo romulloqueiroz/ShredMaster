@@ -16,4 +16,4 @@ export const colors = {
   gray: '#636e72',
   red: '#C4475A',
   pink: '#e84393'
-} as const
+}

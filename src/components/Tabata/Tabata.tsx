@@ -2,21 +2,7 @@ import { useTabata } from '@hooks'
 import View from '../View/View'
 import Text from '../Text/Text'
 import Button from '../Button/Button'
-import { 
-  Canvas, 
-  Path, 
-  Skia, 
-  useLoop,
-  useComputedValue,
-  mix,
-  useValue,
-  Group, 
-} from '@shopify/react-native-skia'
-
-const r1 = 85
-const path = Skia.Path.Make()
-path.addCircle(12 + r1, 12 + r1, r1)
-
+import CircularProgress from '../CircularProgress/CircularProgress'
 
 const Tabata = () => {
   const { 
@@ -31,29 +17,37 @@ const Tabata = () => {
     restTime: 5,
   })
 
-  const t = useLoop({ duration: 3000 })
-  const x = useComputedValue(() => mix(t.current, 0, 180), [t])
-  const progress = useComputedValue(() => x.current / 192, [x])
-
   return (
     <>
-      <Text>Time Left: {timeLeft}</Text>
-      <Text>Current Round: {currentRound}</Text>
-      <Text mb={32}>Is Working: {isWorking ? 'Play' : 'Rest'}</Text>
+      <View 
+        w={200} 
+        h={200}
+        main='center'
+        cross='center'
+      >
+        <View absolute>
+          <CircularProgress 
+            size={200} 
+            duration={10}
+            color='green' 
+            strokeWidth={6} 
+          />
+        </View>
 
-      <View w={194} h={194} bw={1} bc='aqua'>
-        <Canvas style={{ flex: 1 }}>
-          <Group>
-            <Path
-              path={path}
-              style='stroke'
-              strokeWidth={12}
-              color='red'
-              end={progress}
-              strokeCap='round'
-            />
-          </Group>
-        </Canvas>
+        <View absolute>
+          <CircularProgress 
+            size={180} 
+            duration={5}
+            color='red' 
+            strokeWidth={6} 
+          />
+        </View>
+
+        <View main='center' cross='center'>
+          <Text size={32}>{isWorking ? 'Work' : 'Rest'}</Text>
+          <Text>Time: {timeLeft}s</Text>
+          <Text>{currentRound}/3</Text>
+        </View>
       </View>
 
       <View row mt={32}>

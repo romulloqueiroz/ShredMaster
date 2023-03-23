@@ -1,6 +1,8 @@
+import { ColorType } from '@styles'
+
 export interface CircularProgressProps {
   size?: number;
   strokeWidth?: number;
-  color?: string;
+  color?: keyof ColorType;
   duration?: number;
 }
