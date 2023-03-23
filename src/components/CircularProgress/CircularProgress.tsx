@@ -4,9 +4,10 @@ import {
   Canvas, 
   Path, 
   Skia, 
-  useLoop,
   useComputedValue,
   mix,
+  useValue,
+  runTiming,
 } from '@shopify/react-native-skia'
 import { CircularProgressProps } from './CircularProgress.types'
 
@@ -14,10 +15,12 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   size = 194, 
   strokeWidth = 12, 
   color = 'red',
-  duration = 60
+  duration = 3000,
 }) => {
-  const t = useLoop({ duration: 3000 })
-  const x = useComputedValue(() => mix(t.current, 0, 180), [t])
+  const progressValue = useValue(0)
+  runTiming(progressValue, 1, { duration })
+
+  const x = useComputedValue(() => mix(progressValue.current, 0, 180), [progressValue])
   const progress = useComputedValue(() => x.current / 180, [x])
 
   const radius = size / 2 - strokeWidth
