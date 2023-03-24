@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
 import View from '../View/View'
 import { 
   Canvas, 
@@ -18,9 +18,14 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   strokeWidth = 12, 
   color = 'red',
   duration = 5,
+  isPlaying = false
 }) => {
   const progressValue = useValue(0)
-  runTiming(progressValue, 1, { duration: duration * 1000 })
+  // runTiming(progressValue, 1, { duration: duration * 1000 })
+
+  useEffect(() => {
+    if (isPlaying) runTiming(progressValue, 1, { duration: duration * 1000 })
+  }, [isPlaying, duration, progressValue])
 
   const x = useComputedValue(() => mix(progressValue.current, 0, 180), [progressValue])
   const progress = useComputedValue(() => x.current / 180, [x])

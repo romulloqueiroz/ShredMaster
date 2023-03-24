@@ -5,4 +5,5 @@ export interface CircularProgressProps {
   strokeWidth?: number;
   color?: keyof ColorType;
   duration?: number;
+  isPlaying?: boolean;
 }

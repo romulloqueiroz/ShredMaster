@@ -4,11 +4,14 @@ import Text from '../Text/Text'
 import Button from '../Button/Button'
 import CircularProgress from '../CircularProgress/CircularProgress'
 
+const PROGRESS_SIZE = 240
+
 const Tabata = () => {
   const { 
     timeLeft, 
     currentRound, 
     isWorking, 
+    isRunning,
     startTimer, 
     stopTimer 
   } = useTabata({
@@ -17,29 +20,23 @@ const Tabata = () => {
     restTime: 5,
   })
 
+  console.log(isWorking)
+
   return (
     <>
       <View 
-        w={200} 
-        h={200}
+        w={PROGRESS_SIZE} 
+        h={PROGRESS_SIZE}
         main='center'
         cross='center'
       >
         <View absolute>
           <CircularProgress 
-            size={200} 
-            duration={10}
-            color='green' 
-            strokeWidth={6} 
-          />
-        </View>
-
-        <View absolute>
-          <CircularProgress 
-            size={180} 
+            size={PROGRESS_SIZE} 
             duration={5}
             color='red' 
-            strokeWidth={6} 
+            strokeWidth={14} 
+            isPlaying={isRunning}
           />
         </View>
 
