@@ -32,14 +32,11 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
       runTiming(progressValue, 1, { duration: (1 - pausedProgress) * duration * 1000 })
     } else {
       setPausedProgress(progressValue.current)
-      if (mode !== pausedMode) {
-        progressValue.current = 0
-      }
+      if (mode !== pausedMode) progressValue.current = 0
     }
     setPausedMode(mode)
   }, [isPlaying, duration, progressValue, mode, pausedMode])
   
-
   const x = useComputedValue(() => mix(progressValue.current, 0, 180), [progressValue])
   const progress = useComputedValue(() => x.current / 180, [x])
 
