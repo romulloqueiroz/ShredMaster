@@ -15,11 +15,11 @@ const Tabata = () => {
     mode,
     isRunning,
     toggleTimer, 
-    resetTimer,
   } = useTabata({
     rounds: 3,
-    workTime: 5,
-    restTime: 5,
+    // @@@ BUG - If workTime is different than restTime, the timer will not work properly
+    workTime: 3,
+    restTime: 3,
   })
 
   const PROGRESS_SIZE = useMemo(() => deviceWidth * 0.8, [deviceWidth])
@@ -35,7 +35,7 @@ const Tabata = () => {
         <View absolute>
           <CircularProgress 
             size={PROGRESS_SIZE} 
-            duration={5}
+            duration={timeLeft}
             color={mode === 'work' ? 'green' : 'red'}
             strokeWidth={STROKE_WIDTH} 
             isPlaying={isRunning}
@@ -44,7 +44,7 @@ const Tabata = () => {
         </View>
 
         <View main='center' cross='center'>
-          <Text size={32}>{mode}</Text>
+          <Text size={32}>{mode.charAt(0).toUpperCase() + mode.slice(1)}</Text>
           <Text>Time: {timeLeft}s</Text>
           <Text>{currentRound}/3</Text>
         </View>
@@ -52,8 +52,6 @@ const Tabata = () => {
 
       <View row mt={32}>
         <Button onPress={toggleTimer} title='Play/Pause' />
-        <View mh={4} />
-        <Button onPress={resetTimer} title='Reset' />
       </View>
     </>
   )
