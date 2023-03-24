@@ -25,8 +25,10 @@ const Tabata = () => {
   const PROGRESS_SIZE = useMemo(() => deviceWidth * 0.8, [deviceWidth])
 
   useEffect(() => {
+    console.log(currentRound)
     console.log('mode', mode)
     console.log('isRunning', isRunning)
+    console.log('\n\n')
   }, [mode, isRunning])
 
   return (
