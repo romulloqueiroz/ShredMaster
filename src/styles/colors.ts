@@ -7,7 +7,7 @@ export const colors = {
 
   silver: '#dde1e7',
   orange: '#F69D69',
-  bege: '##FFC37D',
+  sunset: '#FFC37D',
   yellow: '#ffeaa7',
   green: '#61E0A1',
   aqua: '#31CBD1',

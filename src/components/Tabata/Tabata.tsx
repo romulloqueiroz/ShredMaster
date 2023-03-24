@@ -1,10 +1,11 @@
+import { useMemo } from 'react'
 import { useTabata } from '@hooks'
+import { deviceWidth } from '@styles'
 import View from '../View/View'
 import Text from '../Text/Text'
 import Button from '../Button/Button'
 import CircularProgress from '../CircularProgress/CircularProgress'
 
-const PROGRESS_SIZE = 260
 const STROKE_WIDTH = 18
 
 const Tabata = () => {
@@ -20,6 +21,8 @@ const Tabata = () => {
     workTime: 5,
     restTime: 5,
   })
+
+  const PROGRESS_SIZE = useMemo(() => deviceWidth * 0.8, [deviceWidth])
 
   return (
     <>
