@@ -12,6 +12,7 @@ import {
 } from '@shopify/react-native-skia'
 import { CircularProgressProps } from './CircularProgress.types'
 import { colors } from '@styles'
+import { addOpacity } from '@helpers'
 
 const CircularProgress: React.FC<CircularProgressProps> = ({ 
   size = 194, 
@@ -52,7 +53,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
             path={backgroundPath}
             style='stroke'
             strokeWidth={strokeWidth}
-            color={colors.black}
+            color={addOpacity(colors[color], 0.1)}
             end={1}
             strokeCap='round'
           />

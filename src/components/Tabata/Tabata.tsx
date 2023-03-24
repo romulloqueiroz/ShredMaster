@@ -4,7 +4,8 @@ import Text from '../Text/Text'
 import Button from '../Button/Button'
 import CircularProgress from '../CircularProgress/CircularProgress'
 
-const PROGRESS_SIZE = 240
+const PROGRESS_SIZE = 260
+const STROKE_WIDTH = 18
 
 const Tabata = () => {
   const { 
@@ -20,8 +21,6 @@ const Tabata = () => {
     restTime: 5,
   })
 
-  console.log(isWorking)
-
   return (
     <>
       <View 
@@ -34,8 +33,8 @@ const Tabata = () => {
           <CircularProgress 
             size={PROGRESS_SIZE} 
             duration={5}
-            color='red' 
-            strokeWidth={14} 
+            color='green' 
+            strokeWidth={STROKE_WIDTH} 
             isPlaying={isRunning}
           />
         </View>
