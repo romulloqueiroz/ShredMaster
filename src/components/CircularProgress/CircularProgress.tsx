@@ -1,4 +1,4 @@
-import { useMemo, useEffect } from 'react'
+import { useMemo, useEffect, useState } from 'react'
 import View from '../View/View'
 import { 
   Canvas, 
@@ -22,9 +22,15 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   isPlaying = false,
   mode = 'work'
 }) => {
+  const [pausedProgress, setPausedProgress] = useState<number>(0)
+
   const progressValue = useValue(0)
   useEffect(() => {
-    if (isPlaying) runTiming(progressValue, 1, { duration: duration * 1000 })
+    if (isPlaying) runTiming(progressValue, 1, { duration: (1 - pausedProgress) * duration * 1000 })
+    else {
+      setPausedProgress(progressValue.current)
+      progressValue.current = progressValue.current
+    }
   }, [isPlaying, duration, progressValue])
 
   const x = useComputedValue(() => mix(progressValue.current, 0, 180), [progressValue])
