@@ -19,11 +19,10 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   strokeWidth = 12, 
   color = 'red',
   duration = 5,
-  isPlaying = false
+  isPlaying = false,
+  mode = 'work'
 }) => {
   const progressValue = useValue(0)
-  // runTiming(progressValue, 1, { duration: duration * 1000 })
-
   useEffect(() => {
     if (isPlaying) runTiming(progressValue, 1, { duration: duration * 1000 })
   }, [isPlaying, duration, progressValue])
@@ -44,6 +43,10 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
     p.addCircle(strokeWidth + radius, strokeWidth + radius, radius)
     return p
   }, [radius, strokeWidth])
+
+  useEffect(() => {
+    progressValue.current = 0
+  }, [mode])
 
   return (
     <View w={size} h={size} style={{transform: [{ rotate: `-90deg` }]}}>

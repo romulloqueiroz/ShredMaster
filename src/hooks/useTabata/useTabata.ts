@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import { TabataTimerProps, TabataTimerResult } from './useTabata.types'
+import { TabataTimerProps } from './useTabata.types'
 
-export const useTabata = ({ workTime, restTime, rounds }: TabataTimerProps): TabataTimerResult => {
+export const useTabata = ({ workTime, restTime, rounds }: TabataTimerProps) => {
   const [timeLeft, setTimeLeft] = useState(workTime)
   const [currentRound, setCurrentRound] = useState(1)
   const [isWorking, setIsWorking] = useState(true)
