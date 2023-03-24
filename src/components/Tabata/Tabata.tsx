@@ -14,8 +14,8 @@ const Tabata = () => {
     currentRound, 
     mode,
     isRunning,
-    startTimer, 
-    stopTimer 
+    toggleTimer, 
+    resetTimer,
   } = useTabata({
     rounds: 3,
     workTime: 5,
@@ -23,13 +23,6 @@ const Tabata = () => {
   })
 
   const PROGRESS_SIZE = useMemo(() => deviceWidth * 0.8, [deviceWidth])
-
-  useEffect(() => {
-    console.log(currentRound)
-    console.log('mode', mode)
-    console.log('isRunning', isRunning)
-    console.log('\n\n')
-  }, [mode, isRunning])
 
   return (
     <>
@@ -58,9 +51,9 @@ const Tabata = () => {
       </View>
 
       <View row mt={32}>
-        <Button onPress={startTimer} title='Start' />
+        <Button onPress={toggleTimer} title='Play/Pause' />
         <View mh={4} />
-        <Button onPress={stopTimer} title='Stop' />
+        <Button onPress={resetTimer} title='Reset' />
       </View>
     </>
   )

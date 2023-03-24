@@ -23,20 +23,16 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   mode = 'work'
 }) => {
   const [pausedProgress, setPausedProgress] = useState<number>(0)
-  const [pausedMode, setPausedMode] = useState<string>(mode)
 
   const progressValue = useValue(0)
-
   useEffect(() => {
-    if (isPlaying) {
-      runTiming(progressValue, 1, { duration: (1 - pausedProgress) * duration * 1000 })
-    } else {
+    if (isPlaying) runTiming(progressValue, 1, { duration: (1 - pausedProgress) * duration * 1000 })
+    else {
       setPausedProgress(progressValue.current)
-      if (mode !== pausedMode) progressValue.current = 0
+      progressValue.current = progressValue.current
     }
-    setPausedMode(mode)
-  }, [isPlaying, duration, progressValue, mode, pausedMode])
-  
+  }, [isPlaying, duration, progressValue])
+
   const x = useComputedValue(() => mix(progressValue.current, 0, 180), [progressValue])
   const progress = useComputedValue(() => x.current / 180, [x])
 
@@ -55,9 +51,10 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   }, [radius, strokeWidth])
 
   useEffect(() => {
+    setPausedProgress(0)
     progressValue.current = 0
   }, [mode])
-
+  
   return (
     <View w={size} h={size} style={{transform: [{ rotate: `-90deg` }]}}>
       <Canvas style={{ flex: 1 }}>
