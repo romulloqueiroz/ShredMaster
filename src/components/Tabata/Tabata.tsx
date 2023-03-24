@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
 import { useTabata } from '@hooks'
 import { deviceWidth } from '@styles'
 import View from '../View/View'
@@ -12,7 +12,7 @@ const Tabata = () => {
   const { 
     timeLeft, 
     currentRound, 
-    isWorking, 
+    mode,
     isRunning,
     startTimer, 
     stopTimer 
@@ -23,6 +23,11 @@ const Tabata = () => {
   })
 
   const PROGRESS_SIZE = useMemo(() => deviceWidth * 0.8, [deviceWidth])
+
+  useEffect(() => {
+    console.log('mode', mode)
+    console.log('isRunning', isRunning)
+  }, [mode, isRunning])
 
   return (
     <>
@@ -36,14 +41,15 @@ const Tabata = () => {
           <CircularProgress 
             size={PROGRESS_SIZE} 
             duration={5}
-            color='green' 
+            color={mode === 'work' ? 'green' : 'red'}
             strokeWidth={STROKE_WIDTH} 
             isPlaying={isRunning}
+            mode={mode}
           />
         </View>
 
         <View main='center' cross='center'>
-          <Text size={32}>{isWorking ? 'Work' : 'Rest'}</Text>
+          <Text size={32}>{mode}</Text>
           <Text>Time: {timeLeft}s</Text>
           <Text>{currentRound}/3</Text>
         </View>

@@ -4,48 +4,54 @@ import { TabataTimerProps } from './useTabata.types'
 export const useTabata = ({ workTime, restTime, rounds }: TabataTimerProps) => {
   const [timeLeft, setTimeLeft] = useState(workTime)
   const [currentRound, setCurrentRound] = useState(1)
-  const [isWorking, setIsWorking] = useState(true)
+  const [mode, setMode] = useState<'work' | 'rest'>('work')
   const [isRunning, setIsRunning] = useState(false)
 
   useEffect(() => {
-    let interval: any = null;
-
+    let interval: any = null
+  
     if (isRunning) {
       interval = setInterval(() => {
-        if (timeLeft === 0) {
-          setIsWorking((prevIsWorking) => !prevIsWorking);
-          if (!isWorking) {
-            if (currentRound === rounds) setIsRunning(false)
-            else setCurrentRound((prevRound) => prevRound + 1)
-          }
-          setTimeLeft(!isWorking ? restTime : workTime);
+        if (timeLeft === 1) {
+          setIsRunning(false)
+          setMode((prevMode) => (prevMode === 'work' ? 'rest' : 'work'))
+          setTimeLeft(mode === 'work' ? workTime : restTime)
+          setTimeout(() => {
+            setIsRunning(true)
+            if (mode === 'rest') {
+              if (currentRound === rounds) setIsRunning(false)
+              else setCurrentRound((prevRound) => prevRound + 1)
+            }
+          }, 1000)
         } else {
-          setTimeLeft((prevTime) => prevTime - 1);
+          setTimeLeft((prevTime) => prevTime - 1)
         }
-      }, 1000);
+      }, 1000)
     }
-
-    return () => clearInterval(interval);
-  }, [isRunning, timeLeft, currentRound, isWorking, workTime, restTime, rounds]);
+  
+    return () => clearInterval(interval)
+  }, [isRunning, timeLeft, currentRound, mode, workTime, restTime, rounds])
+  
+  
 
   const startTimer = () => {
     setIsRunning(true)
     setTimeLeft(workTime)
     setCurrentRound(1)
-    setIsWorking(true)
+    setMode('work')
   }
 
   const stopTimer = () => {
     setIsRunning(false)
     setTimeLeft(workTime)
     setCurrentRound(1)
-    setIsWorking(true)
+    setMode('work')
   }
 
   return {
     timeLeft,
     currentRound,
-    isWorking,
+    mode,
     isRunning,
     startTimer,
     stopTimer,

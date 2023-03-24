@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { deviceWidth } from '@styles'
-import { View, CircularProgress, Button } from '@components'
+import { View, Tabata } from '@components'
 import { BaseLayout } from '@layouts'
 
 const PROGRESS_SIZE = deviceWidth * 0.8
@@ -12,18 +12,18 @@ const App = () => {
     <BaseLayout>
       <View h='100%' main='center' cross='center' flex1 mt={64}>
         <View h={62} />
-        {/* <Tabata /> */}
-        <CircularProgress 
+        <Tabata />
+        {/* <CircularProgress 
           size={PROGRESS_SIZE} 
           duration={5}
           color='green' 
           strokeWidth={20} 
           isPlaying={isRunning}
           mode={mode}
-        />
+        /> */}
         <View h={32} />
-        <Button onPress={() => setIsRunning(!isRunning)} title={isRunning ? 'Stop' : 'Start'} />
-        <Button onPress={() => setMode(mode === 'work' ? 'rest' : 'work')} title={mode === 'work' ? 'Rest' : 'Work'} />
+        {/* <Button onPress={() => setIsRunning(!isRunning)} title={isRunning ? 'Stop' : 'Start'} />
+        <Button onPress={() => setMode(mode === 'work' ? 'rest' : 'work')} title={mode === 'work' ? 'Rest' : 'Work'} /> */}
       </View>
     </BaseLayout>
   )
