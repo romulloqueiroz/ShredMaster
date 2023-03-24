@@ -9,10 +9,11 @@ export const useTabata = ({ workTime, restTime, rounds }: TabataTimerProps) => {
 
   useEffect(() => {
     let interval: any = null
-
+  
     if (isRunning) {
       interval = setInterval(() => {
         if (timeLeft === 1) {
+          setIsRunning(false)
           setMode((prevMode) => {
             const isLastRound = prevMode === 'rest' && currentRound === rounds
             if (isLastRound) {
@@ -22,9 +23,10 @@ export const useTabata = ({ workTime, restTime, rounds }: TabataTimerProps) => {
               return prevMode === 'work' ? 'rest' : 'work'
             }
           })
-
+          
           setTimeLeft(mode === 'work' ? workTime : restTime)
           setTimeout(() => {
+            setIsRunning(true)
             if (mode === 'rest') {
               if (currentRound === rounds) setIsRunning(false)
               else setCurrentRound((prevRound) => prevRound + 1)
@@ -35,9 +37,10 @@ export const useTabata = ({ workTime, restTime, rounds }: TabataTimerProps) => {
         }
       }, 1000)
     }
-
+  
     return () => clearInterval(interval)
   }, [isRunning, timeLeft, currentRound, mode, workTime, restTime, rounds])
+
 
   const toggleTimer = () => {
     setIsRunning((prevIsRunning) => !prevIsRunning)
