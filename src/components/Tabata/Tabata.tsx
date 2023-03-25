@@ -35,6 +35,16 @@ const Tabata = () => {
         <View absolute>
           <CircularProgress 
             size={PROGRESS_SIZE} 
+            duration={totalTimeLeft}
+            color='sunset'
+            strokeWidth={8} 
+            isPlaying={isRunning}
+          />
+        </View>
+
+        <View absolute>
+          <CircularProgress 
+            size={PROGRESS_SIZE - 10} 
             duration={timeLeft}
             color={mode === 'work' ? 'green' : 'red'}
             strokeWidth={STROKE_WIDTH} 
