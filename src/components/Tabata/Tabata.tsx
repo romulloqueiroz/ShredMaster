@@ -18,8 +18,8 @@ const Tabata = () => {
     toggleTimer, 
   } = useTabata({
     rounds: 3,
-    workTime: 3,
-    restTime: 5,
+    workTime: 5,
+    restTime: 3,
   })
 
   const PROGRESS_SIZE = useMemo(() => deviceWidth * 0.8, [deviceWidth])
