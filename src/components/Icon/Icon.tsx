@@ -6,7 +6,7 @@ import { IconProps } from './Icon.types';
 const Icon: React.FC<Partial<IconProps>> = ({
   name = 'play',
   color = 'white',
-  size = 48,
+  size = 24,
 }) => {
   const [vw, vh, ...path] = icon[name]
   return (

@@ -10,6 +10,7 @@ const LinearProgress: React.FC<LinearProgressProps> = ({
   br = 12,
   width = 200,
   height = 14,
+  color = 'red',
 }) => {
   const perc = `${(progress / (max - min)) * 100}%`;
 
@@ -18,13 +19,13 @@ const LinearProgress: React.FC<LinearProgressProps> = ({
       w={width} 
       h={height} 
       br={br} 
-      style={{ backgroundColor: addOpacity(colors.red, 0.1) }}
+      style={{ backgroundColor: addOpacity(colors[color], 0.1) }}
     >
       <View
         w={perc}
         h='100%'
         br={br}
-        bgc='red'
+        bgc={color}
       />
     </View>
   )

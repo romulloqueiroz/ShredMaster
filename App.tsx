@@ -1,17 +1,7 @@
-import { View, Tabata, LinearProgress } from '@components'
-import { BaseLayout } from '@layouts'
+import { Workout } from '@screens'
 
-const App = () => {
-  return (
-    <BaseLayout>
-      <View h='100%' main='center' cross='center' flex1 mt={64}>
-        <View h={62} />
-        <Tabata />
-        <View h={32} />
-        <LinearProgress progress={50} />
-      </View>
-    </BaseLayout>
-  )
-}
+const App = () => (
+  <Workout />
+)
 
 export default App
