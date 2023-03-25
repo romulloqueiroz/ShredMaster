@@ -6,6 +6,7 @@ import Tabata from './Tabata/Tabata'
 import CircularProgress from './CircularProgress/CircularProgress'
 import Metronome from './Metronome/Metronome'
 import Button from './Button/Button'
+import Icon from './Icon/Icon'
 
 export {
   View,
@@ -16,4 +17,5 @@ export {
   CircularProgress,
   Metronome,
   Button,
+  Icon,
 }
