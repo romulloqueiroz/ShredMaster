@@ -1,23 +1,23 @@
 import View from '../View/View'
-import Text from '../Text/Text'
 import Icon from '../Icon/Icon'
+import Touchable from '../Touchable/Touchable'
 import SafeArea from '../SafeArea/SafeArea'
 
-const Header = () => {
-  return (
-    <>
-      <SafeArea />
-      <View 
-        h={48} 
-        w='100%' 
-        row
-        main='space-between'
-        cross='center'
-      >
+const Header = () => (
+  <>
+    <SafeArea />
+    <View 
+      h={48} 
+      w='100%' 
+      row
+      main='space-between'
+      cross='center'
+    >
+      <Touchable>
         <Icon size={20} name='arrowBack' />
-      </View>
-    </>
-  )
-}
+      </Touchable>
+    </View>
+  </>
+)
 
 export default Header

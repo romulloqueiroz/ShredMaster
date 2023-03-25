@@ -10,6 +10,7 @@ import Icon from './Icon/Icon'
 import LinearProgress from './LinearProgress/LinearProgress'
 import Header from './Header/Header'
 import SafeArea from './SafeArea/SafeArea'
+import Touchable from './Touchable/Touchable'
 
 export {
   View,
@@ -24,4 +25,5 @@ export {
   Icon,
   Header,
   SafeArea,
+  Touchable,
 }
