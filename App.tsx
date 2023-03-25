@@ -1,4 +1,4 @@
-import { View, Icon } from '@components'
+import { View, Tabata, LinearProgress } from '@components'
 import { BaseLayout } from '@layouts'
 
 const App = () => {
@@ -6,8 +6,9 @@ const App = () => {
     <BaseLayout>
       <View h='100%' main='center' cross='center' flex1 mt={64}>
         <View h={62} />
-        <Icon name='pause' />
+        <Tabata />
         <View h={32} />
+        <LinearProgress progress={50} />
       </View>
     </BaseLayout>
   )
