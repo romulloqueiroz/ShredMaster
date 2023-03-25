@@ -11,6 +11,7 @@ const STROKE_WIDTH = 18
 const Tabata = () => {
   const { 
     timeLeft, 
+    totalTimeLeft,
     currentRound, 
     mode,
     isRunning,

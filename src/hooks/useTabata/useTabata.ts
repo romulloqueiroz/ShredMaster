@@ -6,6 +6,7 @@ export const useTabata = ({ workTime, restTime, rounds }: TabataTimerProps) => {
   const [currentRound, setCurrentRound] = useState(1)
   const [mode, setMode] = useState<'work' | 'rest'>('work')
   const [isRunning, setIsRunning] = useState(false)
+  const [totalTimeLeft, setTotalTimeLeft] = useState((workTime + restTime) * rounds)
 
   useEffect(() => {
     let interval: any = null
@@ -66,6 +67,7 @@ export const useTabata = ({ workTime, restTime, rounds }: TabataTimerProps) => {
     setCurrentRound(1)
     setMode('work')
     setTimeLeft(workTime)
+    setTotalTimeLeft((workTime + restTime) * rounds)
   }
 
   return {
@@ -75,5 +77,6 @@ export const useTabata = ({ workTime, restTime, rounds }: TabataTimerProps) => {
     isRunning,
     toggleTimer,
     resetTimer,
+    totalTimeLeft,
   }
 }
