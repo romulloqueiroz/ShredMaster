@@ -13,14 +13,25 @@ const BottomTabNavigator = () => {
     >
       <Tab.Screen
         options={{
-            // title: 'Home',
-            tabBarIcon: ({ focused }) => (
-              <BTN.Icon active={focused} title='Home' icon='play' />
-            ),
-          }}
-          name='Home'
-          component={Workout}
-        />
+          tabBarIcon: ({ focused }) => <BTN.Icon active={focused} title='Home' icon='home' />
+        }}
+        name='Home'
+        component={Workout}
+      />
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({ focused }) => <BTN.Icon active={focused} title='Progress' icon='progress' />
+        }}
+        name='Progress'
+        component={Workout}
+      />
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({ focused }) => <BTN.Icon active={focused} title='About' icon='account' />
+        }}
+        name='About'
+        component={Workout}
+      />
     </Tab.Navigator>
   )
 }
