@@ -63,7 +63,7 @@ const TabBar: React.FC<Partial<TabBarProps>> = ({ state, navigation, descriptors
             translate,
           ]}
         >
-          <View bgc='purple' br={20} w={24} h={4} />
+          <View bgc='blue' br={20} w={24} h={4} />
         </Animated.View>
 
         {state?.routes.map((route, index) => (
