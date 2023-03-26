@@ -1,5 +1,5 @@
 import { BottomTabNavigator as BTN } from '@components'
-import { Workout } from '@screens'
+import { Workout, Home, Progress } from '@screens'
 import { BottomTabList } from '../Routes.types'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
@@ -16,14 +16,14 @@ const BottomTabNavigator = () => {
           tabBarIcon: ({ focused }) => <BTN.Icon active={focused} title='Home' icon='home' />
         }}
         name='Home'
-        component={Workout}
+        component={Home}
       />
       <Tab.Screen
         options={{
           tabBarIcon: ({ focused }) => <BTN.Icon active={focused} title='Progress' icon='progress' />
         }}
         name='Progress'
-        component={Workout}
+        component={Progress}
       />
       <Tab.Screen
         options={{
