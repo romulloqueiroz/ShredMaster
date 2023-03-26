@@ -12,6 +12,7 @@
 			"@layouts": ["src/layouts/index"],
 			"@hooks": ["src/hooks/index"],
 			"@helpers": ["src/helpers/index"],
+			"@navigation": ["src/navigation/index"],
 			"@src/*": ["src/*"]
 		}
   }

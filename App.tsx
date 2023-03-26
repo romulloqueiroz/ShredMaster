@@ -1,7 +1,7 @@
-import { Workout } from '@screens'
+import { Navigation } from '@navigation'
 
 const App = () => (
-  <Workout />
+  <Navigation />
 )
 
 export default App

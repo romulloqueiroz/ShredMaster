@@ -12,6 +12,7 @@ import Header from './Header/Header'
 import SafeArea from './SafeArea/SafeArea'
 import Touchable from './Touchable/Touchable'
 import PlayButton from './PlayButton/PlayButton'
+import BottomTabNavigator from './BottomTabNavigator/index'
 
 export {
   View,
@@ -28,4 +29,5 @@ export {
   SafeArea,
   Touchable,
   PlayButton,
+  BottomTabNavigator,
 }
