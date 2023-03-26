@@ -3,17 +3,19 @@ export const colors = {
   black: '#121212',
   white:'#fff',
 
-  background: '#1F1D2B',
+  background: '#1F1F1F',
+  
+  blue: '#3B78FF',
+  red: '#FF3B3F',
+  green: '#39FF3F',
+  purple: '#AA39FF',
+  orange: '#FF8C3B',
+  yellow: '#FFF23B',
+  pink: '#FF3BC9',
+  teal: '#3BFFF2',
+  lime: '#BFFF3B',
+  gray: '#AFAFAF',
 
-  silver: '#dde1e7',
-  orange: '#F69D69',
-  sunset: '#FFC37D',
-  yellow: '#ffeaa7',
-  green: '#61E0A1',
-  aqua: '#31CBD1',
-  blue: '#74b9ff',
-  purple: '#6c5ce7',
-  gray: '#636e72',
-  red: '#C4475A',
-  pink: '#e84393'
+  glass1: 'rgba(255, 255, 255, 0.05)',
+  glass2: 'rgba(255, 255, 255, 0.12)',
 }

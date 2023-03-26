@@ -5,4 +5,5 @@ export interface TabataDisplayProps {
   isPlaying?: boolean;
   mode: 'work' | 'rest';
   round?: number;
+  totalRounds: number;
 }

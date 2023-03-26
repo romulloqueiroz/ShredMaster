@@ -11,6 +11,7 @@ import LinearProgress from './LinearProgress/LinearProgress'
 import Header from './Header/Header'
 import SafeArea from './SafeArea/SafeArea'
 import Touchable from './Touchable/Touchable'
+import PlayButton from './PlayButton/PlayButton'
 
 export {
   View,
@@ -26,4 +27,5 @@ export {
   Header,
   SafeArea,
   Touchable,
+  PlayButton,
 }

@@ -11,6 +11,7 @@ const TabataDisplay: React.FC<TabataDisplayProps> = ({
   isPlaying, 
   mode,
   round,
+  totalRounds,
 }) => (
   <>
     <View 
@@ -18,14 +19,12 @@ const TabataDisplay: React.FC<TabataDisplayProps> = ({
       h={size}
       main='center'
       cross='center'
-      bw={1}
-      bc='gray'
     >
       <View absolute>
         <CircularProgress 
           size={size} 
           duration={totalTimeLeft}
-          color='sunset'
+          color='blue'
           strokeWidth={8} 
           isPlaying={isPlaying}
         />
@@ -45,7 +44,7 @@ const TabataDisplay: React.FC<TabataDisplayProps> = ({
       <View main='center' cross='center'>
         <Text size={32}>{mode.charAt(0).toUpperCase() + mode.slice(1)}</Text>
         <Text>Time: {timeLeft}s</Text>
-        <Text>{round}/3</Text>
+        <Text>{round}/{totalRounds}</Text>
       </View>
     </View>
   </>

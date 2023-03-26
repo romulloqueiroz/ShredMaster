@@ -1,13 +1,6 @@
-import { AccessibilityRole, TouchableOpacity } from 'react-native'
-import { ViewType } from '@styles'
+import { TouchableOpacity } from 'react-native'
 import View from '../View/View'
-
-interface TouchableProps extends ViewType {
-  opacity: number
-  onPress: () => void
-  disabled?: boolean
-  accessibilityRole?: AccessibilityRole
-}
+import { TouchableProps } from './Touchable.types'
 
 const Touchable: React.FC<Partial<TouchableProps>> = ({
   children,

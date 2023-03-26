@@ -9,7 +9,10 @@ import {
   LinearProgress, 
   Button,
   Header,
+  PlayButton,
 } from '@components'
+
+const ROUNDS = 2
 
 const Practice = () => {
   const { 
@@ -20,12 +23,12 @@ const Practice = () => {
     isRunning,
     toggleTimer, 
   } = useTabata({
-    rounds: 3,
+    rounds: ROUNDS,
     workTime: 3,
     restTime: 3,
   })
 
-  const PROGRESS_SIZE = useMemo(() => deviceWidth * 0.8, [deviceWidth])
+  const DISPLAY_SIZE = useMemo(() => deviceWidth * 0.7, [deviceWidth])
 
   return (
     <BaseLayout>
@@ -35,33 +38,34 @@ const Practice = () => {
         main='center' 
         cross='center' 
         flex1
-        bw={2} 
-        bc='red'
       >
         <TabataDisplay 
-          size={PROGRESS_SIZE}
+          size={DISPLAY_SIZE}
           totalTimeLeft={totalTimeLeft}
           isPlaying={isRunning}
           timeLeft={timeLeft}
           mode={mode}
           round={currentRound}
+          totalRounds={ROUNDS}
         />
 
-        <View h={32} />
-
-        <View row mt={32}>
-          <Button onPress={toggleTimer} title='Play/Pause' />
+        <View 
+          absolute
+          rx={1}
+          y={DISPLAY_SIZE - 56}
+        >
+          <PlayButton onPress={toggleTimer} />
         </View>
 
-        <View mv={12} />
+        <View mv={24} />
 
         <View w='100%'>
-          <Text mb={8}>Round {currentRound}/3</Text>
+          <Text mb={8}>Round {currentRound}/{ROUNDS}</Text>
           <LinearProgress  
-            color='sunset'
+            color='blue'
             width={deviceWidth * 0.4}
             progress={currentRound} 
-            max={3} 
+            max={ROUNDS} 
           />
         </View>
 
