@@ -7,8 +7,7 @@ import {
   Text, 
   TabataDisplay,
   LinearProgress, 
-  Button,
-  Header,
+  HeaderBack,
   PlayButton,
 } from '@components'
 
@@ -32,7 +31,7 @@ const Practice = () => {
 
   return (
     <BaseLayout>
-      <Header />
+      <HeaderBack />
       <View 
         h='100%' 
         main='center' 

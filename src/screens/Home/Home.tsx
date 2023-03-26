@@ -1,10 +1,12 @@
-import { Text } from '@components'
+import { View, Header } from '@components'
 import { BaseLayout } from '@layouts'
 
 const Home = () => {
   return (
     <BaseLayout>
-      <Text>Home</Text>
+      <Header title='Home' />
+      <View mv={18} />
+
     </BaseLayout>
   )
 }

@@ -9,6 +9,7 @@ import Button from './Button/Button'
 import Icon from './Icon/Icon'
 import LinearProgress from './LinearProgress/LinearProgress'
 import Header from './Header/Header'
+import HeaderBack from './HeaderBack/HeaderBack'
 import SafeArea from './SafeArea/SafeArea'
 import Touchable from './Touchable/Touchable'
 import PlayButton from './PlayButton/PlayButton'
@@ -26,6 +27,7 @@ export {
   Button,
   Icon,
   Header,
+  HeaderBack,
   SafeArea,
   Touchable,
   PlayButton,

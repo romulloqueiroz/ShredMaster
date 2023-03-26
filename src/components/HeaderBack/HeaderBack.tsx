@@ -1,9 +1,9 @@
 import View from '../View/View'
-import Text from '../Text/Text'
+import Icon from '../Icon/Icon'
+import Touchable from '../Touchable/Touchable'
 import SafeArea from '../SafeArea/SafeArea'
-import { HeaderProps } from './Header.types'
 
-const Header: React.FC<HeaderProps> = ({ title = '' }) => (
+const Header = () => (
   <>
     <SafeArea />
     <View 
@@ -12,10 +12,10 @@ const Header: React.FC<HeaderProps> = ({ title = '' }) => (
       row
       main='space-between'
       cross='center'
-      bw={1}
-      bc='gray'
     >
-      <Text>{title}</Text>
+      <Touchable>
+        <Icon size={20} name='arrowBack' />
+      </Touchable>
     </View>
   </>
 )
