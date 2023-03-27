@@ -50,7 +50,7 @@ const TabataDisplay: React.FC<TabataDisplayProps> = ({
       <View absolute>
         <CircularProgress 
           size={size - 10} 
-          duration={sectionTime}
+          duration={mode === 'finished' ? 0 : sectionTime}
           color={getModeColor(mode)}
           strokeWidth={STROKE_WIDTH} 
           isPlaying={isPlaying}
