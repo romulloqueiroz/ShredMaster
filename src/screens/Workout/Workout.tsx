@@ -1,5 +1,5 @@
-import { useMemo } from 'react'
-import { useTabata } from '@hooks'
+import { memo, useMemo, useEffect } from 'react'
+import { useTabata, useMetronome } from '@hooks'
 import { BaseLayout } from '@layouts'
 import { deviceWidth } from '@styles'
 import { 
@@ -14,18 +14,26 @@ import {
 const ROUNDS = 2
 
 const Practice = () => {
-  const { 
-    timeLeft, 
-    totalTimeLeft,
-    currentRound, 
-    mode,
+  // const tabata = useTabata({ rounds: ROUNDS, workTime: 3, restTime: 3 })
+  // const metronome = useMetronome(4, 4, 80)
+
+  // useEffect(() => {
+  //   if (tabata.mode === 'work' && !metronome.isPlaying && tabata.isRunning) {
+  //     metronome.handlePlayStopPress()
+  //   } else if (tabata.mode === 'rest' && metronome.isPlaying) {
+  //     metronome.handlePlayStopPress()
+  //   }
+  // }, [tabata.mode, metronome.isPlaying, tabata.isRunning])
+
+  const {
+    currentPhase,
+    currentRound,
+    currentSeconds,
+    sectionTime,
     isRunning,
-    toggleTimer, 
-  } = useTabata({
-    rounds: ROUNDS,
-    workTime: 3,
-    restTime: 3,
-  })
+    totalTime,
+    toggle,
+  } = useTabata({ prepare: 3, work: 5, rest: 5, rounds: 2 })
 
   const DISPLAY_SIZE = useMemo(() => deviceWidth * 0.7, [deviceWidth])
 
@@ -40,12 +48,13 @@ const Practice = () => {
       >
         <TabataDisplay 
           size={DISPLAY_SIZE}
-          totalTimeLeft={totalTimeLeft}
+          totalTime={totalTime}
           isPlaying={isRunning}
-          timeLeft={timeLeft}
-          mode={mode}
+          sectionTime={sectionTime}
+          mode={currentPhase}
           round={currentRound}
           totalRounds={ROUNDS}
+          currentSeconds={currentSeconds}
         />
 
         <View 
@@ -53,7 +62,7 @@ const Practice = () => {
           rx={1}
           y={DISPLAY_SIZE - 56}
         >
-          <PlayButton onPress={toggleTimer} />
+          <PlayButton onPress={toggle} />
         </View>
 
         <View mv={24} />
@@ -73,4 +82,4 @@ const Practice = () => {
   )
 }
 
-export default Practice
+export default memo(Practice)

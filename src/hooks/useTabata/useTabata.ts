@@ -6,8 +6,10 @@ export const useTabata = (initialTabataState: useTabataProps) => {
   const [currentTabata, setCurrentTabata] = useState(initialTabata)
   const [isRunning, setIsRunning] = useState(false)
   const [currentSeconds, setCurrentSeconds] = useState(currentTabata.prepare)
+  const [sectionTime, setSectionTime] = useState(currentTabata.prepare)
   const [currentRound, setCurrentRound] = useState(1)
   const [currentPhase, setCurrentPhase] = useState('prepare')
+  const [totalTime, setTotalTime] = useState(0)
 
   useEffect(() => {
     if (!isRunning || currentPhase === 'finished') return
@@ -20,18 +22,21 @@ export const useTabata = (initialTabataState: useTabataProps) => {
         if (currentSeconds === 1) {
           setCurrentPhase('work')
           setCurrentSeconds(work)
+          setSectionTime(work)
         }
       } else if (currentPhase === 'work' && currentSeconds > 1) {
         setCurrentSeconds(prevSeconds => prevSeconds - 1)
       } else if (currentPhase === 'work' && currentSeconds === 1) {
         setCurrentPhase('rest')
         setCurrentSeconds(rest)
+        setSectionTime(rest)
       } else if (currentPhase === 'rest' && currentSeconds > 1) {
         setCurrentSeconds(prevSeconds => prevSeconds - 1)
       } else if (currentPhase === 'rest' && currentSeconds === 1) {
         setCurrentPhase('work')
         setCurrentRound(prevRound => prevRound + 1)
         setCurrentSeconds(work)
+        setSectionTime(work)
       }
     }, 1000)
 
@@ -63,10 +68,22 @@ export const useTabata = (initialTabataState: useTabataProps) => {
       ...currentTabata,
       [name]: value,
     }
-
+  
     setCurrentTabata(newTabata)
     setInitialTabata(newTabata)
+    calculateTotalTime(newTabata)
+  };
+  
+
+  const calculateTotalTime = (tabata: useTabataProps) => {
+    const { prepare, work, rest, rounds } = tabata
+    const totalTime = prepare + (work + rest) * rounds
+    setTotalTime(totalTime)
   }
+
+  useEffect(() => calculateTotalTime(currentTabata), [])
+  
+  
 
   return {
     currentTabata,
@@ -74,6 +91,8 @@ export const useTabata = (initialTabataState: useTabataProps) => {
     currentSeconds,
     currentRound,
     currentPhase,
+    sectionTime,
+    totalTime,
     toggle,
     reset,
     handleTabataChange,

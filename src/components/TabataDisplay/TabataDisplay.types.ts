@@ -1,9 +1,10 @@
 export interface TabataDisplayProps {
   size: number;
-  totalTimeLeft?: number;
-  timeLeft?: number;
+  totalTime: number;
+  sectionTime?: number;
   isPlaying?: boolean;
-  mode: 'work' | 'rest';
+  mode: string;
   round?: number;
   totalRounds: number;
+  currentSeconds: number;
 }

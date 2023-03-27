@@ -6,5 +6,5 @@ export interface CircularProgressProps {
   color?: keyof ColorType
   duration?: number
   isPlaying?: boolean
-  mode?: 'work' | 'rest' | 'prepare'
+  mode?: 'work' | 'rest' | 'prepare' | 'finished' | string
 }

@@ -1,4 +1,4 @@
-import { View, Header, Text, Button } from '@components'
+import { View, Header, Text, Button, CircularProgress } from '@components'
 import { BaseLayout } from '@layouts'
 import { useTabata } from '@hooks'
 
@@ -9,15 +9,24 @@ const Home = () => {
     currentPhase,
     currentRound,
     currentSeconds,
+    sectionTime,
     isRunning,
     toggle,
     reset,
-  } = useTabata({ prepare: 3, work: 3, rest: 3, rounds: 2 })
+  } = useTabata({ prepare: 3, work: 10, rest: 5, rounds: 2 })
 
   return (
     <BaseLayout>
       <Header title='Home' />
       <View mv={18} />
+
+      <CircularProgress
+        size={194}
+        strokeWidth={12}
+        duration={sectionTime}
+        isPlaying={isRunning}
+        mode={currentPhase}
+      />
 
       <Text>Phase: {currentPhase}</Text>
       <Text>Round: {currentRound}</Text>
