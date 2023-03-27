@@ -22,9 +22,23 @@ const activeAtom = atom({
   default: false, // metronome is initially inactive
 })
 
+const exercisesState = atom({
+  key: 'exercises',
+  default: [],
+})
+
+const metronomeState = atom({
+  key: 'metronome',
+  default: {
+    isPlaying: false,
+  },
+})
+
 export {
   playTimeAtom,
   restTimeAtom,
   bpmAtom,
   activeAtom,
+  exercisesState,
+  metronomeState,
 }

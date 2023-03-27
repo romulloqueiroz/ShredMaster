@@ -1,82 +1,81 @@
 import { useState, useEffect } from 'react'
-import { TabataTimerProps } from './useTabata.types'
+import { useTabataProps } from './useTabata.types'
 
-export const useTabata = ({ workTime, restTime, rounds }: TabataTimerProps) => {
-  const [timeLeft, setTimeLeft] = useState(workTime)
-  const [currentRound, setCurrentRound] = useState(1)
-  const [mode, setMode] = useState<'work' | 'rest'>('work')
+export const useTabata = (initialTabataState: useTabataProps) => {
+  const [initialTabata, setInitialTabata] = useState(initialTabataState)
+  const [currentTabata, setCurrentTabata] = useState(initialTabata)
   const [isRunning, setIsRunning] = useState(false)
-  const [totalTimeLeft, setTotalTimeLeft] = useState((workTime + restTime) * rounds)
+  const [currentSeconds, setCurrentSeconds] = useState(currentTabata.prepare)
+  const [currentRound, setCurrentRound] = useState(1)
+  const [currentPhase, setCurrentPhase] = useState('prepare')
 
   useEffect(() => {
-    let interval: any = null
-  
-    if (isRunning) {
-      interval = setInterval(() => {
-        if (timeLeft === 1) {
-          setIsRunning(false)
-          setMode((prevMode) => {
-            const isLastRound = prevMode === 'rest' && currentRound === rounds
-            if (isLastRound) {
-              setIsRunning(false)
-              return prevMode
-            } else {
-              return prevMode === 'work' ? 'rest' : 'work'
-            }
-          })
-          
-          setTimeLeft((prevTime) => {
-            const isLastRound = mode === 'rest' && currentRound === rounds
-            if (isLastRound) {
-              return prevTime
-            } else {
-              return mode === 'work' ? restTime : workTime
-            }
-          })
+    if (!isRunning || currentPhase === 'finished') return
 
-          setTimeout(() => {
-            setIsRunning(true)
-            if (mode === 'rest') {
-              if (currentRound === rounds) setIsRunning(false)
-              else setCurrentRound((prevRound) => prevRound + 1)
-            }
-          }, 1000)
-        } else {
-          setTimeLeft((prevTime) => prevTime - 1)
+    const { work, rest } = currentTabata
+
+    const timer = setTimeout(() => {
+      if (currentPhase === 'prepare') {
+        setCurrentSeconds(prevSeconds => prevSeconds - 1)
+        if (currentSeconds === 1) {
+          setCurrentPhase('work')
+          setCurrentSeconds(work)
         }
-      }, 1000)
-    }
-  
-    return () => clearInterval(interval)
-  }, [isRunning, timeLeft, currentRound, mode, workTime, restTime, rounds])
+      } else if (currentPhase === 'work' && currentSeconds > 1) {
+        setCurrentSeconds(prevSeconds => prevSeconds - 1)
+      } else if (currentPhase === 'work' && currentSeconds === 1) {
+        setCurrentPhase('rest')
+        setCurrentSeconds(rest)
+      } else if (currentPhase === 'rest' && currentSeconds > 1) {
+        setCurrentSeconds(prevSeconds => prevSeconds - 1)
+      } else if (currentPhase === 'rest' && currentSeconds === 1) {
+        setCurrentPhase('work')
+        setCurrentRound(prevRound => prevRound + 1)
+        setCurrentSeconds(work)
+      }
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [isRunning, currentTabata, currentPhase, currentSeconds])
 
   useEffect(() => {
-    if (!isRunning) {
+    if (currentRound > currentTabata.rounds) {
+      setIsRunning(false)
+      setCurrentPhase('finished')
+      setCurrentSeconds(0)
       setCurrentRound(1)
-      setMode('work')
-      setTimeLeft(workTime)
+      setCurrentTabata(initialTabataState)
     }
-  }, [workTime, restTime, rounds])
+  }, [currentRound, currentTabata, initialTabataState])
 
-  const toggleTimer = () => {
-    setIsRunning((prevIsRunning) => !prevIsRunning)
+  const toggle = () => setIsRunning(prevIsRunning => !prevIsRunning)
+
+  const reset = () => {
+    setIsRunning(false)
+    setCurrentPhase('prepare')
+    setCurrentSeconds(currentTabata.prepare)
+    setCurrentRound(1)
+    setCurrentTabata(initialTabataState)
   }
 
-  const resetTimer = () => {
-    setIsRunning(false)
-    setCurrentRound(1)
-    setMode('work')
-    setTimeLeft(workTime)
-    setTotalTimeLeft((workTime + restTime) * rounds)
+  const handleTabataChange = ({ name, value }: { name: keyof useTabataProps, value: number }) => {
+    const newTabata = {
+      ...currentTabata,
+      [name]: value,
+    }
+
+    setCurrentTabata(newTabata)
+    setInitialTabata(newTabata)
   }
 
   return {
-    timeLeft,
-    currentRound: currentRound > rounds ? rounds : currentRound,
-    mode,
+    currentTabata,
     isRunning,
-    toggleTimer,
-    resetTimer,
-    totalTimeLeft,
+    currentSeconds,
+    currentRound,
+    currentPhase,
+    toggle,
+    reset,
+    handleTabataChange,
   }
 }

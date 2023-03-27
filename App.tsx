@@ -1,7 +1,10 @@
 import { Navigation } from '@navigation'
+import { RecoilRoot } from 'recoil'
 
 const App = () => (
-  <Navigation />
+  <RecoilRoot>
+    <Navigation />
+  </RecoilRoot>
 )
 
 export default App
