@@ -26,6 +26,7 @@ const Practice = () => {
   // }, [tabata.mode, metronome.isPlaying, tabata.isRunning])
 
   const {
+    currentTabata,
     currentPhase,
     currentRound,
     currentSeconds,

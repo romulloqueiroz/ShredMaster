@@ -10,12 +10,14 @@ export const useTabata = (initialTabataState: useTabataProps) => {
   const [currentRound, setCurrentRound] = useState(1)
   const [currentPhase, setCurrentPhase] = useState('prepare')
   const [totalTime, setTotalTime] = useState(0)
+  const [pausePhase, setPausePhase] = useState(false)
 
   useEffect(() => {
     if (!isRunning || currentPhase === 'finished') return
-
+    if (pausePhase) return
+  
     const { work, rest } = currentTabata
-
+  
     const timer = setTimeout(() => {
       if (currentPhase === 'prepare') {
         setCurrentSeconds(prevSeconds => prevSeconds - 1)
@@ -27,22 +29,30 @@ export const useTabata = (initialTabataState: useTabataProps) => {
       } else if (currentPhase === 'work' && currentSeconds > 1) {
         setCurrentSeconds(prevSeconds => prevSeconds - 1)
       } else if (currentPhase === 'work' && currentSeconds === 1) {
+        setPausePhase(true)
+        setIsRunning(false)
         setCurrentPhase('rest')
         setCurrentSeconds(rest)
         setSectionTime(rest)
+        setIsRunning(true)
+        setPausePhase(false)
       } else if (currentPhase === 'rest' && currentSeconds > 1) {
         setCurrentSeconds(prevSeconds => prevSeconds - 1)
       } else if (currentPhase === 'rest' && currentSeconds === 1) {
+        setPausePhase(true)
+        setIsRunning(false)
         setCurrentPhase('work')
         setCurrentRound(prevRound => prevRound + 1)
         setCurrentSeconds(work)
         setSectionTime(work)
+        setIsRunning(true)
+        setPausePhase(false)
       }
     }, 1000)
-
+  
     return () => clearTimeout(timer)
-  }, [isRunning, currentTabata, currentPhase, currentSeconds])
-
+  }, [isRunning, currentTabata, currentPhase, currentSeconds, pausePhase])
+  
   useEffect(() => {
     if (currentRound > currentTabata.rounds) {
       setIsRunning(false)
@@ -68,23 +78,19 @@ export const useTabata = (initialTabataState: useTabataProps) => {
       ...currentTabata,
       [name]: value,
     }
-  
     setCurrentTabata(newTabata)
     setInitialTabata(newTabata)
     calculateTotalTime(newTabata)
-  };
+  }
   
-
   const calculateTotalTime = (tabata: useTabataProps) => {
     const { prepare, work, rest, rounds } = tabata
-    const totalTime = prepare + (work + rest) * rounds
+    const totalTime = prepare + (work + rest) * rounds + 1
     setTotalTime(totalTime)
   }
 
   useEffect(() => calculateTotalTime(currentTabata), [])
   
-  
-
   return {
     currentTabata,
     isRunning,

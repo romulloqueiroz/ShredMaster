@@ -1,9 +1,24 @@
 import { memo } from 'react'
 import View from '../View/View'
 import Text from '../Text/Text'
-import CircularProgress from '../CircularProgress/CircularProgress3'
+import CircularProgress from '../CircularProgress/CircularProgress'
 import { TabataDisplayProps } from './TabataDisplay.types'
 import { STROKE_WIDTH } from './TabataDisplay.utils'
+
+const getModeColor = (mode: string) => {
+  switch (mode) {
+    case 'prepare':
+      return 'yellow'
+    case 'work':
+      return 'green'
+    case 'rest':
+      return 'red'
+    case 'finished':
+      return 'blue'
+    default:
+      return 'blue'
+  }
+}
 
 const TabataDisplay: React.FC<TabataDisplayProps> = ({ 
   size, 
@@ -14,8 +29,8 @@ const TabataDisplay: React.FC<TabataDisplayProps> = ({
   round,
   totalRounds,
   currentSeconds,
-}) => (
-  <>
+}) => {
+  return (
     <View 
       w={size} 
       h={size}
@@ -36,7 +51,7 @@ const TabataDisplay: React.FC<TabataDisplayProps> = ({
         <CircularProgress 
           size={size - 10} 
           duration={sectionTime}
-          color={mode === 'work' ? 'green' : 'red'}
+          color={getModeColor(mode)}
           strokeWidth={STROKE_WIDTH} 
           isPlaying={isPlaying}
           mode={mode}
@@ -49,7 +64,7 @@ const TabataDisplay: React.FC<TabataDisplayProps> = ({
         <Text>{round}/{totalRounds}</Text>
       </View>
     </View>
-  </>
-)
+  )
+}
 
 export default memo(TabataDisplay)
