@@ -4,7 +4,7 @@ export const colors = {
   white:'#fff',
 
   // New color pallet
-  background: '#171724',
+  background: '#171B1F',
   green1: '#99FFA3',
   green2: '#68EE76',
   yellow1: '#FFD572',
