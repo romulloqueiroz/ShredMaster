@@ -3,14 +3,29 @@ export const colors = {
   black: '#121212',
   white:'#fff',
 
-  background: '#1F1F1F',
+  // New color pallet
+  background: '#171724',
+  green1: '#99FFA3',
+  green2: '#68EE76',
+  yellow1: '#FFD572',
+  yellow2: '#FEBD38',
+  red1: '#FE6C6C',
+  red2: '#FE464B',
+  purple1: '#B09FFF',
+  purple2: '#8D79F6',
+  orange1: '#FF9364',
+  orange2: '#F25F33',
+  blue1: '#7AD3FF',
+  blue2: '#4FBAF0',
+
+  // background: '#1F1F1F',
   
   blue: '#3B78FF',
   red: '#FF3B3F',
   green: '#39FF3F',
 
   purple: '#AA39FF',
-  purple2: '#B772F7',
+  // purple2: '#B772F7',
   
   orange: '#FF8C3B',
   yellow: '#FFF23B',

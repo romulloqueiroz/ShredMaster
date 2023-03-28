@@ -2,6 +2,7 @@ import { View, Header } from '@components'
 import { BaseLayout } from '@layouts'
 
 const Home = () => {
+
   return (
     <BaseLayout>
       <Header title='Home' />

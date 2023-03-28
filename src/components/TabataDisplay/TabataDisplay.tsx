@@ -10,15 +10,15 @@ const secondsToMinutes = (seconds: number) => new Date(seconds * 1000).toISOStri
 const getModeColor = (mode: string) => {
   switch (mode) {
     case 'prepare':
-      return 'yellow'
+      return 'yellow2'
     case 'work':
-      return 'green'
+      return 'green2'
     case 'rest':
-      return 'red'
+      return 'red2'
     case 'finished':
-      return 'blue'
+      return 'blue2'
     default:
-      return 'blue'
+      return 'blue2'
   }
 }
 
@@ -43,7 +43,7 @@ const TabataDisplay: React.FC<TabataDisplayProps> = ({
         <CircularProgress 
           size={size} 
           duration={totalTime * 1.05}
-          color='blue'
+          color='blue2'
           strokeWidth={8} 
           isPlaying={isPlaying}
         />
@@ -75,7 +75,7 @@ const TabataDisplay: React.FC<TabataDisplayProps> = ({
           {secondsToMinutes(currentSeconds)}
         </Text>
         <Text>Total time</Text>
-        <Text size={14} color='blue'>{secondsToMinutes(totalTime)}</Text>
+        <Text size={14} color='blue2'>{secondsToMinutes(totalTime)}</Text>
       </View>
     </View>
   )

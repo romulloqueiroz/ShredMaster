@@ -71,7 +71,7 @@ const Practice = () => {
         <View w='100%'>
           <Text mb={8}>Round {currentRound}/{ROUNDS}</Text>
           <LinearProgress  
-            color='blue'
+            color='blue2'
             width={deviceWidth * 0.4}
             progress={currentRound} 
             max={ROUNDS} 
