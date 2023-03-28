@@ -2,6 +2,8 @@ export type ColorType = typeof colors
 export const colors = {
   // New color pallet
   background: '#171B1F',
+  bottomBar: '#2C353D',
+  bottomBarIcon: '#BFBFBF',
   green1: '#99FFA3',
   green2: '#68EE76',
   yellow1: '#FFD572',
