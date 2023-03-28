@@ -4,6 +4,7 @@ import Text from '../Text/Text'
 import CircularProgress from '../CircularProgress/CircularProgress'
 import { TabataDisplayProps } from './TabataDisplay.types'
 import { STROKE_WIDTH } from './TabataDisplay.utils'
+import { os } from '@styles'
 
 const secondsToMinutes = (seconds: number) => new Date(seconds * 1000).toISOString().slice(14, 19)
 
@@ -42,7 +43,7 @@ const TabataDisplay: React.FC<TabataDisplayProps> = ({
       <View absolute>
         <CircularProgress 
           size={size} 
-          duration={totalTime * 1.05}
+          duration={os === 'ios' ? totalTime * 1.05 : totalTime * 1.15}
           color='blue2'
           strokeWidth={8} 
           isPlaying={isPlaying}
