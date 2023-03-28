@@ -17,7 +17,7 @@ import { addOpacity } from '@helpers'
 const CircularProgress: React.FC<CircularProgressProps> = ({ 
   size = 194, 
   strokeWidth = 12, 
-  color = 'red',
+  color = 'red2',
   duration = 5,
   isPlaying = false,
   mode = 'work'

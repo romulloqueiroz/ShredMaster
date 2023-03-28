@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ title = '' }) => (
       main='space-between'
       cross='center'
       bw={1}
-      bc='gray'
+      bc='gray2'
     >
       <Text>{title}</Text>
     </View>

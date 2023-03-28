@@ -19,7 +19,7 @@ const Chart = () => {
   const path = graphs.path
 
   return (
-    <View h={CHART_HEIGHT} w='100%' bw={1} bc='purple'>
+    <View h={CHART_HEIGHT} w='100%' bw={1} bc='purple1'>
       <Canvas style={{ flex: 1 }}>
         <Group transform={[{ translateY: PADDING }]}>
           <Path

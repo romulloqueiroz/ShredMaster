@@ -10,7 +10,7 @@ const LinearProgress: React.FC<LinearProgressProps> = ({
   br = 12,
   width = 200,
   height = 14,
-  color = 'red',
+  color = 'red2',
 }) => {
   const perc = `${(progress / (max - min)) * 100}%`;
 

@@ -1,8 +1,5 @@
 export type ColorType = typeof colors
 export const colors = {
-  black: '#121212',
-  white:'#fff',
-
   // New color pallet
   background: '#171B1F',
   green1: '#99FFA3',
@@ -17,24 +14,30 @@ export const colors = {
   orange2: '#F25F33',
   blue1: '#7AD3FF',
   blue2: '#4FBAF0',
+  pink1: '#FF92B3', 
+  pink2: '#FF6482',
+  turquoise1: '#75FFF8', 
+  turquoise2: '#2BE7DC',
+  lavender1: '#E5A5FF', 
+  lavender2: '#B27DFF',
+  teal1: '#5CD1B3', 
+  teal2: '#35A893',
+  coral1: '#FF8A6E', 
+  coral2: '#FF5A3C',
+  navy1: '#2196F3', 
+  navy2: '#1976D2',
+  mustard1: '#F5D76E', 
+  mustard2: '#FFC154',
+  gray1: '#D8D8D8', 
+  gray2: '#BFBFBF',
+  mauve1: '#E7B9FF', 
+  mauve2: '#C492FF',
+  olive1: '#A0D468', 
+  olive2: '#83C93D',
 
-  // background: '#1F1F1F',
-  
-  blue: '#3B78FF',
-  red: '#FF3B3F',
-  green: '#39FF3F',
-
-  purple: '#AA39FF',
-  // purple2: '#B772F7',
-  
-  orange: '#FF8C3B',
-  yellow: '#FFF23B',
-  pink: '#FF3BC9',
-  teal: '#3BFFF2',
-  lime: '#BFFF3B',
-
-  gray: '#AFAFAF',
-  gray2: '#36393F',
+  // Other colors
+  black: '#121212',
+  white:'#fff',
 
   glass1: 'rgba(255, 255, 255, 0.05)',
   glass2: 'rgba(255, 255, 255, 0.12)',
