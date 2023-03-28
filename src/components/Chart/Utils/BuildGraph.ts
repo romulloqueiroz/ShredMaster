@@ -9,6 +9,7 @@ export const buildGraph = (
   HEIGHT: number
 ) => {
   const AJUSTED_SIZE = HEIGHT - PADDING * 2
+  const HORIZONTAL_PADDING = PADDING
 
   const session = datapoints.map((value) => value[0])
   const bpms = datapoints.map((value) => value[1])
@@ -19,7 +20,7 @@ export const buildGraph = (
   const maxBpm = Math.max(...bpms)
 
   const points = datapoints.map(([session, bpm]) => {
-    const x = ((session - minSession) / (maxSession - minSession)) * WIDTH
+    const x = ((session - minSession) / (maxSession - minSession)) * (WIDTH - HORIZONTAL_PADDING * 2) + HORIZONTAL_PADDING
     const y = ((maxBpm - bpm) / (maxBpm - minBpm)) * AJUSTED_SIZE
     return { x, y }
   })
