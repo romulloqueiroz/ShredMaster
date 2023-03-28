@@ -1,4 +1,4 @@
-const sizeArray = [32, 24, 20, 18, 16, 14, 12, 10] as const
+const sizeArray = [40, 32, 24, 20, 18, 16, 14, 12, 10] as const
 
 export type FontSize = (typeof sizeArray)[number]
 export type LineHeight = 'normal' | 'dense' | 'comfort'
