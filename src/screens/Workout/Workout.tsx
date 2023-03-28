@@ -38,6 +38,9 @@ const Practice = () => {
 
   const DISPLAY_SIZE = useMemo(() => deviceWidth * 0.7, [deviceWidth])
 
+  console.log('totalTime', totalTime)
+
+
   return (
     <BaseLayout>
       <HeaderBack />
@@ -49,7 +52,7 @@ const Practice = () => {
       >
         <TabataDisplay 
           size={DISPLAY_SIZE}
-          totalTime={totalTime}
+          totalTime={28}
           isPlaying={isRunning}
           sectionTime={sectionTime}
           mode={currentPhase}
