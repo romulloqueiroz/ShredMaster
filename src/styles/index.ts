@@ -1,5 +1,6 @@
 import { icon, IconType } from './icons'
 import { colors, ColorType } from './colors'
+import { gradients, GradientsType } from './gradients'
 import { ViewType } from './types'
 import { FontWeight, FontSize, LineHeight, getLineHeight } from './fonts'
 import {
@@ -23,6 +24,7 @@ export {
   getLineHeight,
   statusBarHeight,
   navigationBarHeight,
+  gradients,
 }
 
 export { icon, colors }
@@ -33,4 +35,5 @@ export type {
   FontWeight,
   FontSize,
   LineHeight,
+  GradientsType,
 }

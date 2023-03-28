@@ -7,7 +7,7 @@ export const useTabata = (initialTabataState: useTabataProps) => {
   const [isRunning, setIsRunning] = useState(false)
   const [currentSeconds, setCurrentSeconds] = useState(currentTabata.prepare)
   const [currentRound, setCurrentRound] = useState(1)
-  const [currentPhase, setCurrentPhase] = useState('prepare')
+  const [currentPhase, setCurrentPhase] = useState<'work' | 'rest' | 'prepare' | 'finished'>('prepare')
   const [sectionTime, setSectionTime] = useState(currentTabata.prepare)
 
   useEffect(() => {

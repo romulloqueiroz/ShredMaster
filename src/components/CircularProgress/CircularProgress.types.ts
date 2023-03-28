@@ -1,10 +1,10 @@
-import { ColorType } from '@styles'
+import { GradientsType, ColorType } from '@styles'
 
 export interface CircularProgressProps {
   size?: number
   strokeWidth?: number
-  color?: keyof ColorType
+  color?: keyof GradientsType
   duration?: number
   isPlaying?: boolean
-  mode?: 'work' | 'rest' | 'prepare' | 'finished' | string
+  mode?: 'work' | 'rest' | 'prepare' | 'finished'
 }

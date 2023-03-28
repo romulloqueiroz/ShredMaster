@@ -9,15 +9,17 @@ import {
   mix,
   useValue,
   runTiming,
+  vec,
+  SweepGradient,
 } from '@shopify/react-native-skia'
 import { CircularProgressProps } from './CircularProgress.types'
-import { colors } from '@styles'
+import { gradients } from '@styles'
 import { addOpacity } from '@helpers'
 
 const CircularProgress: React.FC<CircularProgressProps> = ({ 
   size = 194, 
   strokeWidth = 12, 
-  color = 'red2',
+  color = 'red',
   duration = 5,
   isPlaying = false,
   mode = 'work'
@@ -40,15 +42,10 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
     return p
   }, [radius, strokeWidth])
 
-  // useEffect(() => {
-  //   progressValue.current = 0
-  // }, [mode])
-
   useEffect(() => {
     progressValue.current = 0
     if (isPlaying) runTiming(progressValue, 1, { duration: (1 - progressValue.current) * duration * 1000 })
   }, [mode, isPlaying, duration])
-  
   
   return (
     <View w={size} h={size} style={{transform: [{ rotate: `-90deg` }]}}>
@@ -58,18 +55,23 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
             path={path}
             style='stroke'
             strokeWidth={strokeWidth}
-            color={addOpacity(colors[color], 0.1)}
+            color={addOpacity(gradients[color][1], 0.1)}
             end={1}
             strokeCap='round'
           />
-          <Path
-            path={path}
-            style='stroke'
-            strokeWidth={strokeWidth}
-            color={colors[color]}
-            end={progress}
-            strokeCap='round'
-          />
+          <Group>
+            <SweepGradient 
+              c={vec(size, size)}
+              colors={gradients[color]} 
+            />
+            <Path
+              path={path}
+              style='stroke'
+              strokeWidth={strokeWidth}
+              end={progress}
+              strokeCap='round'
+            />
+          </Group>
         </Group>
       </Canvas>
     </View>

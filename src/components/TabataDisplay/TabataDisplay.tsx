@@ -23,14 +23,27 @@ const getModeColor = (mode: string) => {
   }
 }
 
+const getGradientColor = (mode: string) => {
+  switch (mode) {
+    case 'prepare':
+      return 'yellow'
+    case 'work':
+      return 'green'
+    case 'rest':
+      return 'red'
+    case 'finished':
+      return 'blue'
+    default:
+      return 'blue'
+  }
+}
+
 const TabataDisplay: React.FC<TabataDisplayProps> = ({ 
   size, 
   sectionTime, 
   totalTime, 
   isPlaying, 
   mode,
-  round,
-  totalRounds,
   currentSeconds,
 }) => {
   return (
@@ -44,7 +57,7 @@ const TabataDisplay: React.FC<TabataDisplayProps> = ({
         <CircularProgress 
           size={size} 
           duration={os === 'ios' ? totalTime * 1.05 : totalTime * 1.15}
-          color='blue2'
+          color='blue'
           strokeWidth={8} 
           isPlaying={isPlaying}
         />
@@ -54,7 +67,7 @@ const TabataDisplay: React.FC<TabataDisplayProps> = ({
         <CircularProgress 
           size={size - 10} 
           duration={sectionTime}
-          color={getModeColor(mode)}
+          color={getGradientColor(mode)}
           strokeWidth={STROKE_WIDTH} 
           isPlaying={isPlaying}
           mode={mode}
