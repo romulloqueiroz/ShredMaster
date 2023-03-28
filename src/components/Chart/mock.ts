@@ -9,5 +9,4 @@ export const sectionByBpm = [
    [11, 70],
    [12, 70],
    [13, 70],
-   [14, 80],
 ]
