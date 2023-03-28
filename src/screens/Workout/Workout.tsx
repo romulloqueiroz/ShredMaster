@@ -11,7 +11,7 @@ import {
   PlayButton,
 } from '@components'
 
-const ROUNDS = 2
+const ROUNDS = 3
 
 const Practice = () => {
   // const tabata = useTabata({ rounds: ROUNDS, workTime: 3, restTime: 3 })
@@ -34,12 +34,9 @@ const Practice = () => {
     isRunning,
     totalTime,
     toggle,
-  } = useTabata({ prepare: 3, work: 5, rest: 5, rounds: 2 })
+  } = useTabata({ prepare: 5, work: 5, rest: 5, rounds: ROUNDS })
 
   const DISPLAY_SIZE = useMemo(() => deviceWidth * 0.7, [deviceWidth])
-
-  console.log('totalTime', totalTime)
-
 
   return (
     <BaseLayout>
@@ -52,7 +49,7 @@ const Practice = () => {
       >
         <TabataDisplay 
           size={DISPLAY_SIZE}
-          totalTime={28}
+          totalTime={totalTime}
           isPlaying={isRunning}
           sectionTime={sectionTime}
           mode={currentPhase}
