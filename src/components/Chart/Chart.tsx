@@ -1,13 +1,15 @@
 import { useMemo } from 'react'
 import View from '../View/View'
-import { PADDING, buildGraph } from './utils'
+import Text from '../Text/Text'
+import { buildGraph } from './utils'
 import { Canvas, Group } from '@shopify/react-native-skia'
 import { sectionByBpm } from './mock'
-import { HorizontalLines, Dots, LinePath } from './components'
+import { HorizontalLines, Dots, LinePath, TitleBox } from './components'
 import { deviceWidth } from '@styles'
 import { ChartProps, SectionByBPMList } from './Chart.types'
 
-const CHART_HEIGHT = 220
+const PADDING = 16
+const CHART_HEIGHT = 170
 const CHART_WIDTH = deviceWidth - PADDING * 2
 const values = sectionByBpm as SectionByBPMList
 
@@ -17,16 +19,20 @@ const Chart: React.FC<ChartProps> = ({ color }) => {
 
   return (
     <View 
-      h={CHART_HEIGHT} 
+      h={CHART_HEIGHT + PADDING*4} 
       w='100%' 
       br={8} 
       bgc='glass1'
       s={1}
     >
+      <TitleBox padding={PADDING} />
       <Canvas style={{ flex: 1 }}>
         <Group transform={[{ translateY: PADDING }]}>
 
-          <HorizontalLines chartHeight={CHART_HEIGHT} />
+          <HorizontalLines 
+            chartHeight={CHART_HEIGHT} 
+            padding={PADDING}
+          />
 
           <LinePath 
             path={path}
@@ -41,6 +47,14 @@ const Chart: React.FC<ChartProps> = ({ color }) => {
 
         </Group>
       </Canvas>
+      <View
+        row
+        ph={PADDING}
+        pb={PADDING}
+        main='space-between'
+      >
+        <Text size={12}>10 entries</Text>
+      </View>
     </View>
   )
 }
