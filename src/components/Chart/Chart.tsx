@@ -1,10 +1,9 @@
 import { useMemo } from 'react'
 import View from '../View/View'
-import Text from '../Text/Text'
 import { buildGraph } from './utils'
 import { Canvas, Group } from '@shopify/react-native-skia'
 import { sectionByBpm } from './mock'
-import { HorizontalLines, Dots, LinePath, TitleBox } from './components'
+import { HorizontalLines, Dots, LinePath, TitleBox, EntriesBox } from './components'
 import { deviceWidth } from '@styles'
 import { ChartProps, SectionByBPMList } from './Chart.types'
 
@@ -47,14 +46,10 @@ const Chart: React.FC<ChartProps> = ({ color }) => {
 
         </Group>
       </Canvas>
-      <View
-        row
-        ph={PADDING}
-        pb={PADDING}
-        main='space-between'
-      >
-        <Text size={12}>10 entries</Text>
-      </View>
+      <EntriesBox 
+        graphs={graphs} 
+        padding={PADDING}
+      />
     </View>
   )
 }
