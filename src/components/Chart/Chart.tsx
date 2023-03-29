@@ -31,14 +31,10 @@ const Chart: React.FC<ChartProps> = ({ color }) => {
       bgc='glass1'
       style={{
         shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 1,
-        },
+        shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.22,
         shadowRadius: 2.22,
-
-        elevation: 3,
+        elevation: 1,
       }}
     >
       <Canvas style={{ flex: 1 }}>

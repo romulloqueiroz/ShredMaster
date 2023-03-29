@@ -56,7 +56,7 @@ const TabataDisplay: React.FC<TabataDisplayProps> = ({
       <View absolute>
         <CircularProgress 
           size={size} 
-          duration={os === 'ios' ? totalTime * 1.05 : totalTime * 1.15}
+          duration={os === 'ios' ? totalTime * 1.05 : totalTime * 1.1}
           color='blue'
           strokeWidth={8} 
           isPlaying={isPlaying}
