@@ -6,7 +6,9 @@ const Progress = () => {
     <BaseLayout>
       <Header title='Progress' />
       <View mv={18} />
-      <Chart />
+      <Chart color='green' />
+      <View mv={18} />
+      <Chart color='orange' />
     </BaseLayout>
   )
 }

@@ -1,20 +1,22 @@
 import { useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
 import View from '../View/View'
-import { PADDING, COLORS, CHART_HEIGHT, buildGraph } from './utils'
+import { PADDING, CHART_HEIGHT, buildGraph } from './utils'
 import { Canvas, Path, Group, LinearGradient, vec } from '@shopify/react-native-skia'
 import { sectionByBpm } from './mock'
-import { Dots } from './components'
+import { HorizontalLines, Dots } from './components'
 import { Skia } from '@shopify/react-native-skia'
-import { colors } from '@styles'
-
-const HORIZONTAL_PADDING = 16
-const numLines = 5
+import { gradients, GradientsType } from '@styles'
 
 type SectionByBPMList = [number, number][]
 const values = sectionByBpm as SectionByBPMList
 
-const Chart = () => {
+interface ChartProps {
+  color: keyof GradientsType
+}
+
+const Chart: React.FC<ChartProps> = ({ color }) => {
+  const COLORS = gradients[color].map(Skia.Color)
   const window = useWindowDimensions()
   const { width } = window
   const CHART_WIDTH = width - PADDING * 2
@@ -22,22 +24,27 @@ const Chart = () => {
   const path = graphs.path
 
   return (
-    <View h={CHART_HEIGHT} w='100%' bw={1} bc='purple1'>
+    <View 
+      h={CHART_HEIGHT} 
+      w='100%' 
+      br={8} 
+      bgc='glass1'
+      style={{
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+
+        elevation: 3,
+      }}
+    >
       <Canvas style={{ flex: 1 }}>
         <Group transform={[{ translateY: PADDING }]}>
 
-          {Array.from(Array(numLines)).map((_, i) => {
-            const y = ((i + 1) / (numLines + 1)) * CHART_HEIGHT - PADDING
-            return (
-              <Path
-                key={i}
-                style='stroke'
-                path={Skia.Path.Make().moveTo(HORIZONTAL_PADDING, y).lineTo(CHART_WIDTH - HORIZONTAL_PADDING , y)}
-                stroke={{ width: 1 }}
-                color={colors.glass3}
-              />
-            )
-          })}
+          <HorizontalLines />
 
           <Path
             style='stroke'
@@ -53,14 +60,11 @@ const Chart = () => {
             />
           </Path>
 
-          {graphs.xValues.map((x, idx) => (
-            <Dots 
-              key={idx} 
-              x={x} 
-              y={graphs.yValues[idx]}
-              width={CHART_WIDTH} 
-            />
-          ))}
+          <Dots 
+            chartWidth={CHART_WIDTH} 
+            color={color}
+            graphs={graphs}
+          />
 
         </Group>
       </Canvas>

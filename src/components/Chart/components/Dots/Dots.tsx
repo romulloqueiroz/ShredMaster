@@ -1,35 +1,15 @@
-import {
-  interpolateColors,
-  Circle,
-  Group,
-  useComputedValue,
-  Paint,
-} from '@shopify/react-native-skia'
-import { COLORS } from '../../utils'
+import { Dot } from './Dot/Dot'
 import { DotsProps } from './Dots.types'
 
-export const Dots = ({ x, y, width }: DotsProps) => {
-  const color = useComputedValue(
-    () =>
-      interpolateColors(
-        x / width,
-        COLORS.map((_, i) => i / COLORS.length),
-        COLORS
-      ),
-    [x]
-  )
-
-  const transform = useComputedValue(
-    () => [{ translateX: x }, { translateY: y }],
-    [x, y]
-  )
-
-  return (
-    <Group transform={transform}>
-      <Circle cx={0} cy={0} r={8} color={color} opacity={0.15} />
-      <Circle cx={0} cy={0} r={4} color={color}>
-        <Paint style='stroke' strokeWidth={1} color='white' />
-      </Circle>
-    </Group>
-  )
-}
+export const Dots: React.FC<DotsProps> = ({ chartWidth, color, graphs }) => (
+  <>
+    {graphs.xValues.map((x: number, idx: number) => (
+      <Dot
+        key={idx}
+        x={x}
+        y={graphs.yValues[idx]}
+        width={chartWidth}
+        gradientColor={color} />
+    ))}
+  </>
+)
