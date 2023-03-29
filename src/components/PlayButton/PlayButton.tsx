@@ -17,6 +17,7 @@ const PlayButton: React.FC<PlayButtonProps> = ({ onPress }) => {
       round={56}
       main='center'
       cross='center'
+      s={1}
     >
       <Icon size={20} name={toggle ? 'pause' : 'play'} />
     </Touchable>
