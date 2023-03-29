@@ -1,25 +1,17 @@
 import { useMemo } from 'react'
-import { useWindowDimensions } from 'react-native'
 import View from '../View/View'
-import { PADDING, CHART_HEIGHT, buildGraph } from './utils'
-import { Canvas, Path, Group, LinearGradient, vec } from '@shopify/react-native-skia'
+import { PADDING, buildGraph } from './utils'
+import { Canvas, Group } from '@shopify/react-native-skia'
 import { sectionByBpm } from './mock'
-import { HorizontalLines, Dots } from './components'
-import { Skia } from '@shopify/react-native-skia'
-import { gradients, GradientsType } from '@styles'
+import { HorizontalLines, Dots, LinePath } from './components'
+import { deviceWidth } from '@styles'
+import { ChartProps, SectionByBPMList } from './Chart.types'
 
-type SectionByBPMList = [number, number][]
+const CHART_HEIGHT = 220
+const CHART_WIDTH = deviceWidth - PADDING * 2
 const values = sectionByBpm as SectionByBPMList
 
-interface ChartProps {
-  color: keyof GradientsType
-}
-
 const Chart: React.FC<ChartProps> = ({ color }) => {
-  const COLORS = gradients[color].map(Skia.Color)
-  const window = useWindowDimensions()
-  const { width } = window
-  const CHART_WIDTH = width - PADDING * 2
   const graphs = useMemo(() => buildGraph(values, CHART_WIDTH, CHART_HEIGHT), [values, CHART_WIDTH])
   const path = graphs.path
 
@@ -40,21 +32,12 @@ const Chart: React.FC<ChartProps> = ({ color }) => {
       <Canvas style={{ flex: 1 }}>
         <Group transform={[{ translateY: PADDING }]}>
 
-          <HorizontalLines />
+          <HorizontalLines chartHeight={CHART_HEIGHT} />
 
-          <Path
-            style='stroke'
+          <LinePath 
             path={path}
-            strokeWidth={2}
-            strokeJoin='round'
-            strokeCap='round'
-          >
-            <LinearGradient
-              start={vec(0, 0)}
-              end={vec(width, 0)}
-              colors={COLORS}
-            />
-          </Path>
+            color={color}
+          />
 
           <Dots 
             chartWidth={CHART_WIDTH} 
