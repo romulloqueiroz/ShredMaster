@@ -1,6 +1,7 @@
 import { icon, IconType } from './icons'
 import { colors, ColorType } from './colors'
 import { gradients, GradientsType } from './gradients'
+import { shadows, ShadowsType } from './shadows'
 import { ViewType } from './types'
 import { FontWeight, FontSize, LineHeight, getLineHeight } from './fonts'
 import {
@@ -16,6 +17,7 @@ import {
 
 export {
   os,
+  shadows,
   screenHeight,
   screenWidth,
   deviceHeight,
@@ -30,10 +32,11 @@ export {
 export { icon, colors }
 export type {
   IconType,
-  ColorType,
   ViewType,
   FontWeight,
   FontSize,
   LineHeight,
+  ColorType,
+  ShadowsType,
   GradientsType,
 }

@@ -1,5 +1,5 @@
 import { View as RNView } from 'react-native'
-import { ViewType, colors } from '@styles'
+import { ViewType, colors, shadows } from '@styles'
 
 const View: React.FC<Partial<ViewType>> = ({
   children,
@@ -41,6 +41,7 @@ const View: React.FC<Partial<ViewType>> = ({
   rx,
   y,
   by,
+  s,
   style,
   onLayout,
 }) => (
@@ -82,6 +83,7 @@ const View: React.FC<Partial<ViewType>> = ({
         ...(!!absolute && x && { left: x }),
         ...(!!absolute && rx && { right: rx }),
         ...(!!absolute && y && { top: y }),
+        ...(!!s && { ...shadows[s] }),
         ...(!!absolute && by && { bottom: by }),
         ...(bgc && { backgroundColor: colors[bgc] }),
         ...(!!overflowHidden && { overflow: 'hidden' }),
