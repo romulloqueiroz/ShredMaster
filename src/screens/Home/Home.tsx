@@ -9,7 +9,7 @@ const Home = () => {
       <Header title='Home' />
 
       <View bgc='gray1' w={200} h={200} br={8}>
-        <Shredder name='apprentice' size={200} />
+        <Shredder name='master' size={200} />
       </View>
 
       <View absolute by={32} rx={16}>
