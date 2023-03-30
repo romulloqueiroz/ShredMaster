@@ -13,6 +13,7 @@ import HeaderBack from './HeaderBack/HeaderBack'
 import SafeArea from './SafeArea/SafeArea'
 import Touchable from './Touchable/Touchable'
 import PlayButton from './PlayButton/PlayButton'
+import PlusButton from './PlusButton/PlusButton'
 import BottomTabNavigator from './BottomTabNavigator/index'
 
 export {
@@ -31,5 +32,6 @@ export {
   SafeArea,
   Touchable,
   PlayButton,
+  PlusButton,
   BottomTabNavigator,
 }
