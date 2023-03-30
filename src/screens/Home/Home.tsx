@@ -8,8 +8,8 @@ const Home = () => {
     <BaseLayout view>
       <Header title='Home' />
 
-      <View bgc='gray1' w={260} h={260} br={8}>
-        <Shredder name='starter' size={260} />
+      <View bgc='gray1' w={200} h={200} br={8}>
+        <Shredder name='musician' size={200} />
       </View>
 
       <View absolute by={32} rx={16}>

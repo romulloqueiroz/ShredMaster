@@ -1,9 +1,13 @@
 export type ColorType = typeof colors
 export const colors = {
-  // New color pallet
+  // Main colors
+  black: '#121212',
+  white:'#fff',
   background: '#171B1F',
   bottomBar: '#2C353D',
   bottomBarIcon: '#BFBFBF',
+
+  // Gradients
   green1: '#99FFA3',
   green2: '#68EE76',
   yellow1: '#FFD572',
@@ -36,11 +40,28 @@ export const colors = {
   mauve2: '#C492FF',
   olive1: '#A0D468', 
   olive2: '#83C93D',
+  midnight1: '#2C3E50',
+  midnight2: '#1e272e',
+  steel1: '#808080',
+  steel2: '#555555',
+  maroon1: '#800000',
+  maroon2: '#400000',
+  gold1: '#FFD700',
+  gold2: '#FFA500',
+  crimson1: '#DC143C',
+  crimson2: '#B22222',
+  indigo1: '#4B0082',
+  indigo2: '#6A5ACD',
+  sand1: '#F2D7D5',
+  sand2: '#D3C3C3',
+  salmon1: '#FF8C69',
+  salmon2: '#FF7256',
+  peach1: '#FFDAB9',
+  peach2: '#FFCBA4',
+  moss1: '#8A9A5B',
+  moss2: '#556B2F',
 
-  // Other colors
-  black: '#121212',
-  white:'#fff',
-
+  // Glass
   glass1: 'rgba(255, 255, 255, 0.05)',
   glass2: 'rgba(255, 255, 255, 0.12)',
   glass3: 'rgba(255, 255, 255, 0.38)',

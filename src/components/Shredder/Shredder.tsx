@@ -14,14 +14,15 @@ const Shredder: React.FC<Partial<ShredderProps>> = ({ name = 'starter', size = 2
         >
           {pairs.map((pair: string, idx: number) => {
             if (idx % 2 === 0) {
-            return (
-              <Path
-                key={idx}
-                path={pairs[idx + 1]}
-                color={pair}
-              />
+              return (
+                <Path
+                  key={idx}
+                  path={pairs[idx + 1]}
+                  color={pair}
+                />
               )
-          }})}
+            }
+          })}
         </FitBox>
       </Canvas>
     </View>
