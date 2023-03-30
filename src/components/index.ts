@@ -7,6 +7,7 @@ import CircularProgress from './CircularProgress/CircularProgress'
 import Metronome from './Metronome/Metronome'
 import Button from './Button/Button'
 import Icon from './Icon/Icon'
+import ColorTag from './ColorTag/ColorTag'
 import Shredder from './Shredder/Shredder'
 import LinearProgress from './LinearProgress/LinearProgress'
 import Header from './Header/Header'
@@ -23,6 +24,7 @@ export {
   Text,
   Scroll,
   Chart,
+  ColorTag,
   TabataDisplay,
   LinearProgress,
   CircularProgress,
