@@ -1,17 +1,18 @@
-import { View, Header, PlusButton } from '@components'
+import { View, Header, PlusButton, PopupModal } from '@components'
 import { BaseLayout } from '@layouts'
+import { useState } from 'react'
 
 const Home = () => {
-
+  const [isVisible, setIsVisible] = useState(false)
   return (
     <BaseLayout view>
       <Header title='Home' />
-      {/* <View bw={1} h='80%' bc='red1'>
-        <View mv={18} />
-      </View> */}
       <View absolute by={32} rx={16}>
-        <PlusButton onPress={() => null} />
+        <PlusButton onPress={() => setIsVisible(true)} />
       </View>
+      <PopupModal isVisible={isVisible} onDismiss={() => setIsVisible(false)}>
+        <View h={40} w={40} bgc='red1' />
+      </PopupModal>
     </BaseLayout>
   )
 }

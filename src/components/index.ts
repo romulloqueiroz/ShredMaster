@@ -15,6 +15,7 @@ import Touchable from './Touchable/Touchable'
 import PlayButton from './PlayButton/PlayButton'
 import PlusButton from './PlusButton/PlusButton'
 import BottomTabNavigator from './BottomTabNavigator/index'
+import PopupModal from './PopupModal/PopupModal'
 
 export {
   View,
@@ -34,4 +35,5 @@ export {
   PlayButton,
   PlusButton,
   BottomTabNavigator,
+  PopupModal,
 }

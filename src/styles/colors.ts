@@ -44,4 +44,6 @@ export const colors = {
   glass1: 'rgba(255, 255, 255, 0.05)',
   glass2: 'rgba(255, 255, 255, 0.12)',
   glass3: 'rgba(255, 255, 255, 0.38)',
+
+  transparent: 'transparent',
 }
