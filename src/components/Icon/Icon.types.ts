@@ -1,9 +1,8 @@
-import { IconType, ColorType } from '@styles';
-
+import { IconType, ColorType } from '@styles'
 
 export interface IconProps {
-  name: IconType;
-  color: keyof ColorType;
-  size: number;
-  stroke?: string;
+  name: IconType
+  color: keyof ColorType
+  size: number
+  stroke?: string
 }

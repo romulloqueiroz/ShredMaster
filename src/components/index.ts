@@ -7,6 +7,7 @@ import CircularProgress from './CircularProgress/CircularProgress'
 import Metronome from './Metronome/Metronome'
 import Button from './Button/Button'
 import Icon from './Icon/Icon'
+import Shredder from './Shredder/Shredder'
 import LinearProgress from './LinearProgress/LinearProgress'
 import Header from './Header/Header'
 import HeaderBack from './HeaderBack/HeaderBack'
@@ -29,6 +30,7 @@ export {
   Button,
   Icon,
   Header,
+  Shredder,
   HeaderBack,
   SafeArea,
   Touchable,

@@ -2,6 +2,7 @@ import { icon, IconType } from './icons'
 import { colors, ColorType } from './colors'
 import { gradients, GradientsType } from './gradients'
 import { shadows, ShadowsType } from './shadows'
+import { shredders, ShreddersType } from './shredders'
 import { ViewType } from './types'
 import { FontWeight, FontSize, LineHeight, getLineHeight } from './fonts'
 import {
@@ -18,6 +19,7 @@ import {
 export {
   os,
   shadows,
+  shredders,
   screenHeight,
   screenWidth,
   deviceHeight,
@@ -38,5 +40,6 @@ export type {
   LineHeight,
   ColorType,
   ShadowsType,
+  ShreddersType,
   GradientsType,
 }
