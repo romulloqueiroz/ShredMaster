@@ -7,7 +7,6 @@ import {
   Header, 
   PlusButton, 
   PopupModal,
-  Shredder
 } from '@components'
 
 const AddExerciseModal = () => (
@@ -31,12 +30,7 @@ const Home = () => {
   return (
     <BaseLayout view>
       <Header title='Home' />
-
       <View mb={80} />
-
-      <View w={320} h={320} bgc='bottomBarIcon' br={8}>
-        <Shredder name='divine' size={320} />
-      </View>
 
       <View absolute by={32} rx={16}>
         <PlusButton onPress={() => setIsVisible(true)} />

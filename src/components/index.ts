@@ -9,6 +9,7 @@ import Button from './Button/Button'
 import Icon from './Icon/Icon'
 import ColorTag from './ColorTag/ColorTag'
 import Shredder from './Shredder/Shredder'
+import ShredderModal from './ShredderModal/ShredderModal'
 import LinearProgress from './LinearProgress/LinearProgress'
 import Header from './Header/Header'
 import HeaderBack from './HeaderBack/HeaderBack'
@@ -33,6 +34,7 @@ export {
   Icon,
   Header,
   Shredder,
+  ShredderModal,
   HeaderBack,
   SafeArea,
   Touchable,
