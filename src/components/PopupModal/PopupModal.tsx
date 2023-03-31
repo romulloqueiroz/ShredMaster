@@ -36,7 +36,7 @@ const PopupModal: React.FC<PopupModalProps> = ({ children, onDismiss, isVisible 
 			// @ts-ignore
 			timing(scaleAnimated, {
 				toValue: 1,
-				duration: 200,
+				duration: 180,
 				easing: EasingNode.linear
 			})
 		]).start()
@@ -50,7 +50,11 @@ const PopupModal: React.FC<PopupModalProps> = ({ children, onDismiss, isVisible 
 		animateFocus()
 		setBackdropVisible(isVisible)
 	}, [isVisible, backdropVisible])
-	
+
+	useEffect(() => {
+    scaleAnimated.setValue(0)
+	}, [isVisible])
+
 	if (!isVisible) return <View />
 
 	return (
