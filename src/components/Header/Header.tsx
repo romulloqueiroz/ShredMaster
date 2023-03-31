@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ title = '' }) => {
         row
         main='space-between'
         cross='center'
-        bw={1}
+        bw={0.2}
         bc='gray2'
         ph={8}
       >

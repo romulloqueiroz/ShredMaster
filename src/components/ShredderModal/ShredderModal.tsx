@@ -13,8 +13,8 @@ import { Body } from './Body/Body'
         row
         main='center'
         cross='center'
-        bgc='gray1'
-        w={48}
+        bgc='glass3'
+        ph={8}
         h={28}
         br={24}
         onPress={() => setIsVisible(true)} 

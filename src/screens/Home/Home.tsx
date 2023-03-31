@@ -39,7 +39,6 @@ const Home = () => {
       <PopupModal isVisible={isVisible} onDismiss={() => setIsVisible(false)}>
         <AddExerciseModal />
       </PopupModal>
-
     </BaseLayout>
   )
 }
