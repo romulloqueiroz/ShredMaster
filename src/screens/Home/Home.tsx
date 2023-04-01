@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { BaseLayout } from '@layouts'
+import { getPx } from '@helpers'
 import { deviceWidth, GradientsType } from '@styles'
 import { 
   View, 
@@ -35,6 +36,23 @@ const ColorSelector = () => {
   )
 }
 
+const InstrumentSelector = () => (
+  <View row bw={1} mt={12} main='space-between'>
+      <View h={60} w={60} br={8} bgc='gray1'>
+        <Instrument name='guitar' size={60} />
+      </View>
+      <View h={60} w={60} br={8} bgc='gray1'>
+        <Instrument name='bass' size={60} />
+      </View>
+      <View h={60} w={60} br={8} bgc='gray1'>
+        <Instrument name='keyboard' size={60} />
+      </View>
+      <View h={60} w={60} br={8} bgc='gray1'>
+        <Instrument name='drums' size={60} />
+      </View>
+  </View>
+)
+
 const AddExerciseModal = () => (
   <View 
     w={deviceWidth - 64}
@@ -50,6 +68,8 @@ const AddExerciseModal = () => (
     <Text>BPM: 150</Text>
 
     <ColorSelector />
+
+    <InstrumentSelector />
   </View>
 )
 
@@ -59,10 +79,6 @@ const Home = () => {
     <BaseLayout view>
       <Header title='Home' />
       <View mb={80} />
-
-      <View h={220} w={220} br={8} bgc='gray1'>
-        <Instrument name='drums' size={220} />
-      </View>
 
       <View absolute by={32} rx={16}>
         <PlusButton onPress={() => setIsVisible(true)} />
