@@ -1,5 +1,6 @@
 import { icon, IconType } from './icons'
 import { colors, ColorType } from './colors'
+import { instruments, InstrumentsType } from './instruments'
 import { gradients, GradientsType } from './gradients'
 import { shadows, ShadowsType } from './shadows'
 import { shredders, ShreddersType } from './shredders'
@@ -25,6 +26,7 @@ export {
   deviceHeight,
   deviceWidth,
   statusBar,
+  instruments,
   getLineHeight,
   statusBarHeight,
   navigationBarHeight,
@@ -42,4 +44,5 @@ export type {
   ShadowsType,
   ShreddersType,
   GradientsType,
+  InstrumentsType,
 }

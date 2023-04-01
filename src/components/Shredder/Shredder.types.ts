@@ -1,7 +1,7 @@
-import { ShreddersType } from '@styles';
+import { ShreddersType } from '@styles'
 
 export interface ShredderProps {
-  name: ShreddersType;
-  size: number;
-  stroke?: string;
+  name: ShreddersType
+  size: number
+  stroke?: string
 }
