@@ -61,7 +61,7 @@ const Home = () => {
       <View mb={80} />
 
       <View h={220} w={220} br={8} bgc='gray1'>
-        <Instrument name='guitar' size={220} />
+        <Instrument name='drums' size={220} />
       </View>
 
       <View absolute by={32} rx={16}>
