@@ -1,17 +1,15 @@
 import { atom } from 'recoil'
 
-
-
 export type Exercise = {
-  id: number;
-  name: string;
-};
+  id: string
+  name: string
+}
 
-const exercisesState = atom<Exercise[]>({
-  key: 'exercises',
+const exerciseState = atom<Exercise[]>({
+  key: 'exerciseState',
   default: [],
 })
 
 export {
-  exercisesState,
+  exerciseState,
 }
