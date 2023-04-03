@@ -31,7 +31,9 @@ const Home = () => {
         keyExtractor={(item) => item.id}
       />
 
-      <Button title='Reset Exercises' onPress={resetExercises} />
+      <View row main='center'>
+        <Button title='Reset Exercises' onPress={resetExercises} w={200} />
+      </View>
 
       <View absolute by={32} rx={16}>
         <PlusButton onPress={() => setIsVisible(true)} />
