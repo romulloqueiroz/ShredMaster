@@ -3,10 +3,8 @@ import { deviceWidth } from '@styles'
 import { useExercises } from '@hooks'
 import { useState } from 'react'
 import { TextInput } from 'react-native'
-
-interface AddExerciseModalProps {
-  onDismiss: () => void
-}
+import { ColorPicker } from './ColorPicker/ColorPicker'
+import { AddExerciseModalProps } from './AddExerciseModal.types'
 
 export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss }) => {
   const { addExercise } = useExercises()
@@ -38,8 +36,10 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
           borderColor: 'gray',
         }}
       />
-  
-      <View row main='center' mt={12}>
+
+      <ColorPicker />
+
+      <View row main='center'>
         <Button title='Create' onPress={() => {
           addExercise(exerciseName)
           onDismiss()
