@@ -7,12 +7,13 @@ import {
   Header, 
   PlusButton, 
   PopupModal,
+  Button,
 } from '@components'
 import { AddExerciseModal } from './AddExerciseModal/AddExerciseModal'
 import { useExercises } from '@hooks'
 
 const Home = () => {
-  const { exercises } = useExercises()
+  const { exercises, resetExercises } = useExercises()
   const [isVisible, setIsVisible] = useState(false)
 
   return (
@@ -29,6 +30,8 @@ const Home = () => {
         )}
         keyExtractor={(item) => item.id}
       />
+
+      <Button title='Reset Exercises' onPress={resetExercises} />
 
       <View absolute by={32} rx={16}>
         <PlusButton onPress={() => setIsVisible(true)} />

@@ -7,10 +7,10 @@ export const ListIcon: React.FC<ListIconProps> = ({ name, title, desc }) => (
   <View h={56} mb={8} row>
     <Shredder size={56} name={name} />
     <View ml={8} main='space-between' pv={8}>
-      <Text color='background'>
+      <Text color='white'>
         {title}
       </Text>
-      <Text color='bottomBar'>
+      <Text color='subtitle'>
         {desc}
       </Text>
     </View>

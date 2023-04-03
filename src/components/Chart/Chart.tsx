@@ -20,8 +20,8 @@ const Chart: React.FC<ChartProps> = ({ color }) => {
     <View 
       h={CHART_HEIGHT + PADDING*4} 
       w='100%' 
-      br={8} 
-      bgc='glass1'
+      br={4} 
+      bgc='card'
       s={1}
     >
       <TitleBox padding={PADDING} />

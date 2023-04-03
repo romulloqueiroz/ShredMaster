@@ -7,7 +7,7 @@ const NavigatorIcon: React.FC<Partial<NavigatorIconProps>> = ({ title, icon, act
   <View cross='center'>
     <Icon name={icon} color={active ? 'white' : 'glass3'} />
     <View mb={6} />
-    <Text color={active ? 'white' : 'glass3'} lineHeight='dense' size={10}>
+    <Text color={active ? 'white' : 'subtitle'} lineHeight='dense' size={10}>
       {title}
     </Text>
   </View>

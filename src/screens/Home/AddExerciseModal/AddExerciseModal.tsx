@@ -15,8 +15,8 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
   return (
     <View
       w={deviceWidth - 64}
-      bgc='bottomBar'
-      br={14}
+      bgc='card'
+      br={4}
       p={16}
     >
       <View row main='center' mb={12}>

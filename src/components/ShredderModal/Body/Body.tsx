@@ -9,23 +9,23 @@ import { list } from '../ShredderModal.utils'
 export const Body = () => (
   <View
     w={deviceWidth - 64}
-    bgc='bottomBarIcon'
-    br={14}
+    bgc='card'
+    br={4}
     p={24}
   >
     <View row main='center' mb={12}>
-      <Shredder name='starter' size={100} />
+      <Shredder name='starter' size={120} />
     </View>
 
     <View cross='center' mb={24}>
       <Text
-        color='background'
+        color='white'
         size={20}
         mb={6}
       >
         Starter
       </Text>
-      <Text color='bottomBar'>
+      <Text color='subtitle'>
         Curent 0 day streak
       </Text>
     </View>

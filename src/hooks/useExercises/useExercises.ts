@@ -55,5 +55,12 @@ export const useExercises = () => {
     saveExercises(newExercises, nextId)
   }
 
-  return { exercises, addExercise, removeExercise, updateExercise }
+  const resetExercises = async () => {
+    await SecureStore.remove(EXERCISES_KEY)
+    await SecureStore.remove(NEXT_ID_KEY)
+    setExercises([])
+    setNextId(0)
+  }
+
+  return { exercises, addExercise, removeExercise, updateExercise, resetExercises }
 }
