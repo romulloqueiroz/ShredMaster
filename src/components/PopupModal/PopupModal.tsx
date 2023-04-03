@@ -26,7 +26,7 @@ const PopupModal: React.FC<PopupModalProps> = ({ children, onDismiss, isVisible 
 	const scale = useSharedValue(0)
 
 	const backdropAnimatedStyle = useAnimatedStyle(() => ({
-		opacity: backdropVisible ? interpolate(scale.value, [0, 1], [0, 0.4]) : 0,
+		opacity: backdropVisible ? interpolate(scale.value, [0, 1], [0, 0.6]) : 0,
 	}))
 	
 	const animatedStyles = ({ transform: [{ scale: scaleAnimated }] })
