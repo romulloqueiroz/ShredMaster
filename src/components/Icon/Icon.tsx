@@ -8,15 +8,14 @@ const Icon: React.FC<Partial<IconProps>> = ({
   color = 'white',
   size = 24,
 }) => {
-  const [vw, vh, ...path] = icon[name]
   return (
     <View w={size} h={size}>
       <Canvas style={{ flex: 1 }}>
         <FitBox
-          src={rect(0, 0, vw, vh)}
+          src={rect(0, 0, 24, 24)}
           dst={rect(0, 0, size, size)}
         >
-          {path.map((d: string) => (
+          {icon[name].map((d: string) => (
             <Path
               key={d}
               path={d}
