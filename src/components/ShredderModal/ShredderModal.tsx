@@ -25,7 +25,7 @@ import { Body } from './Body/Body'
         <Shredder name='starter' size={18} />
       </Touchable>
       <PopupModal isVisible={isVisible} onDismiss={() => setIsVisible(false)}>
-        <Body />
+        <Body onDismiss={() => setIsVisible(false)} />
       </PopupModal>
     </>
   )

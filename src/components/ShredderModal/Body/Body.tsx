@@ -1,12 +1,17 @@
 import View from '../../View/View'
 import Text from '../../Text/Text'
+import Button from '../../Button/Button'
 import Scroll from '../../Scroll/Scroll'
 import Shredder from '../../Shredder/Shredder'
 import { deviceWidth, ShreddersType } from '@styles'
 import { ListIcon } from '../ListIcon/ListIcon'
 import { list } from '../ShredderModal.utils'
 
-export const Body = () => (
+interface BodyProps {
+  onDismiss: () => void
+}
+
+export const Body: React.FC<BodyProps> = ({ onDismiss }) => (
   <View
     w={deviceWidth - 64}
     bgc='card'
@@ -41,5 +46,9 @@ export const Body = () => (
           desc={item.desc} />
       ))}
     </Scroll>
+
+    <View row main='center' mt={24}>
+      <Button title='Ok' onPress={onDismiss} />
+    </View>
   </View>
 )
