@@ -26,15 +26,20 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
       </View>
       <Text>Name: Speed Burst</Text>
       <Text>Tempo: 4/4</Text>
-      <Text>BPM: 150</Text>
+      <Text mb={12}>BPM: 150</Text>
 
       <TextInput
         value={exerciseName}
         onChangeText={setExerciseName}
         placeholder="Exercise name"
+        style={{
+          height: 40,
+          borderWidth: 1,
+          borderColor: 'gray',
+        }}
       />
   
-      <View row main='center'>
+      <View row main='center' mt={12}>
         <Button title='Create' onPress={() => {
           addExercise(exerciseName)
           onDismiss()
