@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Text from '../Text/Text'
+import View from '../View/View'
 import Shredder from '../Shredder/Shredder'
 import Touchable from '../Touchable/Touchable'
 import PopupModal from '../PopupModal/PopupModal'
@@ -13,14 +14,15 @@ import { Body } from './Body/Body'
         row
         main='center'
         cross='center'
-        bgc='glass3'
+        bgc='card'
         ph={8}
         h={28}
-        br={24}
+        br={8}
         onPress={() => setIsVisible(true)} 
       >
-        <Text color='background'>0</Text>
-        <Shredder name='starter' size={20} />
+        <Text size={18} color='subtitle'>0</Text>
+        <View mh={2} />
+        <Shredder name='starter' size={18} />
       </Touchable>
       <PopupModal isVisible={isVisible} onDismiss={() => setIsVisible(false)}>
         <Body />

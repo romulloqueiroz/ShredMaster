@@ -7,8 +7,8 @@ const PlusButton: React.FC<PlusButtonProps> = ({ onPress }) => (
   <Touchable 
     onPress={onPress}
     bw={1}
-    bc='glass2'
-    bgc='glass1'
+    bc='subtitle'
+    bgc='glass2'
     round={56}
     main='center'
     cross='center'

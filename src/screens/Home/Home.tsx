@@ -36,7 +36,7 @@ const HomeCard: React.FC<HomeCardProps> = ({ name }) => {
     >
       <View main='space-between' flex1>
         <View row cross='center'>
-          <Text size={18} weight='bold' color='orange1'>{truncateString(name)}</Text>
+          <Text size={18} color='orange1'>{truncateString(name)}</Text>
           <View mh={4} />
           <Touchable>
             <Icon color='orange1' name='edit' size={24} />
@@ -74,6 +74,7 @@ const Home = () => {
             name={item.name} 
           />
         )}
+        showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}
       />
 

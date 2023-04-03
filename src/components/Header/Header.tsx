@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ title = '' }) => {
         ph={8}
       >
         <ShredderModal />
-        <Text>{title}</Text>
+        <Text size={20}>{title}</Text>
       </View>
     </>
   )
