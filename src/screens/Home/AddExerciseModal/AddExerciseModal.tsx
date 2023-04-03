@@ -6,6 +6,8 @@ import { TextInput } from 'react-native'
 import { ColorPicker } from './ColorPicker/ColorPicker'
 import { AddExerciseModalProps } from './AddExerciseModal.types'
 
+const WeaponPicker = () => {}
+
 export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss }) => {
   const { addExercise } = useExercises()
   const [exerciseName, setExerciseName] = useState('')

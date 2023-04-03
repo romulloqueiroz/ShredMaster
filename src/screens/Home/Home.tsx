@@ -78,6 +78,9 @@ const Home = () => {
         keyExtractor={(item) => item.id}
       />
 
+      {/* <Icon name='delete' size={200} /> */}
+
+
       {/* <View row main='center'>
         <Button title='Reset Exercises' onPress={resetExercises} w={200} />
       </View> */}
