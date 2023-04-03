@@ -15,7 +15,7 @@ const TextComponent = ({
   noLineHeight = false,
   size = 14,
   flex1,
-  spacing = 8,
+  spacing = 6,
   style,
 }: TextComponentProps) => (
   <Text

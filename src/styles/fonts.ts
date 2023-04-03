@@ -6,7 +6,6 @@ export type LineHeight = 'normal' | 'dense' | 'comfort'
 export type FontWeight = keyof typeof fontWeight
 const fontWeight = {
   normal: 'FilsonProRegular',
-  medium: 'FilsonProMedium',
   bold: 'FilsonProBold',
 }
 
