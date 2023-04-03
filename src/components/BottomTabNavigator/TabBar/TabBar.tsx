@@ -49,7 +49,19 @@ const TabBar: React.FC<Partial<TabBarProps>> = ({ state, navigation, descriptors
 
   return (
     <View bgc='background'>
-      <View row pb={20} btlr={16} btrr={16} bgc='card'>
+      <View 
+        row 
+        pb={20} 
+        btlr={12} 
+        btrr={12} 
+        bgc='card' 
+        bc='subtitle'
+        style={{
+          borderTopWidth: 2,
+          borderLeftWidth: 2,
+          borderRightWidth: 2,
+        }}
+        >
         <Animated.View
           style={[
             {

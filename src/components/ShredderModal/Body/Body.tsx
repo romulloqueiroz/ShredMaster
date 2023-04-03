@@ -12,6 +12,8 @@ export const Body = () => (
     bgc='card'
     br={4}
     p={24}
+    bw={2}
+    bc='subtitle'
   >
     <View row main='center' mb={12}>
       <Shredder name='starter' size={120} />

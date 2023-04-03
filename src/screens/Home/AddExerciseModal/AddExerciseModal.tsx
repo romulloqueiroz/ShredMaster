@@ -18,6 +18,8 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
       bgc='card'
       br={4}
       p={16}
+      bw={2}
+      bc='subtitle'
     >
       <View row main='center' mb={12}>
         <Text size={24}>Create Exercise</Text>
