@@ -15,6 +15,7 @@ export const WeaponPicker = () => {
 
         {weapons.map((weapon) => (
           <Touchable
+            key={weapon}
             br={4}
             bw={active === weapon ? 2 : 0}
             bc='white'
