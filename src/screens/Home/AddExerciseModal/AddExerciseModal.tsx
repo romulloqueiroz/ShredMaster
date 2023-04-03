@@ -5,8 +5,7 @@ import { useState } from 'react'
 import { TextInput } from 'react-native'
 import { ColorPicker } from './ColorPicker/ColorPicker'
 import { AddExerciseModalProps } from './AddExerciseModal.types'
-
-const WeaponPicker = () => {}
+import { WeaponPicker } from './WeaponPicker/WeaponPicker'
 
 export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss }) => {
   const { addExercise } = useExercises()
@@ -40,6 +39,7 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
       />
 
       <ColorPicker />
+      <WeaponPicker />
 
       <View row main='center'>
         <Button title='Create' onPress={() => {

@@ -7,7 +7,7 @@ import {
   Header, 
   PlusButton, 
   PopupModal,
-  Button,
+  // Button,
   Instrument,
   Icon,
   Touchable,
