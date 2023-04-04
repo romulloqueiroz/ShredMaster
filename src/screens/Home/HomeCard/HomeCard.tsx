@@ -27,7 +27,7 @@ const StartPracticeModal: React.FC<StartPracticeModalProps> = ({ onDismiss }) =>
       <View row>
         <Button title='Cancel' onPress={onDismiss} w={134} />
         <View mh={4} />
-        <Button title='Go' onPress={() => null} w={134} />
+        <Button title='Start' onPress={() => null} w={134} color='red1' />
       </View>
     </View>
   )
