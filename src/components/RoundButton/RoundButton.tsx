@@ -1,9 +1,15 @@
 import { useState } from 'react'
 import Icon from '../Icon/Icon'
 import Touchable from '../Touchable/Touchable'
-import { PlusButtonProps } from './PlusButton.types'
+import { IconType } from '@styles'
 
-const PlusButton: React.FC<PlusButtonProps> = ({ onPress }) => (
+export interface RoundButtonProps {
+  onPress: () => void
+  icon: IconType
+}
+
+
+const RoundButton: React.FC<RoundButtonProps> = ({ onPress, icon }) => (
   <Touchable 
     onPress={onPress}
     bw={1}
@@ -14,8 +20,8 @@ const PlusButton: React.FC<PlusButtonProps> = ({ onPress }) => (
     cross='center'
     s={1}
   >
-    <Icon size={20} name='plus' />
+    <Icon size={20} name={icon} />
   </Touchable>
 )
 
-export default PlusButton
+export default RoundButton

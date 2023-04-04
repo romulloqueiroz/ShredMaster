@@ -14,11 +14,10 @@ import Shredder from './Shredder/Shredder'
 import ShredderModal from './ShredderModal/ShredderModal'
 import LinearProgress from './LinearProgress/LinearProgress'
 import Header from './Header/Header'
+import RoundButton from './RoundButton/RoundButton'
 import HeaderBack from './HeaderBack/HeaderBack'
 import SafeArea from './SafeArea/SafeArea'
 import Touchable from './Touchable/Touchable'
-import PlayButton from './PlayButton/PlayButton'
-import PlusButton from './PlusButton/PlusButton'
 import BottomTabNavigator from './BottomTabNavigator/index'
 import PopupModal from './PopupModal/PopupModal'
 
@@ -39,11 +38,10 @@ export {
   Shredder,
   Instrument,
   ShredderModal,
+  RoundButton,
   HeaderBack,
   SafeArea,
   Touchable,
-  PlayButton,
-  PlusButton,
   BottomTabNavigator,
   PopupModal,
 }

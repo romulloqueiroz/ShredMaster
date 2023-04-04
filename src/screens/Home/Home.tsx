@@ -4,9 +4,9 @@ import { BaseLayout } from '@layouts'
 import { 
   View, 
   Header, 
-  PlusButton, 
   PopupModal,
   Button,
+  RoundButton,
 } from '@components'
 import { AddExerciseModal } from './AddExerciseModal/AddExerciseModal'
 import { useExercises } from '@hooks'
@@ -41,7 +41,7 @@ const Home = () => {
       </View> */}
 
       <View absolute by={32} rx={16}>
-        <PlusButton onPress={() => setIsVisible(true)} />
+        <RoundButton icon='plus' onPress={() => setIsVisible(true)} />
       </View>
 
       <PopupModal isVisible={isVisible} onDismiss={() => setIsVisible(false)}>
