@@ -6,3 +6,5 @@ export const addOpacity = (color: string, opacity: number): string => {
 }
 
 export const getPx = (px: number) => (deviceWidth * px) / 375
+
+export const truncateString = (str: string) => (str.length > 13 ? str.slice(0, 18) + "..." : str)
