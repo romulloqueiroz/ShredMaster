@@ -21,7 +21,6 @@ export const HomeCard: React.FC<HomeCardProps> = ({ name, color, instrument }) =
         bc='orange2'
         bgc='card'
         s={1}
-        mb={16}
         p={16}
         row
         onPress={() => setIsPracticeModalVisible(true)}

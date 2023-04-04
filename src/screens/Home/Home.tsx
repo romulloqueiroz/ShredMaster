@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <BaseLayout view>
       <Header title='Home' />
-      <View mb={80} />
+      <View mb={12} />
 
       <FlatList
         data={exercises}
@@ -33,6 +33,7 @@ const Home = () => {
         )}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}
+        ItemSeparatorComponent={() => <View mv={8} />} 
       />
 
       {/* <Icon name='delete' size={200} /> */}

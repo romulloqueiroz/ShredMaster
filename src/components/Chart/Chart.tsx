@@ -12,7 +12,7 @@ const CHART_HEIGHT = 170
 const CHART_WIDTH = deviceWidth - PADDING * 2
 const values = sectionByBpm as SectionByBPMList
 
-const Chart: React.FC<ChartProps> = ({ color }) => {
+const Chart: React.FC<ChartProps> = ({ color, name }) => {
   const graphs = useMemo(() => buildGraph(values, CHART_WIDTH, CHART_HEIGHT), [values, CHART_WIDTH])
   const path = graphs.path
 
@@ -24,7 +24,11 @@ const Chart: React.FC<ChartProps> = ({ color }) => {
       bgc='card'
       s={1}
     >
-      <TitleBox padding={PADDING} />
+      <TitleBox 
+        padding={PADDING} 
+        name={name} 
+        color={color}
+      />
       <Canvas style={{ flex: 1 }}>
         <Group transform={[{ translateY: PADDING }]}>
 
