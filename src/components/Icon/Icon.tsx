@@ -1,7 +1,7 @@
 import View from '../View/View'
 import { icon, colors } from '@styles'
 import { Canvas, Path, rect, FitBox } from '@shopify/react-native-skia'
-import { IconProps } from './Icon.types';
+import { IconProps } from './Icon.types'
 
 const Icon: React.FC<Partial<IconProps>> = ({
   name = 'play',

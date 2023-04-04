@@ -1,7 +1,7 @@
-import { IconType } from '@styles';
+import { IconType } from '@styles'
 
 export interface NavigatorIconProps {
-  title: string;
-  icon: IconType;
-  active: boolean;
+  title: string
+  icon: IconType
+  active: boolean
 }
