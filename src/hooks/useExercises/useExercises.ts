@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react'
 import { SecureStore } from '@helpers'
 import { useRecoilState } from 'recoil'
 import { exerciseState } from '@state'
+import { GradientsType, InstrumentsType } from '@styles'
 
 type Exercise = {
   id: string
   name: string
+  color: keyof GradientsType
+  instrument: InstrumentsType
 }
 
 const EXERCISES_KEY = 'exercises'
@@ -34,8 +37,12 @@ export const useExercises = () => {
     await SecureStore.create(NEXT_ID_KEY, newNextId.toString())
   }
 
-  const addExercise = (name: string) => {
-    const newExercises = [...exercises, { id: nextId.toString(), name }]
+  const addExercise = (
+    name: string, 
+    color: keyof GradientsType,
+    instrument: InstrumentsType,
+  ) => {
+    const newExercises = [...exercises, { id: nextId.toString(), name, color, instrument }]
     setExercises(newExercises)
     setNextId(nextId + 1)
     saveExercises(newExercises, nextId + 1)

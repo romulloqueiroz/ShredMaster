@@ -1,5 +1,5 @@
 import { View, Text, Button } from '@components'
-import { deviceWidth } from '@styles'
+import { GradientsType, InstrumentsType, deviceWidth } from '@styles'
 import { useExercises } from '@hooks'
 import { useState } from 'react'
 import { TextInput } from 'react-native'
@@ -10,6 +10,8 @@ import { WeaponPicker } from './WeaponPicker/WeaponPicker'
 export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss }) => {
   const { addExercise } = useExercises()
   const [exerciseName, setExerciseName] = useState('')
+  const [exerciseColor, setExerciseColor] = useState<keyof GradientsType>('green')
+  const [exerciseInstrument, setExerciseInstrument] = useState<InstrumentsType>('guitar')
 
   return (
     <View
@@ -38,14 +40,21 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
         }}
       />
 
-      <ColorPicker />
-      <WeaponPicker />
+      <ColorPicker 
+        onColorSelected={(color) => setExerciseColor(color)} 
+      />
+      <WeaponPicker 
+        onInstrumentSelected={(instrument) => setExerciseInstrument(instrument as InstrumentsType)} 
+      />
 
       <View row main='center'>
-        <Button title='Create' onPress={() => {
-          addExercise(exerciseName)
-          onDismiss()
-        }} />
+        <Button 
+          title='Create' 
+          onPress={() => {
+            addExercise(exerciseName, exerciseColor, exerciseInstrument)
+            onDismiss()
+          }} 
+        />
       </View>
     </View>
   )

@@ -11,7 +11,7 @@ import { HomeCardProps } from './HomeCard.types'
 import { useState } from 'react'
 import { StartPracticeModal } from './StartPracticeModal/StartPracticeModal'
 
-export const HomeCard: React.FC<HomeCardProps> = ({ name }) => {
+export const HomeCard: React.FC<HomeCardProps> = ({ name, color, instrument }) => {
   const [isPracticeModalVisible, setIsPracticeModalVisible] = useState(false)
   return (
     <>
@@ -28,10 +28,16 @@ export const HomeCard: React.FC<HomeCardProps> = ({ name }) => {
       >
         <View main='space-between' flex1>
           <View row cross='center'>
-            <Text size={18} color='orange1'>{truncateString(name)}</Text>
+            <Text size={18} color={`${color}1`}>
+              {truncateString(name)}
+            </Text>
             <View mh={4} />
             <Touchable>
-              <Icon color='orange1' name='edit' size={24} />
+              <Icon 
+                color={`${color}1`} 
+                name='edit' 
+                size={24} 
+              />
             </Touchable>
           </View>
 
@@ -42,7 +48,7 @@ export const HomeCard: React.FC<HomeCardProps> = ({ name }) => {
         </View>
 
         <View ml={4} main='center' cross='center'>
-          <Instrument size={72} />
+          <Instrument size={72} name={instrument} />
         </View>
       </Touchable>
 

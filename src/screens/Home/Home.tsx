@@ -27,6 +27,8 @@ const Home = () => {
           <HomeCard 
             key={item.id} 
             name={item.name} 
+            color={item.color}
+            instrument={item.instrument}
           />
         )}
         showsVerticalScrollIndicator={false}
@@ -34,7 +36,6 @@ const Home = () => {
       />
 
       {/* <Icon name='delete' size={200} /> */}
-
 
       {/* <View row main='center'>
         <Button title='Reset Exercises' onPress={resetExercises} w={200} />

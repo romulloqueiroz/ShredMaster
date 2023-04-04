@@ -4,8 +4,18 @@ import { useState } from 'react'
 import { FlatList } from 'react-native'
 import { COLOR_LIST, SLICE } from './ColorPicker.utils'
 
-export const ColorPicker = () => {
+interface ColorPickerProps {
+  onColorSelected: (color: keyof GradientsType) => void
+}
+
+export const ColorPicker: React.FC<ColorPickerProps> = ({ onColorSelected }) => {
   const [active, setActive] = useState(COLOR_LIST[0] as keyof GradientsType)
+
+  const handleColorSelected = (color: keyof GradientsType) => {
+    setActive(color)
+    onColorSelected(color)
+  }
+
   return (
     <View mv={12}>
       <Text mb={8}>Pick a color:</Text>
@@ -15,7 +25,7 @@ export const ColorPicker = () => {
           <ColorTag
             color={item as keyof GradientsType}
             size={32}
-            onPress={() => setActive(item as keyof GradientsType)}
+            onPress={() => handleColorSelected(item as keyof GradientsType)}
             active={active === item} 
           />
         )}
