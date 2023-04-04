@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Icon from '../Icon/Icon'
 import Touchable from '../Touchable/Touchable'
 import { RoundButtonProps } from './RoundButton.types'
