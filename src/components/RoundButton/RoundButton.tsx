@@ -1,13 +1,7 @@
 import { useState } from 'react'
 import Icon from '../Icon/Icon'
 import Touchable from '../Touchable/Touchable'
-import { IconType } from '@styles'
-
-export interface RoundButtonProps {
-  onPress: () => void
-  icon: IconType
-}
-
+import { RoundButtonProps } from './RoundButton.types'
 
 const RoundButton: React.FC<RoundButtonProps> = ({ onPress, icon }) => (
   <Touchable 
