@@ -1,13 +1,17 @@
 import { NavigatorScreenParams } from "@react-navigation/native"
+import { GradientsType } from "@styles"
 
 export type RoutesList = {
   Root: NavigatorScreenParams<BottomTabList> | undefined
-  // Details: { id: string }
+  Workout: { 
+    id: string, 
+    name: string, 
+    color: keyof GradientsType 
+  }
 }
 
 export type BottomTabList = {
   Home: undefined
   Progress: undefined
   About: undefined
-  Settings: undefined
 }

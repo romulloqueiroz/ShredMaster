@@ -26,6 +26,7 @@ const Home = () => {
         renderItem={({ item }) => (
           <HomeCard 
             key={item.id} 
+            id={item.id}
             name={item.name} 
             color={item.color}
             instrument={item.instrument}
@@ -38,9 +39,9 @@ const Home = () => {
 
       {/* <Icon name='delete' size={200} /> */}
 
-      {/* <View row main='center'>
+      <View row main='center'>
         <Button title='Reset Exercises' onPress={resetExercises} w={200} />
-      </View> */}
+      </View>
 
       <View absolute by={32} rx={16}>
         <RoundButton icon='plus' onPress={() => setIsVisible(true)} />

@@ -11,7 +11,7 @@ import { HomeCardProps } from './HomeCard.types'
 import { useState } from 'react'
 import { StartPracticeModal } from './StartPracticeModal/StartPracticeModal'
 
-export const HomeCard: React.FC<HomeCardProps> = ({ name, color, instrument }) => {
+export const HomeCard: React.FC<HomeCardProps> = ({ name, color, instrument, id }) => {
   const [isPracticeModalVisible, setIsPracticeModalVisible] = useState(false)
   return (
     <>
@@ -55,7 +55,12 @@ export const HomeCard: React.FC<HomeCardProps> = ({ name, color, instrument }) =
         isVisible={isPracticeModalVisible} 
         onDismiss={() => setIsPracticeModalVisible(false)}
       >
-        <StartPracticeModal onDismiss={() => setIsPracticeModalVisible(false)} />
+        <StartPracticeModal 
+          onDismiss={() => setIsPracticeModalVisible(false)} 
+          id={id}
+          name={name}
+          color={color}
+        />
       </PopupModal>
     </>
   )

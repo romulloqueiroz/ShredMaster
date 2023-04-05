@@ -1,7 +1,7 @@
-import { memo, useMemo, useEffect, useState } from 'react'
-import { useTabata, useMetronome } from '@hooks'
 import { BaseLayout } from '@layouts'
 import { deviceWidth } from '@styles'
+import { useTabata, useRoute } from '@hooks'
+import { memo, useMemo, useEffect, useState } from 'react'
 import { 
   View, 
   Text, 
@@ -14,7 +14,8 @@ import {
 const ROUNDS = 3
 
 const Practice = () => {
-  const [toggleRoundBtn, setToggleRoundBtn] = useState(false)
+  const { params: { id, name, color } } = useRoute<'Workout'>()
+  const [toggleRoundBtn, setToggleRoundBtn] = useState(true)
 
   // const tabata = useTabata({ rounds: ROUNDS, workTime: 3, restTime: 3 })
   // const metronome = useMetronome(4, 4, 80)
@@ -43,6 +44,14 @@ const Practice = () => {
   return (
     <BaseLayout>
       <HeaderBack />
+      <View mb={12} />
+
+      <View row main='center' mb={12}>
+        <Text size={32} mb={8} color={`${color}1`}>
+          {name}
+        </Text>
+      </View>
+
       <View 
         h='100%' 
         main='center' 

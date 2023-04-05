@@ -4,4 +4,5 @@ export interface HomeCardProps {
   name: string
   color: keyof GradientsType
   instrument: InstrumentsType
+  id: string
 }

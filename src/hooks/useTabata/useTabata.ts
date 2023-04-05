@@ -4,7 +4,7 @@ import { useTabataProps } from './useTabata.types'
 export const useTabata = (initialTabataState: useTabataProps) => {
   const [initialTabata, setInitialTabata] = useState(initialTabataState)
   const [currentTabata, setCurrentTabata] = useState(initialTabata)
-  const [isRunning, setIsRunning] = useState(false)
+  const [isRunning, setIsRunning] = useState(true)
   const [currentSeconds, setCurrentSeconds] = useState(currentTabata.prepare)
   const [currentRound, setCurrentRound] = useState(1)
   const [currentPhase, setCurrentPhase] = useState<'work' | 'rest' | 'prepare' | 'finished'>('prepare')
