@@ -7,6 +7,7 @@ import {
   PopupModal,
   Button,
   RoundButton,
+  NoCardBg,
 } from '@components'
 import { AddExerciseModal } from './AddExerciseModal/AddExerciseModal'
 import { useExercises } from '@hooks'
@@ -20,6 +21,10 @@ const Home = () => {
     <BaseLayout view>
       <Header title='Home' />
       <View mb={12} />
+
+      {exercises.length === 0 && (
+        <NoCardBg title='Create an exercise to begin' />
+      )}
 
       <FlatList
         data={exercises}
@@ -37,11 +42,9 @@ const Home = () => {
         ItemSeparatorComponent={() => <View mv={8} />} 
       />
 
-      {/* <Icon name='delete' size={200} /> */}
-
-      <View row main='center'>
+      {/* <View row main='center'>
         <Button title='Reset Exercises' onPress={resetExercises} w={200} />
-      </View>
+      </View> */}
 
       <View absolute by={32} rx={16}>
         <RoundButton icon='plus' onPress={() => setIsVisible(true)} />

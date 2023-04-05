@@ -7,6 +7,7 @@ import CircularProgress from './CircularProgress/CircularProgress'
 import Metronome from './Metronome/Metronome'
 import Button from './Button/Button'
 import Icon from './Icon/Icon'
+import NoCardBg from './NoCardBg/NoCardBg'
 import Instrument from './Instrument/Instrument'
 import Expander from './Expander/Expander'
 import ColorTag from './ColorTag/ColorTag'
@@ -34,6 +35,7 @@ export {
   Metronome,
   Button,
   Icon,
+  NoCardBg,
   Header,
   Shredder,
   Instrument,

@@ -1,4 +1,4 @@
-import { View, Chart, Header } from '@components'
+import { View, Chart, Header, NoCardBg } from '@components'
 import { useExercises } from '@hooks'
 import { BaseLayout } from '@layouts'
 import { FlatList } from 'react-native'
@@ -10,6 +10,10 @@ const Progress = () => {
     <BaseLayout view>
       <Header title='Progress' />
       <View mb={12} />
+
+      {exercises.length === 0 && (
+        <NoCardBg title='When an exercise is created, its chart will appear here' />
+      )}
 
       <FlatList
         data={exercises}
