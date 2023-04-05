@@ -1,4 +1,5 @@
-import { View, Text } from '@components'
+import View from '../View/View'
+import Text from '../Text/Text'
 import { Stain } from './Stain/Stain'
 import { deviceHeight, deviceWidth } from '@styles'
 import { NoCardBgProps } from './NoCardBg.types'

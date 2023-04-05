@@ -1,4 +1,4 @@
-import { View } from '@components'
+import View from '../../View/View'
 import { Canvas, Path, rect, FitBox } from '@shopify/react-native-skia'
 import { colors } from '@styles'
 import { StainProps } from './Stain.types'
