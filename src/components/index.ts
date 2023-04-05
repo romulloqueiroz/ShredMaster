@@ -15,6 +15,7 @@ import Shredder from './Shredder/Shredder'
 import ShredderModal from './ShredderModal/ShredderModal'
 import LinearProgress from './LinearProgress/LinearProgress'
 import Header from './Header/Header'
+import Input from './Input/Input'
 import RoundButton from './RoundButton/RoundButton'
 import HeaderBack from './HeaderBack/HeaderBack'
 import SafeArea from './SafeArea/SafeArea'
@@ -33,6 +34,7 @@ export {
   LinearProgress,
   CircularProgress,
   Metronome,
+  Input,
   Button,
   Icon,
   NoCardBg,

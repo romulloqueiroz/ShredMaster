@@ -1,8 +1,7 @@
-import { View, Text, Button } from '@components'
-import { GradientsType, InstrumentsType, deviceWidth } from '@styles'
+import { View, Text, Button, Scroll, Input } from '@components'
+import { GradientsType, InstrumentsType, deviceHeight, deviceWidth } from '@styles'
 import { useExercises } from '@hooks'
 import { useState } from 'react'
-import { TextInput } from 'react-native'
 import { ColorPicker } from './ColorPicker/ColorPicker'
 import { AddExerciseModalProps } from './AddExerciseModal.types'
 import { WeaponPicker } from './WeaponPicker/WeaponPicker'
@@ -10,6 +9,7 @@ import { WeaponPicker } from './WeaponPicker/WeaponPicker'
 export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss }) => {
   const { addExercise } = useExercises()
   const [exerciseName, setExerciseName] = useState('')
+  const [exerciseBPM, setExerciseBPM] = useState(60)
   const [exerciseColor, setExerciseColor] = useState<keyof GradientsType>('green')
   const [exerciseInstrument, setExerciseInstrument] = useState<InstrumentsType>('guitar')
 
@@ -22,30 +22,45 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
       bw={2}
       bc='subtitle'
     >
-      <View row main='center' mb={12}>
-        <Text size={24}>Create Exercise</Text>
-      </View>
-      <Text>Name: Speed Burst</Text>
-      <Text>Tempo: 4/4</Text>
-      <Text mb={12}>BPM: 150</Text>
+      <Scroll hideIndicator h={deviceHeight*0.54}>
+        <View row main='center' mb={12}>
+          <Text size={24}>Create Exercise</Text>
+        </View>
 
-      <TextInput
-        value={exerciseName}
-        onChangeText={setExerciseName}
-        placeholder="Exercise name"
-        style={{
-          height: 40,
-          borderWidth: 1,
-          borderColor: 'gray',
-        }}
-      />
+        <Input 
+          value={exerciseName}
+          onChangeText={(text) => setExerciseName(text as string)}
+          placeholder='Ex: Speed Burst'
+          title='Name'
+        />
 
-      <ColorPicker 
-        onColorSelected={(color) => setExerciseColor(color)} 
-      />
-      <WeaponPicker 
-        onInstrumentSelected={(instrument) => setExerciseInstrument(instrument as InstrumentsType)} 
-      />
+        <View mv={14} />
+
+        <Input 
+          value={`${exerciseBPM}`}
+          onChangeText={(val) => setExerciseBPM(val as number)}
+          placeholder='Ex: 150'
+          title='BPMs'
+          numeric
+        />
+
+        <View mv={14} />
+
+        <Text>Tempo: 4/4</Text>
+
+        <View mv={14} />
+
+        <ColorPicker 
+          onColorSelected={(color) => setExerciseColor(color)} 
+        />
+
+        <View mv={14} />
+
+        <WeaponPicker 
+          onInstrumentSelected={(instrument) => setExerciseInstrument(instrument as InstrumentsType)} 
+        />
+
+      </Scroll>
 
       <View row main='center'>
         <Button 

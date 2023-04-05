@@ -17,7 +17,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ onColorSelected }) => 
   }
 
   return (
-    <View mv={12}>
+    <>
       <Text mb={8}>Pick a color:</Text>
       <FlatList
         data={COLOR_LIST.slice(0, SLICE)}
@@ -34,7 +34,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ onColorSelected }) => 
         showsHorizontalScrollIndicator={false}
         ItemSeparatorComponent={() => <View mh={4} />} 
       />
-    </View>
+    </>
   )
 }
 

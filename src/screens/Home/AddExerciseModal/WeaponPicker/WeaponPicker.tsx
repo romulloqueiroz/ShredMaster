@@ -17,7 +17,7 @@ export const WeaponPicker: React.FC<WeaponPickerProps> = ({ onInstrumentSelected
   }
 
   return (
-    <View mb={12}>
+    <>
       <View row>
         <Text mb={12}>Pick a weapon: </Text>
         <Text color='subtitle'>{active as string}</Text>
@@ -40,6 +40,6 @@ export const WeaponPicker: React.FC<WeaponPickerProps> = ({ onInstrumentSelected
         ))}
 
       </View>
-    </View>
+    </>
   )
 }
