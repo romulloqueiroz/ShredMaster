@@ -4,6 +4,7 @@ import { atom } from 'recoil'
 export type Exercise = {
   id: string
   name: string
+  bpm: number
   color: keyof GradientsType
   instrument: InstrumentsType
 }

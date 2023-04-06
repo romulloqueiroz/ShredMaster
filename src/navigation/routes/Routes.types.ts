@@ -6,6 +6,7 @@ export type RoutesList = {
   Workout: { 
     id: string, 
     name: string, 
+    bpm: number,
     color: keyof GradientsType 
   }
 }

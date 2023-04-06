@@ -59,7 +59,7 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
         <Button 
           title='Create' 
           onPress={() => {
-            addExercise(exerciseName, exerciseColor, exerciseInstrument)
+            addExercise(exerciseName, exerciseBPM, exerciseColor, exerciseInstrument)
             onDismiss()
           }} 
         />

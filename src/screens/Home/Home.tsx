@@ -33,6 +33,7 @@ const Home = () => {
             key={item.id} 
             id={item.id}
             name={item.name} 
+            bpm={item.bpm}
             color={item.color}
             instrument={item.instrument}
           />

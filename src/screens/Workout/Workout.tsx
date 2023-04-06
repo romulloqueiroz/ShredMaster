@@ -14,7 +14,7 @@ import {
 const ROUNDS = 3
 
 const Practice = () => {
-  const { params: { id, name, color } } = useRoute<'Workout'>()
+  const { params: { id, name, bpm, color } } = useRoute<'Workout'>()
   const [toggleRoundBtn, setToggleRoundBtn] = useState(true)
 
   // const tabata = useTabata({ rounds: ROUNDS, workTime: 3, restTime: 3 })
@@ -46,10 +46,11 @@ const Practice = () => {
       <HeaderBack />
       <View mb={12} />
 
-      <View row main='center' mb={12}>
+      <View cross='center' mb={20}>
         <Text size={32} mb={8} color={`${color}1`}>
           {name}
         </Text>
+        <Text>{bpm} bpms</Text>
       </View>
 
       <View 

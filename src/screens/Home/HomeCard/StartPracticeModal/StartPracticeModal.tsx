@@ -3,14 +3,20 @@ import { deviceWidth } from '@styles'
 import { useNavigation } from '@hooks'
 import { StartPracticeModalProps } from './StartPracticeModal.types'
 
-export const StartPracticeModal: React.FC<StartPracticeModalProps> = ({ onDismiss, id, name, color }) => {
+export const StartPracticeModal: React.FC<StartPracticeModalProps> = ({ 
+  onDismiss, 
+  id, 
+  name, 
+  bpm, 
+  color 
+}) => {
   const { navigate } = useNavigation()
   return (
     <View w={deviceWidth * 0.8} p={16} bgc='card' bw={2} bc='subtitle' s={1}>
       <View mb={12} cross='center'>
         <Text size={20} mb={8}>Start Practice Session</Text>
         <Text color='subtitle' mb={8}>{name}</Text>
-        <Text>155 BPMs</Text>
+        <Text>{bpm} BPMs</Text>
       </View>
       <View row>
         <Button title='Cancel' onPress={onDismiss} w={134} />
@@ -21,7 +27,7 @@ export const StartPracticeModal: React.FC<StartPracticeModalProps> = ({ onDismis
           color='red1' 
           onPress={() => {
             onDismiss()
-            navigate('Workout', { id, name, color })
+            navigate('Workout', { id, name, bpm, color })
           }} 
         />
       </View>

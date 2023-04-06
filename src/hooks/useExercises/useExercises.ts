@@ -39,10 +39,20 @@ export const useExercises = () => {
 
   const addExercise = (
     name: string, 
+    bpm: number,
     color: keyof GradientsType,
     instrument: InstrumentsType,
   ) => {
-    const newExercises = [...exercises, { id: nextId.toString(), name, color, instrument }]
+    const newExercises = [
+      ...exercises, 
+      { 
+        id: nextId.toString(), 
+        name, 
+        bpm, 
+        color, 
+        instrument 
+      }
+    ]
     setExercises(newExercises)
     setNextId(nextId + 1)
     saveExercises(newExercises, nextId + 1)

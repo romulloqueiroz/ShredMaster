@@ -11,7 +11,7 @@ import { HomeCardProps } from './HomeCard.types'
 import { useState } from 'react'
 import { StartPracticeModal } from './StartPracticeModal/StartPracticeModal'
 
-export const HomeCard: React.FC<HomeCardProps> = ({ name, color, instrument, id }) => {
+export const HomeCard: React.FC<HomeCardProps> = ({ name, bpm, color, instrument, id }) => {
   const [isPracticeModalVisible, setIsPracticeModalVisible] = useState(false)
   return (
     <>
@@ -41,7 +41,7 @@ export const HomeCard: React.FC<HomeCardProps> = ({ name, color, instrument, id 
           </View>
 
           <View row main='space-between'>
-            <Text size={16}>155 bpms</Text>
+            <Text size={16}>{bpm} bpms</Text>
             <Text size={16}>4/4</Text>
           </View>
         </View>
@@ -59,6 +59,7 @@ export const HomeCard: React.FC<HomeCardProps> = ({ name, color, instrument, id 
           onDismiss={() => setIsPracticeModalVisible(false)} 
           id={id}
           name={name}
+          bpm={bpm}
           color={color}
         />
       </PopupModal>
