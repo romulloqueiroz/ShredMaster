@@ -1,5 +1,4 @@
 import { View,Text, Button, ModalCard } from '@components'
-import { deviceWidth } from '@styles'
 import { useNavigation } from '@hooks'
 import { StartPracticeModalProps } from './StartPracticeModal.types'
 
