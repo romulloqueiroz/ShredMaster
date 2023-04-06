@@ -5,7 +5,7 @@ import Touchable from '../Touchable/Touchable'
 import { deviceWidth } from '@styles'
 import { ModalCardProps } from './ModalCard.types'
 
-const ModalCard: React.FC<ModalCardProps> = ({ onDismiss, children }) => (
+const ModalCard: React.FC<ModalCardProps> = ({ onDismiss, children, noCloseButton }) => (
   <View
     w={deviceWidth - 64}
     bgc='card'
@@ -14,9 +14,11 @@ const ModalCard: React.FC<ModalCardProps> = ({ onDismiss, children }) => (
     bw={2}
     bc='subtitle'
   >  
-    <Touchable onPress={onDismiss} row main='flex-end' mb={8}>
-      <Icon name='close' size={24} />
-    </Touchable>
+    {!noCloseButton && (
+      <Touchable onPress={onDismiss} row main='flex-end' mb={8}>
+        <Icon name='close' size={24} />
+      </Touchable>
+    )}
     {children}
   </View>
 )

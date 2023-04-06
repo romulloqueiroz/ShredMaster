@@ -1,4 +1,4 @@
-import { View,Text, Button } from '@components'
+import { View,Text, Button, ModalCard } from '@components'
 import { deviceWidth } from '@styles'
 import { useNavigation } from '@hooks'
 import { StartPracticeModalProps } from './StartPracticeModal.types'
@@ -12,7 +12,7 @@ export const StartPracticeModal: React.FC<StartPracticeModalProps> = ({
 }) => {
   const { navigate } = useNavigation()
   return (
-    <View w={deviceWidth * 0.8} p={16} bgc='card' bw={2} bc='subtitle' s={1}>
+    <ModalCard noCloseButton>
       <View mb={12} cross='center'>
         <Text size={20} mb={8}>Start Practice Session</Text>
         <Text color='subtitle' mb={8}>{name}</Text>
@@ -31,6 +31,6 @@ export const StartPracticeModal: React.FC<StartPracticeModalProps> = ({
           }} 
         />
       </View>
-    </View>
+    </ModalCard>
   )
 }
