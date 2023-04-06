@@ -22,6 +22,7 @@ import SafeArea from './SafeArea/SafeArea'
 import Touchable from './Touchable/Touchable'
 import BottomTabNavigator from './BottomTabNavigator/index'
 import PopupModal from './PopupModal/PopupModal'
+import ModalCard from './ModalCard/ModalCard'
 
 export {
   View,
@@ -48,4 +49,5 @@ export {
   Touchable,
   BottomTabNavigator,
   PopupModal,
+  ModalCard,
 }

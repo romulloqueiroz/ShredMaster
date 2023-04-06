@@ -1,5 +1,5 @@
-import { View, Text, Button, Scroll, Input } from '@components'
-import { GradientsType, InstrumentsType, deviceHeight, deviceWidth } from '@styles'
+import { View, Text, Button, Scroll, Input, ModalCard } from '@components'
+import { GradientsType, InstrumentsType, deviceHeight } from '@styles'
 import { useExercises } from '@hooks'
 import { useState } from 'react'
 import { ColorPicker } from './ColorPicker/ColorPicker'
@@ -14,14 +14,7 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
   const [exerciseInstrument, setExerciseInstrument] = useState<InstrumentsType>('guitar')
 
   return (
-    <View
-      w={deviceWidth - 64}
-      bgc='card'
-      br={4}
-      p={16}
-      bw={2}
-      bc='subtitle'
-    >
+    <ModalCard onDismiss={onDismiss} >
       <Scroll hideIndicator h={deviceHeight*0.54}>
         <View row main='center' mb={12}>
           <Text size={24}>Create Exercise</Text>
@@ -71,7 +64,7 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
           }} 
         />
       </View>
-    </View>
+    </ModalCard>
   )
 }
 

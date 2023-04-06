@@ -1,25 +1,16 @@
 import View from '../../View/View'
 import Text from '../../Text/Text'
+import ModalCard from '../../ModalCard/ModalCard'
 import Button from '../../Button/Button'
 import Scroll from '../../Scroll/Scroll'
 import Shredder from '../../Shredder/Shredder'
-import { deviceWidth, ShreddersType } from '@styles'
+import { ShreddersType } from '@styles'
 import { ListIcon } from '../ListIcon/ListIcon'
 import { list } from '../ShredderModal.utils'
-
-interface BodyProps {
-  onDismiss: () => void
-}
+import { BodyProps } from './Body.types'
 
 export const Body: React.FC<BodyProps> = ({ onDismiss }) => (
-  <View
-    w={deviceWidth - 64}
-    bgc='card'
-    br={4}
-    p={24}
-    bw={2}
-    bc='subtitle'
-  >
+  <ModalCard onDismiss={onDismiss}>
     <View row main='center' mb={12}>
       <Shredder name='starter' size={120} />
     </View>
@@ -50,5 +41,5 @@ export const Body: React.FC<BodyProps> = ({ onDismiss }) => (
     <View row main='center' mt={24}>
       <Button title='Ok' onPress={onDismiss} />
     </View>
-  </View>
+  </ModalCard>
 )
