@@ -20,8 +20,20 @@ export const buildGraph = (
   const maxBpm = Math.max(...bpms)
 
   const points = datapoints.map(([session, bpm]) => {
-    const x = ((session - minSession) / (maxSession - minSession)) * (WIDTH - HORIZONTAL_PADDING * 2) + HORIZONTAL_PADDING
-    const y = ((maxBpm - bpm) / (maxBpm - minBpm)) * AJUSTED_SIZE
+    let x, y
+  
+    if (minSession === maxSession) {
+      x = HORIZONTAL_PADDING
+    } else {
+      x = ((session - minSession) / (maxSession - minSession)) * (WIDTH - HORIZONTAL_PADDING * 2) + HORIZONTAL_PADDING
+    }
+  
+    if (minBpm === maxBpm) {
+      y = AJUSTED_SIZE / 2
+    } else {
+      y = ((maxBpm - bpm) / (maxBpm - minBpm)) * AJUSTED_SIZE
+    }
+  
     return { x, y }
   })
   
