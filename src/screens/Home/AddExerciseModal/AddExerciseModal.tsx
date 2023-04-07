@@ -67,19 +67,3 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
     </ModalCard>
   )
 }
-
-
-
-
-
-// const removeExercise = (id: string) => {
-//   setExercises(exercises.filter((exercise) => exercise.id !== id))
-// }
-
-// const updateExercise = (id: string, newName: string) => {
-//   setExercises(
-//     exercises.map((exercise) =>
-//       exercise.id === id ? { ...exercise, name: newName } : exercise,
-//     ),
-//   )
-// }

@@ -64,14 +64,23 @@ export const useExercises = () => {
     saveExercises(newExercises, nextId)
   }
 
-  const updateExercise = (id: string, newName: string) => {
-    const newExercises = exercises.map((exercise) =>
-      exercise.id === id ? { ...exercise, name: newName } : exercise,
-    )
+  const updateExercise = (id: string, { newName, newBpm }: { newName?: string, newBpm?: number }) => {
+    const newExercises = exercises.map((exercise) => {
+      if (exercise.id === id) {
+        return {
+          ...exercise,
+          name: newName !== undefined ? newName : exercise.name,
+          bpm: newBpm !== undefined ? newBpm : exercise.bpm,
+        }
+      } else {
+        return exercise
+      }
+    })
+  
     setExercises(newExercises)
     saveExercises(newExercises, nextId)
   }
-
+  
   const resetExercises = async () => {
     await SecureStore.remove(EXERCISES_KEY)
     await SecureStore.remove(NEXT_ID_KEY)

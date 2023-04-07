@@ -10,9 +10,14 @@ import { truncateString } from '@helpers'
 import { HomeCardProps } from './HomeCard.types'
 import { useState } from 'react'
 import { StartPracticeModal } from './StartPracticeModal/StartPracticeModal'
+import { EditModal } from './EditModal/EditModal'
+import { ConfirmDeleteModal } from './ConfirmDeleteModal/ConfirmDeleteModal'
 
 export const HomeCard: React.FC<HomeCardProps> = ({ name, bpm, color, instrument, id }) => {
   const [isPracticeModalVisible, setIsPracticeModalVisible] = useState(false)
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false)
+  const [isConfirmDeleteModalVisible, setIsConfirmDeleteModalVisible] = useState(false)
+
   return (
     <>
       <Touchable
@@ -31,7 +36,7 @@ export const HomeCard: React.FC<HomeCardProps> = ({ name, bpm, color, instrument
               {truncateString(name)}
             </Text>
             <View mh={4} />
-            <Touchable>
+            <Touchable onPress={() => setIsEditModalVisible(true)}>
               <Icon 
                 color={`${color}1`} 
                 name='edit' 
@@ -61,6 +66,29 @@ export const HomeCard: React.FC<HomeCardProps> = ({ name, bpm, color, instrument
           name={name}
           bpm={bpm}
           color={color}
+        />
+      </PopupModal>
+
+      <PopupModal
+        isVisible={isEditModalVisible}
+        onDismiss={() => setIsEditModalVisible(false)}
+      >
+        <EditModal 
+          id={id}
+          name={name}
+          bpm={bpm}
+          setConfirmDeleteModal={setIsConfirmDeleteModalVisible}
+          onDismiss={() => setIsEditModalVisible(false)}
+        />
+      </PopupModal>
+
+      <PopupModal
+        isVisible={isConfirmDeleteModalVisible}
+        onDismiss={() => setIsConfirmDeleteModalVisible(false)}
+      >
+        <ConfirmDeleteModal
+          onDismiss={() => setIsConfirmDeleteModalVisible(false)}
+          id={id}
         />
       </PopupModal>
     </>
