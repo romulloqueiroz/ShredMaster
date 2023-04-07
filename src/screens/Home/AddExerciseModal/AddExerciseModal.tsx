@@ -12,10 +12,14 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
   const [exerciseBPM, setExerciseBPM] = useState(60)
   const [exerciseColor, setExerciseColor] = useState<keyof GradientsType>('green')
   const [exerciseInstrument, setExerciseInstrument] = useState<InstrumentsType>('guitar')
+  const [prepare, setPrepare] = useState(10)
+  const [work, setWork] = useState(10)
+  const [rest, setRest] = useState(10)
+  const [rounds, setRounds] = useState(10)
 
   return (
     <ModalCard onDismiss={onDismiss} >
-      <Scroll hideIndicator h={deviceHeight*0.54}>
+      <Scroll h={deviceHeight*0.54}>
         <View row main='center' mb={12}>
           <Text size={24}>Create Exercise</Text>
         </View>
@@ -53,13 +57,68 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
           onInstrumentSelected={(instrument) => setExerciseInstrument(instrument as InstrumentsType)} 
         />
 
+        <View mv={14} />
+
+        <View row main='center' mb={12}>
+          <Text size={20}>Tabata</Text>
+        </View>
+
+        <Input
+          value={`${prepare}`}
+          onChangeText={(val) => setPrepare(val as number)}
+          placeholder='Ex: 10s'
+          title='Prepare'
+          numeric
+        />
+
+        <View mv={14} />
+
+        <Input
+          value={`${work}`}
+          onChangeText={(val) => setWork(val as number)}
+          placeholder='Ex: 10s'
+          title='Work'
+          numeric
+        />
+
+        <View mv={14} />
+
+        <Input
+          value={`${rest}`}
+          onChangeText={(val) => setRest(val as number)}
+          placeholder='Ex: 10s'
+          title='Rest'
+          numeric
+        />
+
+        <View mv={14} />
+
+        <Input
+          value={`${rounds}`}
+          onChangeText={(val) => setRounds(val as number)}
+          placeholder='Ex: 10'
+          title='Rounds'
+          numeric
+        />
+
+        <View mv={14} />
+
       </Scroll>
 
       <View row main='center'>
         <Button 
           title='Create' 
           onPress={() => {
-            addExercise(exerciseName, exerciseBPM, exerciseColor, exerciseInstrument)
+            addExercise(
+              exerciseName, 
+              exerciseBPM, 
+              exerciseColor, 
+              exerciseInstrument,
+              prepare,
+              work,
+              rest,
+              rounds,
+            )
             onDismiss()
           }} 
         />

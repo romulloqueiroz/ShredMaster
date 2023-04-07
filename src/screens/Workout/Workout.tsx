@@ -11,10 +11,8 @@ import {
   RoundButton,
 } from '@components'
 
-const ROUNDS = 3
-
 const Practice = () => {
-  const { params: { id, name, bpm, color } } = useRoute<'Workout'>()
+  const { params: { id, name, bpm, color, prepare, work, rest, rounds } } = useRoute<'Workout'>()
   const [toggleRoundBtn, setToggleRoundBtn] = useState(true)
 
   // const tabata = useTabata({ rounds: ROUNDS, workTime: 3, restTime: 3 })
@@ -37,7 +35,7 @@ const Practice = () => {
     isRunning,
     totalTime,
     toggle,
-  } = useTabata({ prepare: 5, work: 5, rest: 5, rounds: ROUNDS })
+  } = useTabata({ prepare, work, rest, rounds })
 
   const DISPLAY_SIZE = useMemo(() => deviceWidth * 0.7, [deviceWidth])
 
@@ -66,7 +64,7 @@ const Practice = () => {
           sectionTime={sectionTime}
           mode={currentPhase}
           round={currentRound}
-          totalRounds={ROUNDS}
+          totalRounds={rounds}
           currentSeconds={currentSeconds}
         />
 
@@ -87,12 +85,12 @@ const Practice = () => {
         <View mv={24} />
 
         <View w='100%'>
-          <Text mb={8}>Round {currentRound}/{ROUNDS}</Text>
+          <Text mb={8}>Round {currentRound}/{rounds}</Text>
           <LinearProgress  
             color='blue2'
             width={deviceWidth * 0.4}
             progress={currentRound} 
-            max={ROUNDS} 
+            max={rounds} 
           />
         </View>
 

@@ -7,7 +7,11 @@ export const StartPracticeModal: React.FC<StartPracticeModalProps> = ({
   id, 
   name, 
   bpm, 
-  color 
+  color,
+  prepare, 
+  work,
+  rest,
+  rounds,
 }) => {
   const { navigate } = useNavigation()
   return (
@@ -26,7 +30,7 @@ export const StartPracticeModal: React.FC<StartPracticeModalProps> = ({
           color='red1' 
           onPress={() => {
             onDismiss()
-            navigate('Workout', { id, name, bpm, color })
+            navigate('Workout', { id, name, bpm, color, prepare, work, rest, rounds })
           }} 
         />
       </View>

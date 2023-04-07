@@ -6,4 +6,8 @@ export interface StartPracticeModalProps {
   name: string
   bpm: number
   color: keyof GradientsType
+  prepare: number
+  work: number
+  rest: number
+  rounds: number
 }

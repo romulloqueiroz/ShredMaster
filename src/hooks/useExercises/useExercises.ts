@@ -42,6 +42,10 @@ export const useExercises = () => {
     bpm: number,
     color: keyof GradientsType,
     instrument: InstrumentsType,
+    prepare: number,
+    work: number,
+    rest: number,
+    rounds: number,
   ) => {
     const newExercises = [
       ...exercises, 
@@ -50,7 +54,11 @@ export const useExercises = () => {
         name, 
         bpm, 
         color, 
-        instrument 
+        instrument,
+        prepare,
+        work,
+        rest,
+        rounds,
       }
     ]
     setExercises(newExercises)

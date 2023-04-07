@@ -13,7 +13,17 @@ import { StartPracticeModal } from './StartPracticeModal/StartPracticeModal'
 import { EditModal } from './EditModal/EditModal'
 import { ConfirmDeleteModal } from './ConfirmDeleteModal/ConfirmDeleteModal'
 
-export const HomeCard: React.FC<HomeCardProps> = ({ name, bpm, color, instrument, id }) => {
+export const HomeCard: React.FC<HomeCardProps> = ({ 
+  name, 
+  bpm, 
+  color, 
+  instrument, 
+  id, 
+  prepare, 
+  work, 
+  rest,
+  rounds
+}) => {
   const [isPracticeModalVisible, setIsPracticeModalVisible] = useState(false)
   const [isEditModalVisible, setIsEditModalVisible] = useState(false)
   const [isConfirmDeleteModalVisible, setIsConfirmDeleteModalVisible] = useState(false)
@@ -66,6 +76,10 @@ export const HomeCard: React.FC<HomeCardProps> = ({ name, bpm, color, instrument
           name={name}
           bpm={bpm}
           color={color}
+          prepare={prepare}
+          work={work}
+          rest={rest}
+          rounds={rounds}
         />
       </PopupModal>
 
