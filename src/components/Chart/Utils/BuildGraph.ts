@@ -8,6 +8,16 @@ export const buildGraph = (
   WIDTH: number,
   HEIGHT: number
 ) => {
+  if (datapoints.length === 0) {
+    return {
+      minBpm: 0,
+      maxBpm: 0,
+      path: Skia.Path.Make(),
+      xValues: [],
+      yValues: [],
+    }
+  }
+  
   const AJUSTED_SIZE = HEIGHT - PADDING * 2
   const HORIZONTAL_PADDING = PADDING
 
