@@ -1,11 +1,14 @@
 import View from '../View/View'
 import Icon from '../Icon/Icon'
+import PopupModal from '../PopupModal/PopupModal'
 import Touchable from '../Touchable/Touchable'
 import SafeArea from '../SafeArea/SafeArea'
 import { useNavigation } from '@hooks'
+import { useState } from 'react'
+import { GoBackModal } from './GoBackModal/GoBackModal'
 
 const Header = () => {
-  const { goBack } = useNavigation()
+  const [showModal, setShowModal] = useState(false)
   return (
     <>
       <SafeArea />
@@ -16,10 +19,16 @@ const Header = () => {
         main='space-between'
         cross='center'
       >
-        <Touchable onPress={goBack}>
+        <Touchable onPress={() => setShowModal(true)}>
           <Icon size={20} name='arrowBack' />
         </Touchable>
       </View>
+      <PopupModal
+        isVisible={showModal}
+        onDismiss={() => setShowModal(false)}
+      >
+        <GoBackModal onDismiss={() => setShowModal(false)} />
+      </PopupModal>
     </>
   )
 }
