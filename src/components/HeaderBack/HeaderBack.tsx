@@ -3,7 +3,6 @@ import Icon from '../Icon/Icon'
 import PopupModal from '../PopupModal/PopupModal'
 import Touchable from '../Touchable/Touchable'
 import SafeArea from '../SafeArea/SafeArea'
-import { useNavigation } from '@hooks'
 import { useState } from 'react'
 import { GoBackModal } from './GoBackModal/GoBackModal'
 
