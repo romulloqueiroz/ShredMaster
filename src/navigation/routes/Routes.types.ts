@@ -13,6 +13,14 @@ export type RoutesList = {
     rest: number
     rounds: number
   }
+  Timer: {
+    id: string
+    name: string
+    bpm: number
+    color: keyof GradientsType
+    prepare: number
+    timer: number
+  }
 }
 
 export type BottomTabList = {
