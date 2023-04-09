@@ -3,7 +3,7 @@ import { GradientsType } from "@styles"
 
 export type RoutesList = {
   Root: NavigatorScreenParams<BottomTabList> | undefined
-  Workout: { 
+  Tabata: { 
     id: string, 
     name: string, 
     bpm: number,

@@ -30,7 +30,7 @@ export const StartPracticeModal: React.FC<StartPracticeModalProps> = ({
           color='red1' 
           onPress={() => {
             onDismiss()
-            navigate('Workout', { id, name, bpm, color, prepare, work, rest, rounds })
+            navigate('Tabata', { id, name, bpm, color, prepare, work, rest, rounds })
           }} 
         />
       </View>

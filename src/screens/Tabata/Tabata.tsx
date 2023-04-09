@@ -12,7 +12,7 @@ import {
 } from '@components'
 
 const Practice = () => {
-  const { params: { id, name, bpm, color, prepare, work, rest, rounds } } = useRoute<'Workout'>()
+  const { params: { id, name, bpm, color, prepare, work, rest, rounds } } = useRoute<'Tabata'>()
   const [toggleRoundBtn, setToggleRoundBtn] = useState(true)
 
   // const tabata = useTabata({ rounds: ROUNDS, workTime: 3, restTime: 3 })
