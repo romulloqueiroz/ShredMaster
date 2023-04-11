@@ -25,7 +25,7 @@ const Timer = () => {
   const { navigate } = useNavigation()
   const [toggleRoundBtn, setToggleRoundBtn] = useState(true)
   const { params: { id, name, bpm, color, prepare, timer } } = useRoute<'Timer'>()
-  const { countdown, totalTime, flag, toggle, currentTotalTime, isPaused } = useCountdown(prepare, timer)
+  const { countdown, totalTime, flag, toggle, currentTotalTime, isPaused } = useCountdown(prepare, 20)
 
   const DISPLAY_SIZE = useMemo(() => deviceWidth * 0.7, [deviceWidth])
 
@@ -61,6 +61,7 @@ const Timer = () => {
               color={getModeColor(flag).slice(0, -1) as keyof GradientsType}
               strokeWidth={18} 
               isPlaying={!isPaused}
+              mode={flag}
             />
           </View>
 
@@ -83,7 +84,6 @@ const Timer = () => {
         </View>
         </View>
       </View>
-
 
       <View 
         absolute
