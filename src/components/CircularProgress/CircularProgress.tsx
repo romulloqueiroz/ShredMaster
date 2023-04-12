@@ -1,40 +1,30 @@
-import { memo, useMemo, useEffect, useRef } from 'react'
+import { memo, useMemo, useEffect } from 'react'
 import View from '../View/View'
-import { 
-  Canvas, 
-  Path, 
-  Skia, 
+import {
+  Canvas,
+  Path,
+  Skia,
   Group,
   useComputedValue,
   mix,
   useValue,
-  runTiming,
   vec,
   SweepGradient,
+  useClockValue,
+  useValueEffect,
 } from '@shopify/react-native-skia'
 import { CircularProgressProps } from './CircularProgress.types'
 import { gradients } from '@styles'
 import { addOpacity } from '@helpers'
 
-const CircularProgress: React.FC<CircularProgressProps> = ({ 
-  size = 194, 
-  strokeWidth = 12, 
+const CircularProgress: React.FC<CircularProgressProps> = ({
+  size = 194,
+  strokeWidth = 12,
   color = 'red',
-  duration = 5,
-  isPlaying = false,
+  maxValue = 100,
+  currentValue = 0,
   mode,
 }) => {
-  const initialRender = useRef(true)
-  const progressValue = useValue(0)
-
-  useEffect(() => {
-    if (isPlaying) runTiming(progressValue, 1, { duration: (1 - progressValue.current) * duration * 1000 })
-    else progressValue.current = progressValue.current
-  }, [isPlaying, duration])
-
-  const x = useComputedValue(() => mix(progressValue.current, 0, 180), [progressValue])
-  const progress = useComputedValue(() => x.current / 180, [x])
-
   const radius = size / 2 - strokeWidth
 
   const path = useMemo(() => {
@@ -43,25 +33,34 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
     return p
   }, [radius, strokeWidth])
 
+  const progressValue = useValue(currentValue / maxValue)
+  const animatedProgress = useValue(progressValue.current)
+
   useEffect(() => {
-    if (isPlaying) {
-      runTiming(progressValue, 1, { duration: (1 - progressValue.current) * duration * 1000 })
-    }
-  }, [isPlaying, duration])
-  
+    progressValue.current = currentValue / maxValue
+  }, [currentValue, maxValue])
+
   useEffect(() => {
-    if (initialRender.current) {
-      initialRender.current = false
-    } else {
-      if (isPlaying) {
-        progressValue.current = 0
-        runTiming(progressValue, 1, { duration: (1 - progressValue.current) * duration * 1000 })
-      }
-    }
+    progressValue.current = 0
+    animatedProgress.current = 0
   }, [mode])
-  
+
+  const clock = useClockValue()
+
+  useValueEffect(clock, () => {
+    const progressDifference = progressValue.current - animatedProgress.current
+    const animationSpeed = 0.05
+
+    if (Math.abs(progressDifference) > 0.001) {
+      animatedProgress.current += progressDifference * animationSpeed
+    }
+  })
+
+  const x = useComputedValue(() => mix(animatedProgress.current, 0, 180), [animatedProgress])
+  const progress = useComputedValue(() => x.current / 180, [x])
+
   return (
-    <View w={size} h={size} style={{transform: [{ rotate: `-90deg` }]}}>
+    <View w={size} h={size} style={{ transform: [{ rotate: `-90deg` }] }}>
       <Canvas style={{ flex: 1 }}>
         <Group>
           <Path
@@ -73,10 +72,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
             strokeCap='round'
           />
           <Group>
-            <SweepGradient 
-              c={vec(size, size)}
-              colors={gradients[color]} 
-            />
+            <SweepGradient c={vec(size, size)} colors={gradients[color]} />
             <Path
               path={path}
               style='stroke'

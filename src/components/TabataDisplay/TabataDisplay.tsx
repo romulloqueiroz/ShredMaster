@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import View from '../View/View'
 import Text from '../Text/Text'
-import CircularProgress from '../CircularProgress/CircularProgress'
+import CircularProgress from '../CircularProgress/CircularProgress_legacy'
 import { TabataDisplayProps } from './TabataDisplay.types'
 import { STROKE_WIDTH } from './TabataDisplay.utils'
 import { os } from '@styles'

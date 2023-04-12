@@ -7,4 +7,7 @@ export interface CircularProgressProps {
   duration?: number
   isPlaying?: boolean
   mode?: 'prepare' | 'work' | 'rest' | 'finished'
+
+  maxValue: number
+  currentValue: number
 }

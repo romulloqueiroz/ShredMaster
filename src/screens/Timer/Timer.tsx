@@ -57,11 +57,11 @@ const Timer = () => {
           <View absolute>
             <CircularProgress 
               size={DISPLAY_SIZE - 10} 
-              duration={currentTotalTime}
-              color={getModeColor(flag).slice(0, -1) as keyof GradientsType}
               strokeWidth={18} 
-              isPlaying={!isPaused}
+              color={getModeColor(flag).slice(0, -1) as keyof GradientsType}
               mode={flag}
+              maxValue={currentTotalTime - 1}
+              currentValue={currentTotalTime - countdown}
             />
           </View>
 
