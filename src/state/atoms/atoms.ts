@@ -11,6 +11,7 @@ export type Exercise = {
   work: number
   rest: number
   rounds: number
+  sectionByBpm: [number, number][]
 }
 
 const exerciseState = atom<Exercise[]>({

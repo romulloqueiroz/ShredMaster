@@ -22,6 +22,7 @@ const Progress = () => {
             key={item.id} 
             name={item.name} 
             color={item.color}
+            id={item.id}
           />
         )}
         showsVerticalScrollIndicator={false}

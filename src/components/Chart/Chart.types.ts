@@ -5,4 +5,5 @@ export type SectionByBPMList = [number, number][]
 export interface ChartProps {
   color: keyof GradientsType
   name: string
+  id: string
 }

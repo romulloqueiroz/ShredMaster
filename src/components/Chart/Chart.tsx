@@ -2,17 +2,24 @@ import { useMemo } from 'react'
 import View from '../View/View'
 import { buildGraph } from './utils'
 import { Canvas, Group } from '@shopify/react-native-skia'
-import { sectionByBpm } from './mock'
 import { HorizontalLines, Dots, LinePath, TitleBox, EntriesBox } from './components'
 import { deviceWidth } from '@styles'
 import { ChartProps, SectionByBPMList } from './Chart.types'
+import { useExercises } from '@hooks'
 
 const PADDING = 16
 const CHART_HEIGHT = 170
 const CHART_WIDTH = deviceWidth - PADDING * 2
-const values = sectionByBpm as SectionByBPMList
 
-const Chart: React.FC<ChartProps> = ({ color, name }) => {
+const Chart: React.FC<ChartProps> = ({ color, name, id }) => {
+  const { exercises } = useExercises()
+
+  // @@@ Change for a better solution (maybe receiving the id as a prop)
+  const values = useMemo(() => {
+    const exercise = exercises.find(exercise => exercise.id === id)
+    return exercise?.sectionByBpm as SectionByBPMList
+  }, [exercises, name])
+
   const graphs = useMemo(() => buildGraph(values, CHART_WIDTH, CHART_HEIGHT), [values, CHART_WIDTH])
   const path = graphs.path
 

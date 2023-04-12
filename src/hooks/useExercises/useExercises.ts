@@ -46,6 +46,7 @@ export const useExercises = () => {
     work: number,
     rest: number,
     rounds: number,
+    initialSectionByBpm: [number, number][] = [],
   ) => {
     const newExercises = [
       ...exercises, 
@@ -59,6 +60,7 @@ export const useExercises = () => {
         work,
         rest,
         rounds,
+        sectionByBpm: initialSectionByBpm,
       }
     ]
     setExercises(newExercises)
@@ -72,14 +74,33 @@ export const useExercises = () => {
     saveExercises(newExercises, nextId)
   }
 
-  const updateExercise = (id: string, { newName, newBpm }: { newName?: string, newBpm?: number }) => {
+  const updateExercise = (
+    id: string,
+    {
+      newName,
+      newBpm,
+      newSectionBpm,
+    }: { newName?: string, newBpm?: number, newSectionBpm?: number }
+  ) => {
     const newExercises = exercises.map((exercise) => {
       if (exercise.id === id) {
-        return {
+        const updatedExercise = {
           ...exercise,
           name: newName !== undefined ? newName : exercise.name,
           bpm: newBpm !== undefined ? newBpm : exercise.bpm,
         }
+  
+        if (newSectionBpm !== undefined) {
+          updatedExercise.sectionByBpm = [
+            ...exercise.sectionByBpm,
+            [
+              exercise.sectionByBpm.length,
+              newSectionBpm,
+            ],
+          ]
+        }
+  
+        return updatedExercise
       } else {
         return exercise
       }
@@ -88,6 +109,7 @@ export const useExercises = () => {
     setExercises(newExercises)
     saveExercises(newExercises, nextId)
   }
+  
   
   const resetExercises = async () => {
     await SecureStore.remove(EXERCISES_KEY)

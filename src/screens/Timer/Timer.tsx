@@ -1,5 +1,5 @@
 import { View, Text, HeaderBack, CircularProgress, Button, RoundButton } from '@components'
-import { useRoute, useCountdown, useNavigation } from '@hooks'
+import { useRoute, useCountdown, useNavigation, useExercises } from '@hooks'
 import { BaseLayout } from '@layouts'
 import { GradientsType, deviceWidth } from '@styles'
 import { useMemo, useState, useEffect } from 'react'
@@ -22,15 +22,17 @@ const getModeColor = (mode: string) => {
 }
 
 const Timer = () => {
+  const { updateExercise } = useExercises()
   const { navigate } = useNavigation()
   const [toggleRoundBtn, setToggleRoundBtn] = useState(true)
   const { params: { id, name, bpm, color, prepare, timer } } = useRoute<'Timer'>()
-  const { countdown, totalTime, flag, toggle, currentTotalTime, isPaused } = useCountdown(prepare, 20)
+  const { countdown, totalTime, flag, toggle, currentTotalTime } = useCountdown(prepare, 20)
 
   const DISPLAY_SIZE = useMemo(() => deviceWidth * 0.7, [deviceWidth])
 
   useEffect(() => {
     if (flag === 'finished') {
+      updateExercise(id, { newSectionBpm: bpm})
       navigate('Root', { screen: 'Home' })
     }
   }, [flag])
