@@ -5,7 +5,7 @@ export interface CircularProgressProps {
   strokeWidth?: number
   color?: keyof GradientsType
   duration?: number
-  isPlaying?: boolean
+  // isPlaying?: boolean
   mode?: 'prepare' | 'work' | 'rest' | 'finished'
 
   maxValue: number

@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import View from '../View/View'
 import Text from '../Text/Text'
-import CircularProgress from '../CircularProgress/CircularProgress_legacy'
+import CircularProgress from '../CircularProgress/legacy'
 import { TabataDisplayProps } from './TabataDisplay.types'
 import { STROKE_WIDTH } from './TabataDisplay.utils'
 import { os } from '@styles'
@@ -53,7 +53,7 @@ const TabataDisplay: React.FC<TabataDisplayProps> = ({
       main='center'
       cross='center'
     >
-      <View absolute>
+      {/* <View absolute>
         <CircularProgress 
           size={size} 
           duration={os === 'ios' ? totalTime * 1.05 : totalTime * 1.1}
@@ -61,9 +61,9 @@ const TabataDisplay: React.FC<TabataDisplayProps> = ({
           strokeWidth={8} 
           isPlaying={isPlaying}
         />
-      </View>
+      </View> */}
 
-      <View absolute>
+      {/* <View absolute>
         <CircularProgress 
           size={size - 10} 
           duration={sectionTime}
@@ -72,7 +72,7 @@ const TabataDisplay: React.FC<TabataDisplayProps> = ({
           isPlaying={isPlaying}
           mode={mode}
         />
-      </View>
+      </View> */}
 
       <View main='center' cross='center'>
         <Text 
