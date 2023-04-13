@@ -4,5 +4,5 @@ export interface TitleBoxProps {
   padding: number
   name: string
   color: keyof GradientsType
-  // bpm: number
+  bpm: number | null
 }

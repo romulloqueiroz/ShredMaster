@@ -1,4 +1,4 @@
-import { useMemo, useEffect } from 'react'
+import { useMemo, useEffect, useState } from 'react'
 import { Canvas, Group, useValue } from '@shopify/react-native-skia'
 import View from '../View/View'
 import { deviceWidth } from '@styles'
@@ -42,14 +42,26 @@ const Chart: React.FC<ChartProps> = ({ color, name, id }) => {
   const x = useValue(xValues[xValues.length - 1])
   const y = useValue(yValues[yValues.length - 1])
 
+  const [correspondingY, setCorrespondingY] = useState(
+    values[values.length - 1]?.[1] ?? 0
+  )
+  
   useEffect(() => {
     if (xValues.length > 0 && yValues.length > 0) {
       x.current = xValues[xValues.length - 1]
       y.current = yValues[yValues.length - 1]
+      setCorrespondingY(values[values.length - 1]?.[1] ?? 0)
     }
   }, [xValues, yValues, x, y])
-  
-  const onTouch = useGraphTouchHandler(x, y, PADDING, xValues, yValues);
+
+  const onTouch = useGraphTouchHandler(
+    x, 
+    y, 
+    PADDING, 
+    xValues, 
+    yValues, 
+    (idx: number) => setCorrespondingY(values[idx][1])
+  )
 
   return (
     <View 
@@ -63,9 +75,13 @@ const Chart: React.FC<ChartProps> = ({ color, name, id }) => {
         padding={PADDING} 
         name={name} 
         color={color}
+        bpm={correspondingY}
       />
 
-      <Canvas style={{ flex: 1 }} onTouch={onTouch}>
+      <Canvas 
+        style={{ flex: 1 }} 
+        onTouch={xValues.length > 0 && yValues.length > 0 ? onTouch : undefined}
+      >
         <Group transform={[{ translateY: PADDING }]}>
           <HorizontalLines 
             chartHeight={CHART_HEIGHT} 

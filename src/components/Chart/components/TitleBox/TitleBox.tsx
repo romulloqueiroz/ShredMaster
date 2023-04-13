@@ -2,7 +2,7 @@ import View from '../../../View/View'
 import Text from '../../../Text/Text'
 import { TitleBoxProps } from './TitleBox.types'
 
-export const TitleBox: React.FC<TitleBoxProps> = ({ padding, name, color }) => (
+export const TitleBox: React.FC<TitleBoxProps> = ({ padding, name, color, bpm }) => (
   <View
     row
     ph={padding}
@@ -11,6 +11,6 @@ export const TitleBox: React.FC<TitleBoxProps> = ({ padding, name, color }) => (
     cross='flex-end'
   >
     <Text size={18} color={`${color}1`}>{name}</Text>
-    <Text>BPMs</Text>
+    <Text>{bpm} BPMs</Text>
   </View>
 )

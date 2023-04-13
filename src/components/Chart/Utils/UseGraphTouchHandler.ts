@@ -6,7 +6,8 @@ export const useGraphTouchHandler = (
   y: SkiaMutableValue<number>,
   padding: number,
   xValues: number[],
-  yValues: number[]
+  yValues: number[],
+  onCursorUpdate: (index: number) => void,
 ) => {
   const gestureActive = useValue(false)
   const offsetX = useValue(0)
@@ -23,8 +24,9 @@ export const useGraphTouchHandler = (
         }, 0)
         x.current = xValues[closestIndex]
         y.current = yValues[closestIndex]
+        onCursorUpdate(closestIndex);
       }
-    },
+    },    
     onEnd: () => {
       if (gestureActive.current) 
         gestureActive.current = false
