@@ -10,11 +10,9 @@ const Progress = () => {
     <BaseLayout view>
       <Header title='Progress' />
       <View mb={12} />
-
       {exercises.length === 0 && (
         <NoCardBg title='When an exercise is created, its chart will appear here' />
       )}
-
       <FlatList
         data={exercises}
         renderItem={({ item }) => (
@@ -30,7 +28,6 @@ const Progress = () => {
         ItemSeparatorComponent={() => <View mv={8} />} 
         bounces={false}
       />
-
     </BaseLayout>
   )
 }
