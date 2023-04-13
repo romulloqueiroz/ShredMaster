@@ -29,6 +29,6 @@ export const useGraphTouchHandler = (
       if (gestureActive.current) 
         gestureActive.current = false
     },
-  })
+  }, [x, y, padding, xValues, yValues])
   return onTouch
 }

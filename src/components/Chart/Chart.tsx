@@ -1,7 +1,7 @@
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
 import View from '../View/View'
 import { buildGraph } from './utils'
-import { Canvas, Group, useComputedValue, useValue } from '@shopify/react-native-skia'
+import { Canvas, Group, useValue } from '@shopify/react-native-skia'
 import { HorizontalLines, Dots, LinePath, TitleBox, EntriesBox } from './components'
 import { deviceWidth } from '@styles'
 import { ChartProps, SectionByBPMList } from './Chart.types'
@@ -37,8 +37,13 @@ const Chart: React.FC<ChartProps> = ({ color, name, id }) => {
   const x = useValue(xValues[xValues.length - 1])
   const y = useValue(yValues[yValues.length - 1] + PADDING)
 
-  console.log('x', xValues)
-
+  useEffect(() => {
+    if (xValues.length > 0 && yValues.length > 0) {
+      x.current = xValues[xValues.length - 1]
+      y.current = yValues[yValues.length - 1] + PADDING
+    }
+  }, [xValues, yValues, x, y])
+  
   const onTouch = useGraphTouchHandler(x, y, PADDING, xValues, yValues);
 
   return (
