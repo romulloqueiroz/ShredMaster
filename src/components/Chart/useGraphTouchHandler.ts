@@ -22,7 +22,7 @@ export const useGraphTouchHandler = (
           return Math.abs(curr - potentialX) < Math.abs(xValues[prev] - potentialX) ? index : prev
         }, 0)
         x.current = xValues[closestIndex]
-        y.current = yValues[closestIndex] + padding
+        y.current = yValues[closestIndex]
       }
     },
     onEnd: () => {

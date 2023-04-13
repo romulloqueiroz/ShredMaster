@@ -12,7 +12,7 @@ export const Cursor = ({ x, y, color }: CursorProps) => {
     () => [{ translateX: x.current }, { translateY: y.current }],
     [x, y]
   )
-
+  
   return (
     <Group transform={transform}>
       <Circle cx={0} cy={0} r={27} color={color} opacity={0.15} />

@@ -35,12 +35,12 @@ const Chart: React.FC<ChartProps> = ({ color, name, id }) => {
   const { path, xValues, yValues } = graphs
 
   const x = useValue(xValues[xValues.length - 1])
-  const y = useValue(yValues[yValues.length - 1] + PADDING)
+  const y = useValue(yValues[yValues.length - 1])
 
   useEffect(() => {
     if (xValues.length > 0 && yValues.length > 0) {
       x.current = xValues[xValues.length - 1]
-      y.current = yValues[yValues.length - 1] + PADDING
+      y.current = yValues[yValues.length - 1]
     }
   }, [xValues, yValues, x, y])
   
@@ -62,30 +62,23 @@ const Chart: React.FC<ChartProps> = ({ color, name, id }) => {
 
       <Canvas style={{ flex: 1 }} onTouch={onTouch}>
         <Group transform={[{ translateY: PADDING }]}>
-
           <HorizontalLines 
             chartHeight={CHART_HEIGHT} 
             padding={PADDING}
           />
-
           <LinePath 
             path={path}
             color={color}
           />
-
           <Dots 
             chartWidth={CHART_WIDTH} 
             color={color}
             graphs={graphs}
           />
-
+          {xValues.length > 0 && yValues.length > 0 && (
+            <Cursor x={x} y={y} color={color} />
+          )}
         </Group>
-
-        <Cursor 
-          x={x} 
-          y={y} 
-          color={color}
-        />
       </Canvas>
 
       <EntriesBox 
