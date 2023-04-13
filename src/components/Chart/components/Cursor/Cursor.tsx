@@ -10,9 +10,9 @@ export const Cursor: React.FC<CursorProps> = ({ x, y, color }) => {
   
   return (
     <Group transform={transform}>
-      <Circle cx={0} cy={0} r={22} color={color} opacity={0.15} />
       <Circle cx={0} cy={0} r={16} color={color} opacity={0.15} />
-      <Circle cx={0} cy={0} r={7} color={color}>
+      <Circle cx={0} cy={0} r={10} color={color} opacity={0.15} />
+      <Circle cx={0} cy={0} r={6} color={color}>
         <Paint style='stroke' strokeWidth={2} color='white' />
       </Circle>
     </Group>
