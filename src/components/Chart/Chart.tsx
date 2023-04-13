@@ -1,13 +1,18 @@
 import { useMemo, useEffect } from 'react'
-import View from '../View/View'
-import { buildGraph } from './utils'
 import { Canvas, Group, useValue } from '@shopify/react-native-skia'
-import { HorizontalLines, Dots, LinePath, TitleBox, EntriesBox } from './components'
+import View from '../View/View'
 import { deviceWidth } from '@styles'
-import { ChartProps, SectionByBPMList } from './Chart.types'
 import { useExercises } from '@hooks'
-import { useGraphTouchHandler } from './useGraphTouchHandler'
-import { Cursor } from './Cursor'
+import { buildGraph, useGraphTouchHandler } from './utils'
+import { ChartProps, SectionByBPMList } from './Chart.types'
+import { 
+  HorizontalLines, 
+  Dots, 
+  LinePath, 
+  TitleBox, 
+  EntriesBox, 
+  Cursor 
+} from './components'
 
 const PADDING = 16
 const CHART_HEIGHT = 170

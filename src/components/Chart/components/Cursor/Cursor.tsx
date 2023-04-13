@@ -1,13 +1,8 @@
 import React from 'react'
-import { SkiaValue, Group, Circle, useComputedValue, Paint } from '@shopify/react-native-skia'
+import { Group, Circle, useComputedValue, Paint } from '@shopify/react-native-skia'
+import { CursorProps } from './Cursor.types'
 
-interface CursorProps {
-  x: SkiaValue<number>
-  y: SkiaValue<number>
-  color: string
-}
-
-export const Cursor = ({ x, y, color }: CursorProps) => {
+export const Cursor: React.FC<CursorProps> = ({ x, y, color }) => {
   const transform = useComputedValue(
     () => [{ translateX: x.current }, { translateY: y.current }],
     [x, y]

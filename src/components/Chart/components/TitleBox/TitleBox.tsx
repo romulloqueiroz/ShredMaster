@@ -11,6 +11,6 @@ export const TitleBox: React.FC<TitleBoxProps> = ({ padding, name, color }) => (
     cross='flex-end'
   >
     <Text size={18} color={`${color}1`}>{name}</Text>
-    <Text>BPM</Text>
+    <Text>BPMs</Text>
   </View>
 )

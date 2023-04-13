@@ -1,48 +1,34 @@
-import {
-  Skia,
-  runDecay,
-  add,
-  clamp,
-  dist,
-  vec,
-  useValue,
-  useTouchHandler,
-} from '@shopify/react-native-skia'
-import type { SkiaMutableValue, SkiaValue } from '@shopify/react-native-skia'
-
-const PADDING = 16
+import { SkiaMutableValue } from '@shopify/react-native-skia'
+import { clamp, useValue, useTouchHandler } from '@shopify/react-native-skia'
 
 export const useGraphTouchHandler = (
   x: SkiaMutableValue<number>,
-  y: SkiaValue<number>,
-  width: number,
-  height: number
+  y: SkiaMutableValue<number>,
+  padding: number,
+  xValues: number[],
+  yValues: number[]
 ) => {
-  const translateY = height + PADDING
   const gestureActive = useValue(false)
   const offsetX = useValue(0)
   const onTouch = useTouchHandler({
     onStart: (pos) => {
-      const normalizedCenter = add(
-        vec(x.current, y.current),
-        vec(0, translateY)
-      )
-      if (dist(normalizedCenter, pos) < 50) {
-        gestureActive.current = true
-        offsetX.current = x.current - pos.x
-      }
+      gestureActive.current = true
+      offsetX.current = x.current - pos.x
     },
     onActive: (pos) => {
       if (gestureActive.current) {
-        x.current = clamp(offsetX.current + pos.x, 0, width)
+        const potentialX = clamp(offsetX.current + pos.x, xValues[0], xValues[xValues.length - 1])
+        const closestIndex = xValues.reduce((prev, curr, index) => {
+          return Math.abs(curr - potentialX) < Math.abs(xValues[prev] - potentialX) ? index : prev
+        }, 0)
+        x.current = xValues[closestIndex]
+        y.current = yValues[closestIndex]
       }
     },
-    onEnd: ({ velocityX }) => {
-      if (gestureActive.current) {
+    onEnd: () => {
+      if (gestureActive.current) 
         gestureActive.current = false
-        runDecay(x, { velocity: velocityX, clamp: [0, width] })
-      }
     },
-  })
+  }, [x, y, padding, xValues, yValues])
   return onTouch
 }
