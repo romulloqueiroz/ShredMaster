@@ -28,6 +28,7 @@ const Progress = () => {
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}
         ItemSeparatorComponent={() => <View mv={8} />} 
+        bounces={false}
       />
 
     </BaseLayout>

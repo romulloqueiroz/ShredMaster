@@ -26,7 +26,7 @@ const Timer = () => {
   const { navigate } = useNavigation()
   const [toggleRoundBtn, setToggleRoundBtn] = useState(true)
   const { params: { id, name, bpm, color, prepare, timer } } = useRoute<'Timer'>()
-  const { countdown, totalTime, flag, toggle, currentTotalTime } = useCountdown(prepare, 20)
+  const { countdown, totalTime, flag, toggle, currentTotalTime } = useCountdown(5, 5) // prepare, timer
 
   const DISPLAY_SIZE = useMemo(() => deviceWidth * 0.7, [deviceWidth])
 

@@ -1,12 +1,12 @@
 import { Skia } from '@shopify/react-native-skia'
 
-const PADDING = 16
 type BPMList = [number, number][]
 
 export const buildGraph = (
   datapoints: BPMList,
   WIDTH: number,
-  HEIGHT: number
+  HEIGHT: number,
+  padding: number,
 ) => {
   if (datapoints.length === 0) {
     return {
@@ -18,8 +18,8 @@ export const buildGraph = (
     }
   }
   
-  const AJUSTED_SIZE = HEIGHT - PADDING * 2
-  const HORIZONTAL_PADDING = PADDING
+  const AJUSTED_SIZE = HEIGHT - padding * 2
+  const HORIZONTAL_PADDING = padding
 
   const session = datapoints.map((value) => value[0])
   const bpms = datapoints.map((value) => value[1])

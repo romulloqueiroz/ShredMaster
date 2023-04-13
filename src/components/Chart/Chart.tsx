@@ -1,11 +1,13 @@
 import { useMemo } from 'react'
 import View from '../View/View'
 import { buildGraph } from './utils'
-import { Canvas, Group } from '@shopify/react-native-skia'
+import { Canvas, Group, useComputedValue, useValue } from '@shopify/react-native-skia'
 import { HorizontalLines, Dots, LinePath, TitleBox, EntriesBox } from './components'
 import { deviceWidth } from '@styles'
 import { ChartProps, SectionByBPMList } from './Chart.types'
 import { useExercises } from '@hooks'
+import { useGraphTouchHandler } from './useGraphTouchHandler'
+import { Cursor } from './Cursor'
 
 const PADDING = 16
 const CHART_HEIGHT = 170
@@ -14,14 +16,30 @@ const CHART_WIDTH = deviceWidth - PADDING * 2
 const Chart: React.FC<ChartProps> = ({ color, name, id }) => {
   const { exercises } = useExercises()
 
-  // @@@ Change for a better solution (maybe receiving the id as a prop)
   const values = useMemo(() => {
     const exercise = exercises.find(exercise => exercise.id === id)
     return exercise?.sectionByBpm as SectionByBPMList
   }, [exercises, name])
 
-  const graphs = useMemo(() => buildGraph(values, CHART_WIDTH, CHART_HEIGHT), [values, CHART_WIDTH])
-  const path = graphs.path
+  const graphs = useMemo(() => buildGraph(
+    values, 
+    CHART_WIDTH, 
+    CHART_HEIGHT, 
+    PADDING
+  ), [
+    values, 
+    CHART_WIDTH,
+    CHART_HEIGHT,
+    PADDING
+  ])
+  const { path, xValues, yValues } = graphs
+
+  const x = useValue(xValues[xValues.length - 1])
+  const y = useValue(yValues[yValues.length - 1] + PADDING)
+
+  console.log('x', xValues)
+
+  const onTouch = useGraphTouchHandler(x, y, PADDING, xValues, yValues);
 
   return (
     <View 
@@ -36,7 +54,8 @@ const Chart: React.FC<ChartProps> = ({ color, name, id }) => {
         name={name} 
         color={color}
       />
-      <Canvas style={{ flex: 1 }}>
+
+      <Canvas style={{ flex: 1 }} onTouch={onTouch}>
         <Group transform={[{ translateY: PADDING }]}>
 
           <HorizontalLines 
@@ -56,7 +75,14 @@ const Chart: React.FC<ChartProps> = ({ color, name, id }) => {
           />
 
         </Group>
+
+        <Cursor 
+          x={x} 
+          y={y} 
+          color={color}
+        />
       </Canvas>
+
       <EntriesBox 
         graphs={graphs} 
         padding={PADDING}
