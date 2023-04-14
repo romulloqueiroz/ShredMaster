@@ -33,7 +33,7 @@ const Metronome = () => {
         <Slider
           value={bpm}
           minimumValue={40}
-          maximumValue={200}
+          maximumValue={400}
           step={1}
           onValueChange={handleChangeBPM}
         />

@@ -1,110 +1,83 @@
+import { useEffect, useRef, useState } from 'react'
 import { Audio } from 'expo-av'
-import { useState, useEffect, useRef } from 'react'
 
-export const useMetronome = (beatsPerMeasure: number, noteValue: number, tempo: number) => {
-  const [soundLoaded, setSoundLoaded] = useState(false)
-  const [headLoaded, setHeadLoaded] = useState(false)
+export const useMetronome = () => {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [bpm, setBpm] = useState(0)
-  const [_, setCurrentBeat] = useState(0)
+  const [bpm, setBpm] = useState(100)
+  const [timeSignatureNumerator, setTimeSignatureNumerator] = useState(4)
+  const [beatIndex, setBeatIndex] = useState(0)
+  const [soundsLoaded, setSoundsLoaded] = useState(false)
 
-  const tickSound = useRef(new Audio.Sound()).current
-  const headSound = useRef(new Audio.Sound()).current
-  const interval = useRef<NodeJS.Timeout | null>(null)
+  const strongBeatSound = require('../../assets/metronome_head.mp3')
+  const normalBeatSound = require('../../assets/metronome_tick.mp3')
+
+  const strongBeat = useRef(new Audio.Sound())
+  const normalBeat = useRef(new Audio.Sound())
+
+  const oneBeatDurationInMs = (bpm: number) => 60000 / bpm
+  const oneBeatInSeconds = oneBeatDurationInMs(bpm) / 1000
+
+  const preloadSounds = async () => {
+    await Promise.all([
+      strongBeat.current.loadAsync(strongBeatSound),
+      normalBeat.current.loadAsync(normalBeatSound),
+    ])
+    setSoundsLoaded(true)
+  }
 
   useEffect(() => {
-    const loadTickSound = async () => {
-      try {
-        await tickSound.loadAsync(require('../../assets/metronome_tick.mp3'))
-        setSoundLoaded(true)
-      } catch (error) {
-        console.warn('Error loading metronome sound: ', error)
-      }
-    }
-
-    const loadHeadSound = async () => {
-      try {
-        await headSound.loadAsync(require('../../assets/metronome_head.mp3'))
-        setHeadLoaded(true)
-      } catch (error) {
-        console.warn('Error loading metronome head sound: ', error)
-      }
-    }
-
-    loadTickSound()
-    loadHeadSound()
+    preloadSounds()
   }, [])
 
   useEffect(() => {
-    setBpm(tempo * (beatsPerMeasure / 4))
-  }, [beatsPerMeasure, tempo])
+    if (!soundsLoaded) return
 
-  const playClick = async () => {
-    if (soundLoaded) {
-      try {
-        await tickSound.replayAsync()
-      } catch (error) {
-        console.warn('Error playing metronome sound: ', error)
-      }
+    let engine: number | null = null
+
+    const playSound = async (sound: Audio.Sound) => await sound.replayAsync()
+
+    const sound = () => {
+      if (beatIndex === 0) playSound(strongBeat.current)
+      else playSound(normalBeat.current)
+      if (beatIndex === timeSignatureNumerator - 1) setBeatIndex(0)
+      else setBeatIndex((beatIndex) => beatIndex + 1)
     }
-  }
 
-  const playHead = async () => {
-    if (headLoaded) {
-      try {
-        await headSound.replayAsync()
-      } catch (error) {
-        console.warn('Error playing metronome head sound: ', error)
-      }
-    }
-  }
+    const timer = () => sound()
 
-  const startStopMetronome = () => {
-    if (!isPlaying) {
-      setIsPlaying(true)
-      playClick()
+    if (isPlaying) {
+      if (engine !== null) window.clearInterval(engine)
+      engine = window.setInterval(timer, oneBeatInSeconds * 1000)
     } else {
-      setIsPlaying(false)
-      tickSound.stopAsync()
-      headSound.stopAsync()
-      setCurrentBeat(0)
+      if (engine !== null) window.clearInterval(engine)
+      setBeatIndex(0)
     }
+
+    return () => {
+      if (engine !== null) window.clearInterval(engine)
+    }
+  }, [isPlaying, bpm, timeSignatureNumerator, beatIndex, soundsLoaded])
+
+  const togglePlay = () => {
+    if (soundsLoaded) setIsPlaying(!isPlaying)
   }
 
-  const calculateInterval = () => (60 / tempo) * 1000 * (4 / noteValue)
-
-  const startInterval = () => {
-    setCurrentBeat(0)
-    playHead()
-    interval.current = setInterval(() => {
-      setCurrentBeat((prevBeat) => {
-        if (prevBeat === 0) playHead()
-        else playClick()
-        return (prevBeat + 1) % beatsPerMeasure
-      })
-    }, calculateInterval())
+  const handleChangeBPM = (value: number) => {
+    setBpm(value)
+    setBeatIndex(0)
   }
 
-  const stopInterval = () => {
-    if (interval.current) {
-      clearInterval(interval.current)
-      interval.current = null 
-    }
-    setCurrentBeat(0)
-  }
-  
-  const handlePlayStopPress = () => {
-    if (!isPlaying) {
-      startInterval()
-    } else {
-      stopInterval()
-    }
-    startStopMetronome()
+  const handleTimeSignatureNumerator = (value: number) => {
+    setTimeSignatureNumerator(value)
+    setBeatIndex(0)
   }
 
   return {
     isPlaying,
     bpm,
-    handlePlayStopPress,
+    timeSignatureNumerator,
+    togglePlay,
+    handleChangeBPM,
+    handleTimeSignatureNumerator,
   }
 }
