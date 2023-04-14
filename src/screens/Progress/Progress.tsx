@@ -1,10 +1,14 @@
 import { View, Chart, Header, NoCardBg } from '@components'
 import { useExercises } from '@hooks'
 import { BaseLayout } from '@layouts'
+import { useState } from 'react'
 import { FlatList } from 'react-native'
 
 const Progress = () => {
+  const [scrollEnabled, setScrollEnabled] = useState(true)
   const { exercises } = useExercises()
+
+  const onChartInteraction = (isInteracting: boolean) => setScrollEnabled(!isInteracting)
 
   return (
     <BaseLayout view>
@@ -21,12 +25,14 @@ const Progress = () => {
             name={item.name} 
             color={item.color}
             id={item.id}
+            onInteraction={onChartInteraction}
           />
         )}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}
         ItemSeparatorComponent={() => <View mv={8} />} 
         bounces={false}
+        scrollEnabled={scrollEnabled}
       />
     </BaseLayout>
   )

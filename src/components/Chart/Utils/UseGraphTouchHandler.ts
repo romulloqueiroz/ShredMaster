@@ -8,6 +8,7 @@ export const useGraphTouchHandler = (
   xValues: number[],
   yValues: number[],
   onCursorUpdate: (index: number) => void,
+  onInteraction: (id: boolean) => void,
 ) => {
   const gestureActive = useValue(false)
   const offsetX = useValue(0)
@@ -15,10 +16,16 @@ export const useGraphTouchHandler = (
     onStart: (pos) => {
       gestureActive.current = true
       offsetX.current = x.current - pos.x
+      onInteraction(true)
     },
     onActive: (pos) => {
+      const sensitivity = 1.5
       if (gestureActive.current) {
-        const potentialX = clamp(offsetX.current + pos.x, xValues[0], xValues[xValues.length - 1])
+        const potentialX = clamp(
+          offsetX.current + pos.x * sensitivity,
+          xValues[0],
+          xValues[xValues.length - 1]
+        );
         const closestIndex = xValues.reduce((prev, curr, index) => {
           return Math.abs(curr - potentialX) < Math.abs(xValues[prev] - potentialX) ? index : prev
         }, 0)
@@ -30,6 +37,7 @@ export const useGraphTouchHandler = (
     onEnd: () => {
       if (gestureActive.current) 
         gestureActive.current = false
+      onInteraction(false)
     },
   }, [x, y, padding, xValues, yValues])
   return onTouch

@@ -18,7 +18,7 @@ const PADDING = 16
 const CHART_HEIGHT = 170
 const CHART_WIDTH = deviceWidth - PADDING * 2
 
-const Chart: React.FC<ChartProps> = ({ color, name, id }) => {
+const Chart: React.FC<ChartProps> = ({ color, name, id, onInteraction }) => {
   const { exercises } = useExercises()
 
   const values = useMemo(() => {
@@ -60,7 +60,8 @@ const Chart: React.FC<ChartProps> = ({ color, name, id }) => {
     PADDING, 
     xValues, 
     yValues, 
-    (idx: number) => setCorrespondingY(values[idx][1])
+    (idx: number) => setCorrespondingY(values[idx][1]),
+    onInteraction,
   )
 
   return (

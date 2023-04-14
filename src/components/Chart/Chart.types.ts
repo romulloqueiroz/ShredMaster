@@ -6,4 +6,5 @@ export interface ChartProps {
   color: keyof GradientsType
   name: string
   id: string
+  onInteraction: (id: boolean) => void
 }
