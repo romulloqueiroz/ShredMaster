@@ -1,4 +1,4 @@
-import { Header, Text, View } from '@components'
+import { Header, Text, View, Metronome } from '@components'
 import { BaseLayout } from '@layouts'
 
 const About = () => {
@@ -6,7 +6,7 @@ const About = () => {
     <BaseLayout>
       <Header title='About' />
       <View mb={12} />
-      <Text>About</Text>
+      <Metronome />
     </BaseLayout>
   )
 }
