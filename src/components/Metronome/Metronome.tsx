@@ -9,9 +9,11 @@ const Metronome = () => {
     isPlaying,
     bpm,
     timeSignatureNumerator,
+    timeSignatureDenominator,
     togglePlay,
     handleChangeBPM,
     handleTimeSignatureNumerator,
+    handleTimeSignatureDenominator,
   } = useMetronome();
 
   return (
@@ -21,13 +23,20 @@ const Metronome = () => {
 
       <View>
         <Text>Metronome</Text>
-        <Text>Time Signature: {timeSignatureNumerator}/4</Text>
+        <Text>Time Signature: {timeSignatureNumerator}/{timeSignatureDenominator}</Text>
         <Slider
           value={timeSignatureNumerator}
           minimumValue={2}
           maximumValue={20}
           step={1}
           onValueChange={handleTimeSignatureNumerator}
+        />
+        <Slider
+          value={timeSignatureDenominator}
+          minimumValue={4}
+          maximumValue={16}
+          step={4}
+          onValueChange={handleTimeSignatureDenominator}
         />
         <Text>BPM: {bpm}</Text>
         <Slider

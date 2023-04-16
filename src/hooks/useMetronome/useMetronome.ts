@@ -5,6 +5,7 @@ export const useMetronome = () => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [bpm, setBpm] = useState(100)
   const [timeSignatureNumerator, setTimeSignatureNumerator] = useState(4)
+  const [timeSignatureDenominator, setTimeSignatureDenominator] = useState(4) 
   const [beatIndex, setBeatIndex] = useState(0)
   const [soundsLoaded, setSoundsLoaded] = useState(false)
 
@@ -14,7 +15,8 @@ export const useMetronome = () => {
   const strongBeat = useRef(new Audio.Sound())
   const normalBeat = useRef(new Audio.Sound())
 
-  const oneBeatDurationInMs = (bpm: number) => 60000 / bpm
+  const oneBeatDurationInMs = (bpm: number) => (60000 / bpm) * (4 / timeSignatureDenominator)
+
   const oneBeatInSeconds = oneBeatDurationInMs(bpm) / 1000
 
   const preloadSounds = async () => {
@@ -72,12 +74,19 @@ export const useMetronome = () => {
     setBeatIndex(0)
   }
 
+  const handleTimeSignatureDenominator = (value: number) => {
+    setTimeSignatureDenominator(value)
+    setBeatIndex(0)
+  }
+
   return {
     isPlaying,
     bpm,
     timeSignatureNumerator,
+    timeSignatureDenominator,
     togglePlay,
     handleChangeBPM,
     handleTimeSignatureNumerator,
+    handleTimeSignatureDenominator,
   }
 }
