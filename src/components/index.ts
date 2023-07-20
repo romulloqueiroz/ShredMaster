@@ -12,6 +12,7 @@ import Instrument from './Instrument/Instrument'
 import Expander from './Expander/Expander'
 import ColorTag from './ColorTag/ColorTag'
 import Shredder from './Shredder/Shredder'
+import CircularKnob from './CircularKnob/CircularKnob2'
 import ShredderModal from './ShredderModal/ShredderModal'
 import LinearProgress from './LinearProgress/LinearProgress'
 import Header from './Header/Header'
@@ -33,6 +34,7 @@ export {
   Expander,
   TabataDisplay,
   LinearProgress,
+  CircularKnob,
   CircularProgress,
   Metronome,
   Input,

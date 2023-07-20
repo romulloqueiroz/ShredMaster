@@ -1,6 +1,8 @@
 import { useFonts } from 'expo-font'
 import { Navigation } from '@navigation'
 import { RecoilRoot } from 'recoil'
+import 'react-native-gesture-handler'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 const useLoading = () => {
   const [fontsLoaded] = useFonts({
@@ -19,9 +21,11 @@ const App = () => {
   return (
     <>
       {isLoadingComplete && (
-        <RecoilRoot>
-          <Navigation />
-        </RecoilRoot>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <RecoilRoot>
+            <Navigation />
+          </RecoilRoot>
+        </GestureHandlerRootView>
       )}
     </>
   )

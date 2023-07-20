@@ -1,10 +1,13 @@
 import Text from '../Text/Text'
 import View from '../View/View'
 import Button from '../Button/Button'
+import CircularKnob from '../CircularKnob/CircularKnob2'
 import { useMetronome } from '@hooks'
 import Slider from '@react-native-community/slider'
+import { useState } from 'react'
 
 const Metronome = () => {
+  const [value, setValue] = useState(0)
   const {
     isPlaying,
     bpm,
@@ -19,7 +22,6 @@ const Metronome = () => {
   return (
     <>
       <Text size={24} mb={12}>Metronome</Text>
-
 
       <View>
         <Text>Metronome</Text>
@@ -48,6 +50,23 @@ const Metronome = () => {
         />
         <Button onPress={togglePlay} title={isPlaying ? 'Stop' : 'Play'} />
       </View>
+
+      <View mh={12} />
+
+      <View bw={1} bc='red1' h={200} w={200}>
+        <CircularKnob
+          minValue={40} 
+          maxValue={240}
+          // onChange={setValue}
+          // color='green'
+          // strokeWidth={20}
+          // minValue={20}
+          // maxValue={400}
+          onValueChange={(val: number) => setValue(val)}
+        />
+      </View>
+
+      <Text>{value}</Text>
     </>
   )
 }

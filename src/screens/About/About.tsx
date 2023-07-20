@@ -3,7 +3,7 @@ import { BaseLayout } from '@layouts'
 
 const About = () => {
   return (
-    <BaseLayout>
+    <BaseLayout view>
       <Header title='About' />
       <View mb={12} />
       <Metronome />
