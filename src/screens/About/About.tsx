@@ -1,4 +1,4 @@
-import { Header, Text, View, Metronome } from '@components'
+import { Header, View, Metronome } from '@components'
 import { BaseLayout } from '@layouts'
 
 const About = () => {
