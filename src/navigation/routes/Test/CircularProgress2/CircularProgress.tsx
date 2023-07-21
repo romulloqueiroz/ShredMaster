@@ -1,5 +1,5 @@
 import { memo, useMemo, useEffect } from 'react'
-import View from '../View/View'
+import { View } from '@components'
 import {
   Canvas,
   Path,
@@ -23,7 +23,6 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   color = 'red',
   maxValue = 100,
   currentValue = 0,
-  mode,
 }) => {
   const radius = size / 2 - strokeWidth
 
@@ -39,11 +38,6 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   useEffect(() => {
     progressValue.current = currentValue / maxValue
   }, [currentValue, maxValue])
-
-  useEffect(() => {
-    progressValue.current = 0
-    animatedProgress.current = 0
-  }, [mode])
 
   const clock = useClockValue()
 

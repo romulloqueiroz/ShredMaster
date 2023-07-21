@@ -56,7 +56,7 @@ const Timer = () => {
           main='center'
           cross='center'
         >
-          <View absolute>
+          <View absolute bw={3} bc='blue1'>
             <CircularProgress 
               size={DISPLAY_SIZE - 10} 
               strokeWidth={18} 
@@ -68,22 +68,22 @@ const Timer = () => {
           </View>
 
           <View main='center' cross='center'>
-          <Text 
-            size={24} 
-            color={getModeColor(flag)}
-          >
-            {flag.charAt(0).toUpperCase() + flag.slice(1)}
-          </Text>
-          <Text 
-            mb={8}
-            size={40} 
-            color={getModeColor(flag)}
-          >
-            {secondsToMinutes(countdown)}
-          </Text>
-          <Text>Total time</Text>
-          <Text size={14} color='blue2'>{secondsToMinutes(totalTime)}</Text>
-        </View>
+            <Text 
+              size={24} 
+              color={getModeColor(flag)}
+            >
+              {flag.charAt(0).toUpperCase() + flag.slice(1)}
+            </Text>
+            <Text 
+              mb={8}
+              size={40} 
+              color={getModeColor(flag)}
+            >
+              {secondsToMinutes(countdown)}
+            </Text>
+            <Text>Total time</Text>
+            <Text size={14} color='blue2'>{secondsToMinutes(totalTime)}</Text>
+          </View>
         </View>
       </View>
 
