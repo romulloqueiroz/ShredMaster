@@ -1,4 +1,3 @@
-import { View } from 'react-native-rom-components'
 import Text from './Text/Text'
 import Scroll from './Scroll/Scroll'
 import Chart from './Chart/Chart'
@@ -26,7 +25,6 @@ import PopupModal from './PopupModal/PopupModal'
 import ModalCard from './ModalCard/ModalCard'
 
 export {
-  View,
   Text,
   Scroll,
   Chart,
