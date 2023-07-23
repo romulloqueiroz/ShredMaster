@@ -1,4 +1,5 @@
-import { Header, View, Metronome } from '@components'
+import { Header, Metronome } from '@components'
+import { View } from 'react-native-rom-components'
 import { BaseLayout } from '@layouts'
 
 const About = () => {

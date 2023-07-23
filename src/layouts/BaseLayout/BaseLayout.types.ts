@@ -1,4 +1,5 @@
-import { View, Scroll } from '@components'
+import { Scroll } from '@components'
+import { View } from 'react-native-rom-components'
 
 export interface BaseLayoutProps {
   type?: typeof Scroll | typeof View

@@ -1,4 +1,5 @@
-import { View,Text, Button, ModalCard } from '@components'
+import { Text, Button, ModalCard } from '@components'
+import { View } from 'react-native-rom-components'
 import { useNavigation } from '@hooks'
 import { StartPracticeModalProps } from './StartPracticeModal.types'
 

@@ -1,4 +1,5 @@
-import { View, Text, Instrument, Touchable } from '@components'
+import { Text, Instrument, Touchable } from '@components'
+import { View } from 'react-native-rom-components'
 import { InstrumentsType } from '@styles'
 import { useState } from 'react'
 

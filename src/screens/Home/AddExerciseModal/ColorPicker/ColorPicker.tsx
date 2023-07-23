@@ -1,4 +1,5 @@
-import { View, Text, ColorTag } from '@components'
+import { Text, ColorTag } from '@components'
+import { View } from 'react-native-rom-components'
 import { GradientsType } from '@styles'
 import { useState } from 'react'
 import { FlatList } from 'react-native'

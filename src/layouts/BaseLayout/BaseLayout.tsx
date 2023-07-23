@@ -1,4 +1,5 @@
-import { View, Scroll } from '@components'
+import { Scroll } from '@components'
+import { View } from 'react-native-rom-components'
 import { BaseLayoutProps } from './BaseLayout.types'
 
 const BaseLayout: React.FC<BaseLayoutProps> = ({

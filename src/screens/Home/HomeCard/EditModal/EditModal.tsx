@@ -1,10 +1,10 @@
 import {
-  View,
   Text,
   ModalCard,
   Input,
   Button,
 } from '@components'
+import { View } from 'react-native-rom-components'
 import { useExercises } from '@hooks'
 import { useState } from 'react'
 import { EditModalProps } from './EditModal.types'

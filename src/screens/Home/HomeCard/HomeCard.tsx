@@ -1,11 +1,11 @@
 import {
-  View,
   Text, 
   Icon,
   Touchable,
   Instrument,
   PopupModal,
 } from '@components'
+import { View } from 'react-native-rom-components'
 import { truncateString } from '@helpers'
 import { HomeCardProps } from './HomeCard.types'
 import { useState } from 'react'

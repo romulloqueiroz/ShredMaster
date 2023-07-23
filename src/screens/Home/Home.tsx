@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { FlatList } from 'react-native'
 import { BaseLayout } from '@layouts'
 import { 
-  View, 
   Header, 
   PopupModal,
   Button,
   RoundButton,
   NoCardBg,
 } from '@components'
+import { View } from 'react-native-rom-components'
 import { AddExerciseModal } from './AddExerciseModal/AddExerciseModal'
 import { useExercises } from '@hooks'
 import { HomeCard } from './HomeCard/HomeCard'

@@ -8,8 +8,8 @@ const Stack = createNativeStackNavigator<RoutesList>()
 
 const Routes = () => (
   <Stack.Navigator screenOptions={{ headerShown: false, animation: 'none' }}>
-    <Stack.Screen name='Root' component={Test} />
-    {/* <Stack.Screen name='Root' component={BottomTabNavigator} /> */}
+    {/* <Stack.Screen name='Root' component={Test} /> */}
+    <Stack.Screen name='Root' component={BottomTabNavigator} />
     <Stack.Screen name='Tabata' component={Tabata} />
     <Stack.Screen name='Timer' component={Timer} />
   </Stack.Navigator>

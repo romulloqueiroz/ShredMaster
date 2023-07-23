@@ -1,16 +1,18 @@
 import {
-  View,
   Text,
-  ModalCard, Button
-} from '@components';
-import { useExercises } from '@hooks';
+  ModalCard, 
+  Button
+} from '@components'
+import { View } from 'react-native-rom-components'
+import { useExercises } from '@hooks'
 
 interface ConfirmDeleteModalProps {
-  onDismiss: () => void;
-  id: string;
+  onDismiss: () => void
+  id: string
 }
+
 export const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({ onDismiss, id }) => {
-  const { removeExercise } = useExercises();
+  const { removeExercise } = useExercises()
   return (
     <ModalCard noCloseButton>
       <View mb={12} cross='center'>
@@ -35,5 +37,5 @@ export const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({ onDismis
           }} />
       </View>
     </ModalCard>
-  );
-};
+  )
+}

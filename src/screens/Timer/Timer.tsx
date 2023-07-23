@@ -1,4 +1,5 @@
-import { View, Text, HeaderBack, CircularProgress, Button, RoundButton } from '@components'
+import { Text, HeaderBack, CircularProgress, Button, RoundButton } from '@components'
+import { View } from 'react-native-rom-components'
 import { useRoute, useCountdown, useNavigation, useExercises } from '@hooks'
 import { BaseLayout } from '@layouts'
 import { GradientsType, deviceWidth } from '@styles'

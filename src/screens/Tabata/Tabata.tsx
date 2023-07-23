@@ -3,13 +3,13 @@ import { deviceWidth } from '@styles'
 import { useTabata, useRoute } from '@hooks'
 import { memo, useMemo, useEffect, useState } from 'react'
 import { 
-  View, 
   Text, 
   TabataDisplay,
   LinearProgress, 
   HeaderBack,
   RoundButton,
 } from '@components'
+import { View } from 'react-native-rom-components'
 
 const Practice = () => {
   const { params: { id, name, bpm, color, prepare, work, rest, rounds } } = useRoute<'Tabata'>()
