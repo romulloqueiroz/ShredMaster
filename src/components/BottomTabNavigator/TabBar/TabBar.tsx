@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Dimensions } from 'react-native'
-import View from '../../View/View'
+import { View } from 'react-native-rom-components'
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated'
 import TabItem from '../TabItem/TabItem'
 import { TabBarProps } from './TabBar.types'

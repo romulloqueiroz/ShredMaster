@@ -1,5 +1,5 @@
 import React from 'react'
-import View from '../View/View'
+import { View } from 'react-native-rom-components'
 import { SafeAreaView } from 'react-native'
 import { os, statusBarHeight } from '@styles'
 

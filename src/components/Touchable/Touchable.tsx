@@ -1,5 +1,5 @@
 import { TouchableOpacity } from 'react-native'
-import View from '../View/View'
+import { View } from 'react-native-rom-components'
 import { TouchableProps } from './Touchable.types'
 
 const Touchable: React.FC<Partial<TouchableProps>> = ({

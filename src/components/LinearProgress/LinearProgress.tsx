@@ -1,4 +1,4 @@
-import View from '../View/View'
+import { View } from 'react-native-rom-components'
 import { colors } from '@styles'
 import { addOpacity } from '@helpers'
 import { LinearProgressProps } from './LinearProgress.types'

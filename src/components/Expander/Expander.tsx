@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import View from '../View/View'
+import { View } from 'react-native-rom-components'
 import Text from '../Text/Text'
 import Touchable from '../Touchable/Touchable'
 import ColorTag from '../ColorTag/ColorTag'

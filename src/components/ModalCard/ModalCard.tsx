@@ -1,5 +1,5 @@
 import React from 'react'
-import View from '../View/View'
+import { View } from 'react-native-rom-components'
 import Icon from '../Icon/Icon'
 import Touchable from '../Touchable/Touchable'
 import { deviceWidth } from '@styles'

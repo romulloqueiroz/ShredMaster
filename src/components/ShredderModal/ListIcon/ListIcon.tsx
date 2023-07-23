@@ -1,4 +1,4 @@
-import View from '../../View/View'
+import { View } from 'react-native-rom-components'
 import Text from '../../Text/Text'
 import Shredder from '../../Shredder/Shredder'
 import { ListIconProps } from './ListIcon.types'

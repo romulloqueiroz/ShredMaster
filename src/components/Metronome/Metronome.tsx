@@ -1,5 +1,5 @@
 import Text from '../Text/Text'
-import View from '../View/View'
+import { View } from 'react-native-rom-components'
 import Button from '../Button/Button'
 import CircularKnob from '../CircularKnob/CircularKnob2'
 import { useMetronome } from '@hooks'

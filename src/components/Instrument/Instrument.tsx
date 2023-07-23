@@ -1,4 +1,4 @@
-import View from '../View/View'
+import { View } from 'react-native-rom-components'
 import { instruments } from '@styles'
 import { Canvas, Path, rect, FitBox } from '@shopify/react-native-skia'
 import { InstrumentProps } from './Instrument.types'

@@ -1,6 +1,6 @@
 import { useMemo, useEffect, useState } from 'react'
 import { Canvas, Group, useValue } from '@shopify/react-native-skia'
-import View from '../View/View'
+import { View } from 'react-native-rom-components'
 import { deviceWidth } from '@styles'
 import { useExercises } from '@hooks'
 import { buildGraph, useGraphTouchHandler } from './utils'

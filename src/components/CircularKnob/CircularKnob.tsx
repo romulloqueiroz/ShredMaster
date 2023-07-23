@@ -1,5 +1,5 @@
 import { memo, useMemo, useEffect, useRef } from 'react'
-import View from '../View/View'
+import { View } from 'react-native-rom-components'
 import {
   Canvas,
   Path,

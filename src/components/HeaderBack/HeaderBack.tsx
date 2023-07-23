@@ -1,4 +1,4 @@
-import View from '../View/View'
+import { View } from 'react-native-rom-components'
 import Icon from '../Icon/Icon'
 import PopupModal from '../PopupModal/PopupModal'
 import Touchable from '../Touchable/Touchable'

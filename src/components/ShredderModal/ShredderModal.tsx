@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Text from '../Text/Text'
-import View from '../View/View'
+import { View } from 'react-native-rom-components'
 import Shredder from '../Shredder/Shredder'
 import Touchable from '../Touchable/Touchable'
 import PopupModal from '../PopupModal/PopupModal'

@@ -1,4 +1,4 @@
-import View from '../../View/View'
+import { View } from 'react-native-rom-components'
 import Text from '../../Text/Text'
 import ModalCard from '../../ModalCard/ModalCard'
 import Button from '../../Button/Button'

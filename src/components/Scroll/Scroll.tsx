@@ -1,5 +1,5 @@
 import { ScrollView } from 'react-native'
-import View from '../View/View'
+import { View } from 'react-native-rom-components'
 import { ScrollProps } from './Scroll.types'
 
 const Scroll: React.FC<Partial<ScrollProps>> = ({
