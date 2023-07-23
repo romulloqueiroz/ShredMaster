@@ -1,10 +1,9 @@
-import { View } from '@components'
 import { useMemo } from 'react'
 import { Dimensions } from 'react-native'
 import CircularProgress from './CircularProgress2/CircularProgress'
 import { useCountdown } from './CircularProgress2/useCountdown'
 const { width: deviceWidth } = Dimensions.get('screen')
-
+import { View } from 'react-native-rom-components'
 const MAX_VALUE = 5
 
 const Test = () => {
