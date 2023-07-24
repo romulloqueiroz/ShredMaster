@@ -18,4 +18,3 @@ export const useCountdown = (totalTime: number) => {
 
   return { countdown, toggle, isPaused }
 }
-  
