@@ -24,19 +24,12 @@ const PopupModal: React.FC<PopupModalProps> = ({ children, onDismiss, isVisible 
 		opacity: backdropVisible ? interpolate(scale.value, [0, 1], [0, 0.6]) : 0,
 	}))
 
-	const animatedStyles = useAnimatedStyle(() => {
-		return { transform: [{ scale: scaleAnimated.value }] }
-	})
-
-	const animateFocus = () => {
-		scaleAnimated.value = withTiming(1, { duration: 180, easing: Easing.linear })
-	}
+	const animatedStyles = useAnimatedStyle(() => ({ transform: [{ scale: scaleAnimated.value }] }));
+	const animateFocus = () => scaleAnimated.value = withTiming(1, { duration: 80, easing: Easing.linear })
 
 	useEffect(() => {
 		scale.value = withTiming(isVisible ? 1 : 0)
-		if (!isVisible) {
-			Keyboard.dismiss()
-		}
+		if (!isVisible) Keyboard.dismiss()
 		animateFocus()
 		setBackdropVisible(isVisible)
 	}, [isVisible, backdropVisible])
@@ -49,12 +42,7 @@ const PopupModal: React.FC<PopupModalProps> = ({ children, onDismiss, isVisible 
 				<TouchableWithoutFeedback onPress={onDismiss}>
 					<Animated.View style={[ styles.backdrop, backdropAnimatedStyle]} />
 				</TouchableWithoutFeedback>
-				<Animated.View
-					style={[
-						styles.container, 
-						animatedStyles,
-					]}
-				>
+				<Animated.View style={[ styles.container, animatedStyles ]}>
 					{children}
 				</Animated.View>
 			</View>
