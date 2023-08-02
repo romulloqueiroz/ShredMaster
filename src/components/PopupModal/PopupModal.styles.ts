@@ -5,7 +5,6 @@ export default StyleSheet.create({
 			flex: 1,
 			justifyContent: 'center',
 			alignItems: 'center',
-			backgroundColor: 'transparent'
 		},
 		backdrop: {
 			position: 'absolute',
@@ -15,18 +14,4 @@ export default StyleSheet.create({
 			right: 0,
 			backgroundColor: '#000'
 		},
-		container: {
-			position: 'absolute',
-			borderRadius: 16,
-			shadowColor: '#000',
-			shadowOffset: {
-				width: 0,
-				height: 2,
-			},
-			shadowOpacity: 0.25,
-			shadowRadius: 3.84,
-			elevation: 5,
-			alignItems: 'center',
-			justifyContent: 'center'
-		}
 })

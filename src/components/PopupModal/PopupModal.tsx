@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import {
 	View,
 	TouchableWithoutFeedback,
 	Keyboard,
-	Modal as RNModal,
+	Modal,
 } from 'react-native'
 import Animated, {
-	Easing,
-	interpolate,
 	useAnimatedStyle,
 	useSharedValue,
 	withTiming,
@@ -16,37 +14,28 @@ import styles from './PopupModal.styles'
 import { PopupModalProps } from './PopupModal.types'
 
 const PopupModal: React.FC<PopupModalProps> = ({ children, onDismiss, isVisible }) => {
-	const scaleAnimated = useSharedValue(0)
-	const [backdropVisible, setBackdropVisible] = useState(false)
-	const scale = useSharedValue(0)
+	const opacity = useSharedValue(0)
 
 	const backdropAnimatedStyle = useAnimatedStyle(() => ({
-		opacity: backdropVisible ? interpolate(scale.value, [0, 1], [0, 0.6]) : 0,
+		opacity: opacity.value * 0.6,
 	}))
 
-	const animatedStyles = useAnimatedStyle(() => ({ transform: [{ scale: scaleAnimated.value }] }));
-	const animateFocus = () => scaleAnimated.value = withTiming(1, { duration: 80, easing: Easing.linear })
-
 	useEffect(() => {
-		scale.value = withTiming(isVisible ? 1 : 0)
+		opacity.value = withTiming(isVisible ? 1 : 0)
 		if (!isVisible) Keyboard.dismiss()
-		animateFocus()
-		setBackdropVisible(isVisible)
-	}, [isVisible, backdropVisible])
+	}, [isVisible])
 
-	if (!isVisible) return <View />
+	if (!isVisible) return null
 
 	return (
-		<RNModal transparent visible={isVisible}>
+		<Modal transparent visible={isVisible}>
 			<View style={styles.fullScreen}>
 				<TouchableWithoutFeedback onPress={onDismiss}>
 					<Animated.View style={[ styles.backdrop, backdropAnimatedStyle]} />
 				</TouchableWithoutFeedback>
-				<Animated.View style={[ styles.container, animatedStyles ]}>
-					{children}
-				</Animated.View>
+				{children}
 			</View>
-		</RNModal>
+		</Modal>
 	)
 }
 
