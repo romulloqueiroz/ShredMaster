@@ -6,7 +6,7 @@ const About = () => {
   return (
     <BaseLayout view>
       <Header title='About' />
-      <View mb={12} />
+      <View mb={12} /> 
       {/* <Metronome /> */}
     </BaseLayout>
   )
