@@ -58,6 +58,7 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
           onInstrumentSelected={(instrument) => setExerciseInstrument(instrument as InstrumentsType)} 
         />
 
+{/* 
         <View mv={14} />
 
         <View row main='center' mb={12}>
@@ -102,7 +103,7 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
           numeric
         />
 
-        <View mv={14} />
+        <View mv={14} /> */}
 
       </Scroll>
 
