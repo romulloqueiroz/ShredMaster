@@ -57,7 +57,7 @@ const Timer = () => {
           main='center'
           cross='center'
         >
-          <View absolute bw={3} bc='blue1'>
+          <View absolute>
             <CircularProgress 
               size={DISPLAY_SIZE - 10} 
               strokeWidth={18} 

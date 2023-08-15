@@ -60,7 +60,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
   const progress = useComputedValue(() => x.current / 180, [x])
 
   return (
-    <View w={size} h={size} style={{ transform: [{ rotate: `-90deg` }] }} bw={2}>
+    <View w={size} h={size} style={{ transform: [{ rotate: `-90deg` }] }}>
       <Canvas style={{ flex: 1 }}>
         <Group>
           <Path
