@@ -73,7 +73,8 @@ const Timer = () => {
               size={24} 
               color={getModeColor(flag)}
             >
-              {flag.charAt(0).toUpperCase() + flag.slice(1)}
+              {/* {flag.charAt(0).toUpperCase() + flag.slice(1)} */}
+              Time Left
             </Text>
             <Text 
               mb={8}
@@ -82,9 +83,10 @@ const Timer = () => {
             >
               {secondsToMinutes(countdown)}
             </Text>
-            <Text>Total time</Text>
-            <Text size={14} color='blue2'>{secondsToMinutes(totalTime)}</Text>
+            {/* <Text>Total time</Text>
+            <Text size={14} color='blue2'>{secondsToMinutes(totalTime)}</Text> */}
           </View>
+
         </View>
       </View>
 
