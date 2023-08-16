@@ -1,6 +1,6 @@
 import { Text, HeaderBack, CircularProgress, Button, RoundButton } from '@components'
 import { View } from 'react-native-rom-components'
-import { useRoute, useCountdown, useNavigation, useExercises } from '@hooks'
+import { useRoute, useCountdown, useNavigation, useExercises, useSimpleCountdown } from '@hooks'
 import { BaseLayout } from '@layouts'
 import { GradientsType, deviceWidth } from '@styles'
 import { useMemo, useState, useEffect } from 'react'
@@ -22,21 +22,38 @@ const getModeColor = (mode: string) => {
   }
 }
 
+const MAX_VALUE = 10
+
 const Timer = () => {
   const { updateExercise } = useExercises()
   const { navigate } = useNavigation()
   const [toggleRoundBtn, setToggleRoundBtn] = useState(true)
   const { params: { id, name, bpm, color, prepare, timer } } = useRoute<'Timer'>()
-  const { countdown, totalTime, flag, toggle, currentTotalTime } = useCountdown(5, 5) // prepare, timer
+  const { countdown, toggle, isPaused, reset } = useSimpleCountdown(MAX_VALUE)
+  // const { countdown, totalTime, flag, toggle, currentTotalTime } = useCountdown(5, 5) // prepare, timer
 
   const DISPLAY_SIZE = useMemo(() => deviceWidth * 0.7, [deviceWidth])
 
+  // useEffect(() => {
+  //   if (flag === 'finished') {
+  //     updateExercise(id, { newSectionBpm: bpm})
+  //     navigate('Root', { screen: 'Home' })
+  //   }
+  // }, [flag])
+
   useEffect(() => {
-    if (flag === 'finished') {
-      updateExercise(id, { newSectionBpm: bpm})
-      navigate('Root', { screen: 'Home' })
+    let timeoutId: NodeJS.Timeout | undefined;
+    if (countdown === 0) {
+      timeoutId = setTimeout(() => {
+        updateExercise(id, { newSectionBpm: bpm })
+        navigate('Root', { screen: 'Home' })
+      }, 1000)
     }
-  }, [flag])
+
+    return () => {
+      if (timeoutId) { clearTimeout(timeoutId) }
+    }
+  }, [countdown])
 
   return (
     <BaseLayout>
@@ -58,20 +75,28 @@ const Timer = () => {
           cross='center'
         >
           <View absolute>
-            <CircularProgress 
+            {/* <CircularProgress 
               size={DISPLAY_SIZE - 10} 
               strokeWidth={18} 
               color={getModeColor(flag).slice(0, -1) as keyof GradientsType}
               mode={flag}
               maxValue={currentTotalTime - 1}
               currentValue={currentTotalTime - countdown}
+            /> */}
+            <CircularProgress 
+              size={DISPLAY_SIZE} 
+              strokeWidth={18} 
+              color={getModeColor('work').slice(0, -1) as keyof GradientsType}
+              maxValue={MAX_VALUE}
+              currentValue={MAX_VALUE - countdown}
             />
           </View>
 
           <View main='center' cross='center'>
             <Text 
               size={24} 
-              color={getModeColor(flag)}
+              color={getModeColor('work')}
+              // color={getModeColor(flag)}
             >
               {/* {flag.charAt(0).toUpperCase() + flag.slice(1)} */}
               Time Left
@@ -79,7 +104,8 @@ const Timer = () => {
             <Text 
               mb={8}
               size={40} 
-              color={getModeColor(flag)}
+              color={getModeColor('work')}
+              // color={getModeColor(flag)}
             >
               {secondsToMinutes(countdown)}
             </Text>

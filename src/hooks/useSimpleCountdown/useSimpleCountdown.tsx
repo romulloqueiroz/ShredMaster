@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 export const useSimpleCountdown = (totalTime: number) => {
   const [countdown, setCountdown] = useState<number>(totalTime)
-  const [isPaused, setIsPaused] = useState<boolean>(true)
+  const [isPaused, setIsPaused] = useState<boolean>(false)
 
   useEffect(() => {
     if (countdown === 0 || isPaused) return
