@@ -22,7 +22,8 @@ const getModeColor = (mode: string) => {
   }
 }
 
-const MAX_VALUE = 10
+const MAX_VALUE = 5
+// const MAX_VALUE = 1800
 
 const Timer = () => {
   const { updateExercise } = useExercises()
