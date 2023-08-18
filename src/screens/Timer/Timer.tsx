@@ -1,9 +1,10 @@
-import { Text, HeaderBack, CircularProgress, Button, RoundButton } from '@components'
+import { Text, HeaderBack, CircularProgress, PopupModal, RoundButton } from '@components'
 import { View } from 'react-native-rom-components'
 import { useRoute, useCountdown, useNavigation, useExercises, useSimpleCountdown } from '@hooks'
 import { BaseLayout } from '@layouts'
 import { GradientsType, deviceWidth } from '@styles'
 import { useMemo, useState, useEffect } from 'react'
+import { TimerEndModal } from './TimerEndModal/TimerEndModal'
 
 const secondsToMinutes = (seconds: number) => new Date(seconds * 1000).toISOString().slice(14, 19)
 
@@ -26,6 +27,7 @@ const MAX_VALUE = 5
 // const MAX_VALUE = 1800
 
 const Timer = () => {
+  const [isVisible, setIsVisible] = useState(false)
   const { updateExercise } = useExercises()
   const { navigate } = useNavigation()
   const [toggleRoundBtn, setToggleRoundBtn] = useState(true)
@@ -47,7 +49,7 @@ const Timer = () => {
     if (countdown === 0) {
       timeoutId = setTimeout(() => {
         updateExercise(id, { newSectionBpm: bpm })
-        navigate('Root', { screen: 'Home' })
+        setIsVisible(true)
       }, 1000)
     }
 
@@ -55,6 +57,11 @@ const Timer = () => {
       if (timeoutId) { clearTimeout(timeoutId) }
     }
   }, [countdown])
+
+  const handleDismiss = () => {
+    setIsVisible(false)
+    navigate('Root', { screen: 'Home' })
+  }
 
   return (
     <BaseLayout>
@@ -130,6 +137,10 @@ const Timer = () => {
           icon={toggleRoundBtn ? 'pause' : 'play'}
         />
       </View>
+
+      <PopupModal isVisible={isVisible} onDismiss={handleDismiss}>
+        <TimerEndModal onDismiss={handleDismiss} />
+      </PopupModal>
 
     </BaseLayout>
   )
