@@ -17,7 +17,7 @@ const PADDING = 16
 const CHART_HEIGHT = 170
 const CHART_WIDTH = deviceWidth - PADDING * 2
 
-const Chart: React.FC<ChartProps> = ({ color, name, id, onInteraction, exercise }) => {
+const Chart: React.FC<ChartProps> = ({ color, name, onInteraction, exercise }) => {
   const values = exercise.sectionByBpm as SectionByBPMList
   const graphs = buildGraph(values, CHART_WIDTH, CHART_HEIGHT, PADDING)
 

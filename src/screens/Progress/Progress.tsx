@@ -25,7 +25,6 @@ const Progress = () => {
             key={item.id} 
             name={item.name} 
             color={item.color}
-            id={item.id}
             exercise={item}
             onInteraction={onChartInteraction}
           />
