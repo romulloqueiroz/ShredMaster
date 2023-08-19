@@ -1,6 +1,9 @@
 import { Text, Button, ModalCard } from '@components'
 import { View } from 'react-native-rom-components'
-import { useNavigation, useExercises } from '@hooks'
+import { 
+  useNavigation, 
+  // useExercises 
+} from '@hooks'
 import { StartPracticeModalProps } from './StartPracticeModal.types'
 
 const tempMode = 'Timer'
@@ -26,7 +29,7 @@ export const StartPracticeModal: React.FC<StartPracticeModalProps> = ({
     timer: tempTimer,
   }
   const { navigate } = useNavigation()
-  const { updateExercise } = useExercises()
+  // const { updateExercise } = useExercises()
   return (
     <ModalCard noCloseButton>
       <View mb={12} cross='center'>

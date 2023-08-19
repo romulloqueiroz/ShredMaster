@@ -1,8 +1,7 @@
-import { useMemo, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Canvas, Group, useValue } from '@shopify/react-native-skia'
 import { View } from 'react-native-rom-components'
 import { deviceWidth } from '@styles'
-import { useExercises } from '@hooks'
 import { buildGraph, useGraphTouchHandler } from './utils'
 import { ChartProps, SectionByBPMList } from './Chart.types'
 import { 
@@ -18,25 +17,10 @@ const PADDING = 16
 const CHART_HEIGHT = 170
 const CHART_WIDTH = deviceWidth - PADDING * 2
 
-const Chart: React.FC<ChartProps> = ({ color, name, id, onInteraction }) => {
-  const { exercises } = useExercises()
+const Chart: React.FC<ChartProps> = ({ color, name, id, onInteraction, exercise }) => {
+  const values = exercise.sectionByBpm as SectionByBPMList
+  const graphs = buildGraph(values, CHART_WIDTH, CHART_HEIGHT, PADDING)
 
-  const values = useMemo(() => {
-    const exercise = exercises.find(exercise => exercise.id === id)
-    return exercise?.sectionByBpm as SectionByBPMList
-  }, [exercises, name])
-
-  const graphs = useMemo(() => buildGraph(
-    values, 
-    CHART_WIDTH, 
-    CHART_HEIGHT, 
-    PADDING
-  ), [
-    values, 
-    CHART_WIDTH,
-    CHART_HEIGHT,
-    PADDING
-  ])
   const { path, xValues, yValues } = graphs
 
   const x = useValue(xValues[xValues.length - 1])

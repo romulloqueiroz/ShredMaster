@@ -14,7 +14,10 @@ import { useExercises } from '@hooks'
 import { HomeCard } from './HomeCard/HomeCard'
 
 const Home = () => {
-  const { exercises, resetExercises } = useExercises()
+  const { 
+    exercises, 
+    // resetExercises 
+  } = useExercises()
   const [isVisible, setIsVisible] = useState(false)
 
   return (

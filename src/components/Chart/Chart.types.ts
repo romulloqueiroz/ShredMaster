@@ -1,4 +1,5 @@
 import { GradientsType } from '@styles'
+import { Exercise } from '@state'
 
 export type SectionByBPMList = [number, number][]
 
@@ -7,4 +8,5 @@ export interface ChartProps {
   name: string
   id: string
   onInteraction: (id: boolean) => void
+  exercise: Exercise
 }

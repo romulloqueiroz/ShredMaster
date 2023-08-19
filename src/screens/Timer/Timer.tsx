@@ -28,7 +28,7 @@ const MAX_VALUE = 5
 
 const Timer = () => {
   const [isVisible, setIsVisible] = useState(false)
-  const { updateExercise } = useExercises()
+  const { updateExercise, exercises } = useExercises()
   const { navigate } = useNavigation()
   const [toggleRoundBtn, setToggleRoundBtn] = useState(true)
   const { params: { id, name, bpm, color, prepare, timer } } = useRoute<'Timer'>()
@@ -48,8 +48,8 @@ const Timer = () => {
     let timeoutId: NodeJS.Timeout | undefined;
     if (countdown === 0) {
       timeoutId = setTimeout(() => {
-        updateExercise(id, { newSectionBpm: bpm })
         setIsVisible(true)
+        updateExercise(id, { newSectionBpm: bpm })
       }, 1000)
     }
 
@@ -139,7 +139,11 @@ const Timer = () => {
       </View>
 
       <PopupModal isVisible={isVisible} onDismiss={handleDismiss}>
-        <TimerEndModal onDismiss={handleDismiss} />
+        <TimerEndModal 
+          onDismiss={handleDismiss} 
+          id={id}
+          bpm={bpm}
+        />
       </PopupModal>
 
     </BaseLayout>

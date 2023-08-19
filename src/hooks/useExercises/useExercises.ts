@@ -80,7 +80,11 @@ export const useExercises = () => {
       newName,
       newBpm,
       newSectionBpm,
-    }: { newName?: string, newBpm?: number, newSectionBpm?: number }
+    }: { 
+      newName?: string, 
+      newBpm?: number, 
+      newSectionBpm?: number 
+    }
   ) => {
     const newExercises = exercises.map((exercise) => {
       if (exercise.id === id) {
