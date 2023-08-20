@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Canvas, Group, useValue } from '@shopify/react-native-skia'
 import { View } from 'react-native-rom-components'
 import { deviceWidth } from '@styles'
@@ -30,13 +30,17 @@ const Chart: React.FC<ChartProps> = ({ color, name, onInteraction, exercise }) =
     values[values.length - 1]?.[1] ?? 0
   )
   
+  const isInitialMount = useRef(true)
   useEffect(() => {
-    if (xValues.length > 0 && yValues.length > 0) {
-      x.current = xValues[xValues.length - 1]
-      y.current = yValues[yValues.length - 1]
-      setCorrespondingY(values[values.length - 1]?.[1] ?? 0)
+    if (isInitialMount.current) {
+      if (xValues.length > 0 && yValues.length > 0) {
+        x.current = xValues[xValues.length - 1]
+        y.current = yValues[yValues.length - 1]
+        setCorrespondingY(values[values.length - 1]?.[1] ?? 0)
+      }
+      isInitialMount.current = false
     }
-  }, [xValues, yValues, x, y])
+  }, [xValues, yValues])
 
   const onTouch = useGraphTouchHandler(
     x, 
