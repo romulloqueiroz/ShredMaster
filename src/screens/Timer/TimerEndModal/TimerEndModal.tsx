@@ -10,7 +10,7 @@ export interface TimerEndModalProps {
   bpm: number
 }
 
-export const TimerEndModal: React.FC<TimerEndModalProps> = ({ onDismiss, id, bpm }) => {
+export const TimerEndModal: React.FC<TimerEndModalProps> = ({ onDismiss, id, bpm = 0 }) => {
   const { addExercise, updateExercise } = useExercises()
   const [exerciseBPM, setExerciseBPM] = useState(bpm)
 
@@ -38,7 +38,7 @@ export const TimerEndModal: React.FC<TimerEndModalProps> = ({ onDismiss, id, bpm
             color='red1' 
             onPress={() => {
               onDismiss()
-              updateExercise(id, { newBpm: exerciseBPM })
+              updateExercise(id, { newBpm: exerciseBPM, newSectionBpm: exerciseBPM })
             }} 
           />
         </View>

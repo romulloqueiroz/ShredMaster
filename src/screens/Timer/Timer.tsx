@@ -1,6 +1,12 @@
 import { Text, HeaderBack, CircularProgress, PopupModal, RoundButton } from '@components'
 import { View } from 'react-native-rom-components'
-import { useRoute, useCountdown, useNavigation, useExercises, useSimpleCountdown } from '@hooks'
+import { 
+  useRoute, 
+  // useCountdown, 
+  useNavigation, 
+  useExercises, 
+  useSimpleCountdown 
+} from '@hooks'
 import { BaseLayout } from '@layouts'
 import { GradientsType, deviceWidth } from '@styles'
 import { useMemo, useState, useEffect } from 'react'
