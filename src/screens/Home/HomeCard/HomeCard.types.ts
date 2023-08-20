@@ -6,8 +6,8 @@ export interface HomeCardProps {
   color: keyof GradientsType
   instrument: InstrumentsType
   id: string
-  prepare: number
-  work: number
-  rest: number
-  rounds: number
+  // prepare: number
+  // work: number
+  // rest: number
+  // rounds: number
 }

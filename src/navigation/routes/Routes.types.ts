@@ -8,17 +8,17 @@ export type RoutesList = {
     name: string, 
     bpm: number,
     color: keyof GradientsType 
-    prepare: number
-    work: number
-    rest: number
-    rounds: number
+    // prepare: number
+    // work: number
+    // rest: number
+    // rounds: number
   }
   Timer: {
     id: string
     name: string
     bpm: number
     color: keyof GradientsType
-    prepare: number
+    // prepare: number
     timer: number
   }
 }

@@ -19,10 +19,10 @@ export const HomeCard: React.FC<HomeCardProps> = ({
   color, 
   instrument, 
   id, 
-  prepare, 
-  work, 
-  rest,
-  rounds
+  // prepare, 
+  // work, 
+  // rest,
+  // rounds
 }) => {
   const [isPracticeModalVisible, setIsPracticeModalVisible] = useState(false)
   const [isEditModalVisible, setIsEditModalVisible] = useState(false)
@@ -76,10 +76,10 @@ export const HomeCard: React.FC<HomeCardProps> = ({
           name={name}
           bpm={bpm}
           color={color}
-          prepare={prepare}
-          work={work}
-          rest={rest}
-          rounds={rounds}
+          // prepare={prepare}
+          // work={work}
+          // rest={rest}
+          // rounds={rounds}
         />
       </PopupModal>
 

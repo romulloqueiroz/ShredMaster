@@ -15,7 +15,7 @@ export const StartPracticeModal: React.FC<StartPracticeModalProps> = ({
   name, 
   bpm, 
   color,
-  prepare, 
+  // prepare, 
   // work,
   // rest,
   // rounds,
@@ -25,7 +25,7 @@ export const StartPracticeModal: React.FC<StartPracticeModalProps> = ({
     name,
     bpm,
     color,
-    prepare,
+    // prepare,
     timer: tempTimer,
   }
   const { navigate } = useNavigation()

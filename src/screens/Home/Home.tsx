@@ -39,10 +39,10 @@ const Home = () => {
             bpm={item.bpm}
             color={item.color}
             instrument={item.instrument}
-            prepare={item.prepare}
-            work={item.work}
-            rest={item.rest}
-            rounds={item.rounds}
+            // prepare={item.prepare}
+            // work={item.work}
+            // rest={item.rest}
+            // rounds={item.rounds}
           />
         )}
         showsVerticalScrollIndicator={false}
