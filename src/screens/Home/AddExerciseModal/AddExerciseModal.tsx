@@ -44,7 +44,7 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
 
         <View mv={14} />
 
-        <Text>Tempo: 4/4</Text>
+        {/* <Text>Tempo: 4/4</Text> */}
 
         <View mv={14} />
 

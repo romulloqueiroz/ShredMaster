@@ -57,7 +57,7 @@ export const HomeCard: React.FC<HomeCardProps> = ({
 
           <View row main='space-between'>
             <Text size={16}>{bpm} bpms</Text>
-            <Text size={16}>4/4</Text>
+            {/* <Text size={16}>4/4</Text> */}
           </View>
         </View>
 
