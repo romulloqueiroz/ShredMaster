@@ -13,7 +13,7 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
   const [exerciseBPM, setExerciseBPM] = useState(60)
   const [exerciseColor, setExerciseColor] = useState<keyof GradientsType>('green')
   const [exerciseInstrument, setExerciseInstrument] = useState<InstrumentsType>('guitar')
-  const [prepare, setPrepare] = useState(10)
+  // const [prepare, setPrepare] = useState(10)
   const [work, setWork] = useState(10)
   const [rest, setRest] = useState(10)
   const [rounds, setRounds] = useState(10)
@@ -116,10 +116,10 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
               exerciseBPM, 
               exerciseColor, 
               exerciseInstrument,
-              prepare,
-              work,
-              rest,
-              rounds,
+              // prepare,
+              // work,
+              // rest,
+              // rounds,
             )
             onDismiss()
           }} 

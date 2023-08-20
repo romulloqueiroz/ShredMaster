@@ -2,7 +2,7 @@ import { Chart, Header, NoCardBg } from '@components'
 import { View } from 'react-native-rom-components'
 import { useExercises } from '@hooks'
 import { BaseLayout } from '@layouts'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 
 const Progress = () => {

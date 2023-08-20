@@ -14,7 +14,6 @@ const useLoading = () => {
   return fontsLoaded
 }
 
-
 const App = () => {
   const isLoadingComplete = useLoading()
 

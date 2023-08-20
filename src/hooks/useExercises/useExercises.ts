@@ -18,20 +18,6 @@ export const useExercises = () => {
   const [exercises, setExercises] = useRecoilState(exerciseState)
   const [nextId, setNextId] = useState(0)
 
-  const loadExercises = async () => {
-    const storedExercises = await SecureStore.find(EXERCISES_KEY)
-    const storedNextId = await SecureStore.find(NEXT_ID_KEY)
-
-    if (storedExercises && storedNextId) {
-      setExercises(JSON.parse(storedExercises))
-      setNextId(parseInt(storedNextId, 10))
-    }
-  }
-
-  useEffect(() => {
-    loadExercises()
-  }, [])
-
   const saveExercises = async (newExercises: Exercise[], newNextId: number) => {
     await SecureStore.create(EXERCISES_KEY, JSON.stringify(newExercises))
     await SecureStore.create(NEXT_ID_KEY, newNextId.toString())
@@ -42,10 +28,10 @@ export const useExercises = () => {
     bpm: number,
     color: keyof GradientsType,
     instrument: InstrumentsType,
-    prepare: number,
-    work: number,
-    rest: number,
-    rounds: number,
+    // prepare: number,
+    // work: number,
+    // rest: number,
+    // rounds: number,
     initialSectionByBpm: [number, number][] = [],
   ) => {
     const newExercises = [
@@ -56,10 +42,10 @@ export const useExercises = () => {
         bpm, 
         color, 
         instrument,
-        prepare,
-        work,
-        rest,
-        rounds,
+        // prepare,
+        // work,
+        // rest,
+        // rounds,
         sectionByBpm: initialSectionByBpm,
       }
     ]
@@ -109,7 +95,7 @@ export const useExercises = () => {
         return exercise
       }
     })
-  
+
     setExercises(newExercises)
     saveExercises(newExercises, nextId)
   }

@@ -7,10 +7,10 @@ export type Exercise = {
   bpm: number
   color: keyof GradientsType
   instrument: InstrumentsType
-  prepare: number
-  work: number
-  rest: number
-  rounds: number
+  // prepare: number
+  // work: number
+  // rest: number
+  // rounds: number
   sectionByBpm: [number, number][]
 }
 
