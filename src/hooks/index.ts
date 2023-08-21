@@ -6,7 +6,7 @@ import { useExercises } from './useExercises/useExercises'
 import { useLoadExercises } from './useLoadExercises/useLoadExercises'
 import { useMetronome } from './useMetronome/useMetronome'
 import { useNavigation } from './useNavigation/useNavigation'
-import { useMetronomeState } from './useMetronomeState/useMetronomeState'
+// import { useMetronomeState } from './useMetronomeState/useMetronomeState'
 
 export {
   useRoute,
@@ -17,5 +17,5 @@ export {
   useLoadExercises,
   useMetronome,
   useNavigation,
-  useMetronomeState,
+  // useMetronomeState,
 }
