@@ -27,32 +27,38 @@ const Chart: React.FC<ChartProps> = ({ color, name, onInteraction, exercise }) =
   const y = useValue(yValues?.[yValues.length - 1] ?? 0)
 
   const [correspondingY, setCorrespondingY] = useState<number | null>(null)
-  
+  const [isDragging, setIsDragging] = useState(false)
+
   const isInitialMount = useRef(true)
   useEffect(() => {
-    if (isInitialMount.current || xValues.length !== yValues.length || (xValues.length > 0 && (x.current !== xValues[xValues.length - 1] || y.current !== yValues[yValues.length - 1]))) {
+    if (!isDragging && (isInitialMount.current || xValues.length !== yValues.length || (xValues.length > 0 && (x.current !== xValues[xValues.length - 1] || y.current !== yValues[yValues.length - 1])))) {
       if (xValues?.length > 0 && typeof xValues[xValues.length - 1] !== 'undefined') {
           x.current = xValues[xValues.length - 1]
       }
       if (yValues?.length > 0 && typeof yValues[yValues.length - 1] !== 'undefined') {
           y.current = yValues[yValues.length - 1]
       }
-
       setCorrespondingY(values?.[values.length - 1]?.[1] ?? null)
-
       isInitialMount.current = false
     }
   }, [xValues, yValues, values])
 
-  const onTouch = useGraphTouchHandler(
+  const handleTouch = useGraphTouchHandler(
     x, 
     y, 
     PADDING, 
     xValues, 
     yValues, 
     (idx: number) => setCorrespondingY(values[idx][1]),
-    onInteraction,
+    onInteraction
   )
+
+  const onTouch = (event: any) => {
+    if (event?.nativeEvent?.state === "end" || event?.nativeEvent?.state === "cancel") {
+      setIsDragging(false)
+    } else setIsDragging(true)
+    handleTouch(event)
+  }
 
   return (
     <View 
