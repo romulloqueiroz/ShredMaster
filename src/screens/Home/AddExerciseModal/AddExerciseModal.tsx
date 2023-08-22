@@ -14,9 +14,9 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
   const [exerciseColor, setExerciseColor] = useState<keyof GradientsType>('green')
   const [exerciseInstrument, setExerciseInstrument] = useState<InstrumentsType>('guitar')
   // const [prepare, setPrepare] = useState(10)
-  const [work, setWork] = useState(10)
-  const [rest, setRest] = useState(10)
-  const [rounds, setRounds] = useState(10)
+  // const [work, setWork] = useState(10)
+  // const [rest, setRest] = useState(10)
+  // const [rounds, setRounds] = useState(10)
 
   return (
     <ModalCard onDismiss={onDismiss} >
