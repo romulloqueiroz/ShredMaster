@@ -23,24 +23,26 @@ const Chart: React.FC<ChartProps> = ({ color, name, onInteraction, exercise }) =
 
   const { path, xValues, yValues } = graphs
 
-  const x = useValue(xValues[xValues.length - 1])
-  const y = useValue(yValues[yValues.length - 1])
+  const x = useValue(xValues?.[xValues.length - 1] ?? 0)
+  const y = useValue(yValues?.[yValues.length - 1] ?? 0)
 
-  const [correspondingY, setCorrespondingY] = useState(
-    values[values.length - 1]?.[1] ?? 0
-  )
+  const [correspondingY, setCorrespondingY] = useState<number | null>(null)
   
   const isInitialMount = useRef(true)
   useEffect(() => {
-    if (isInitialMount.current) {
-      if (xValues.length > 0 && yValues.length > 0) {
-        x.current = xValues[xValues.length - 1]
-        y.current = yValues[yValues.length - 1]
-        setCorrespondingY(values[values.length - 1]?.[1] ?? 0)
+    if (isInitialMount.current || xValues.length !== yValues.length || (xValues.length > 0 && (x.current !== xValues[xValues.length - 1] || y.current !== yValues[yValues.length - 1]))) {
+      if (xValues?.length > 0 && typeof xValues[xValues.length - 1] !== 'undefined') {
+          x.current = xValues[xValues.length - 1]
       }
+      if (yValues?.length > 0 && typeof yValues[yValues.length - 1] !== 'undefined') {
+          y.current = yValues[yValues.length - 1]
+      }
+
+      setCorrespondingY(values?.[values.length - 1]?.[1] ?? null)
+
       isInitialMount.current = false
     }
-  }, [xValues, yValues])
+  }, [xValues, yValues, values])
 
   const onTouch = useGraphTouchHandler(
     x, 
