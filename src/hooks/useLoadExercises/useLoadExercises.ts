@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { exerciseState } from '@state'
+import { exerciseState, nextIdState } from '@state'
 import { SecureStore } from '@helpers'
 
 const EXERCISES_KEY = 'exercises'
@@ -8,7 +8,7 @@ const NEXT_ID_KEY = 'nextId'
 
 export const useLoadExercises = () => {
   const [, setExercises] = useRecoilState(exerciseState)
-  const [, setNextId] = useState(0)
+  const [, setNextId] = useRecoilState(nextIdState)
 
   useEffect(() => {
     const loadExercises = async () => {

@@ -2,7 +2,7 @@ import { Text, Button, ModalCard } from '@components'
 import { View } from 'react-native-rom-components'
 import { 
   useNavigation, 
-  // useExercises 
+  useExercises 
 } from '@hooks'
 import { StartPracticeModalProps } from './StartPracticeModal.types'
 
@@ -28,8 +28,8 @@ export const StartPracticeModal: React.FC<StartPracticeModalProps> = ({
     // prepare,
     timer: tempTimer,
   }
-  const { navigate } = useNavigation()
-  // const { updateExercise } = useExercises()
+  // const { navigate } = useNavigation()
+  const { updateExercise } = useExercises()
   return (
     <ModalCard noCloseButton>
       <View mb={12} cross='center'>
@@ -53,8 +53,8 @@ export const StartPracticeModal: React.FC<StartPracticeModalProps> = ({
           color='red1' 
           onPress={() => {
             onDismiss()
-            navigate(tempMode, tempParams)
-            // updateExercise(id, { newSectionBpm: bpm})
+            // navigate(tempMode, tempParams)
+            updateExercise(id, { newSectionBpm: bpm})
           }} 
         />
       </View>

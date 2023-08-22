@@ -11,12 +11,12 @@ export interface TimerEndModalProps {
 }
 
 export const TimerEndModal: React.FC<TimerEndModalProps> = ({ onDismiss, id, bpm = 0 }) => {
-  const { addExercise, updateExercise } = useExercises()
+  const { updateExercise } = useExercises()
   const [exerciseBPM, setExerciseBPM] = useState(bpm)
 
   return (
     <ModalCard onDismiss={onDismiss} >
-      <Scroll h={deviceHeight*0.54}>
+      <Scroll>
         <Text mb={16}>
           Congratulations! You have completed the exercise.
         </Text>

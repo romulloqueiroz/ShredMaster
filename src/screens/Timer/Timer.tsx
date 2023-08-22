@@ -29,7 +29,7 @@ const getModeColor = (mode: string) => {
   }
 }
 
-const MAX_VALUE = 5
+const MAX_VALUE = 2
 // const MAX_VALUE = 1800
 
 const Timer = () => {
@@ -37,8 +37,20 @@ const Timer = () => {
   const { updateExercise, exercises } = useExercises()
   const { navigate } = useNavigation()
   const [toggleRoundBtn, setToggleRoundBtn] = useState(true)
-  const { params: { id, name, bpm, color, prepare, timer } } = useRoute<'Timer'>()
-  const { countdown, toggle, isPaused, reset } = useSimpleCountdown(MAX_VALUE)
+  const { params: { 
+    id, 
+    name, 
+    bpm, 
+    color, 
+    // prepare, 
+    // timer 
+  } } = useRoute<'Timer'>()
+  const { 
+    countdown, 
+    toggle, 
+    // isPaused, 
+    // reset 
+  } = useSimpleCountdown(MAX_VALUE)
   // const { countdown, totalTime, flag, toggle, currentTotalTime } = useCountdown(5, 5) // prepare, timer
 
   const DISPLAY_SIZE = useMemo(() => deviceWidth * 0.7, [deviceWidth])

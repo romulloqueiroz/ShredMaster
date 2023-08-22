@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { SecureStore } from '@helpers'
 import { useRecoilState } from 'recoil'
-import { exerciseState } from '@state'
+import { exerciseState, nextIdState } from '@state'
 import { GradientsType, InstrumentsType } from '@styles'
 
 type Exercise = {
@@ -16,22 +16,23 @@ const NEXT_ID_KEY = 'nextId'
 
 export const useExercises = () => {
   const [exercises, setExercises] = useRecoilState(exerciseState)
-  const [nextId, setNextId] = useState(0)
+  const [nextId, setNextId] = useRecoilState(nextIdState)
 
   const saveExercises = async (newExercises: Exercise[], newNextId: number) => {
     await SecureStore.create(EXERCISES_KEY, JSON.stringify(newExercises))
     await SecureStore.create(NEXT_ID_KEY, newNextId.toString())
   }
 
+  // Will be added later:
+  // prepare: number,
+  // work: number,
+  // rest: number,
+  // rounds: number,
   const addExercise = (
     name: string, 
     bpm: number,
     color: keyof GradientsType,
     instrument: InstrumentsType,
-    // prepare: number,
-    // work: number,
-    // rest: number,
-    // rounds: number,
     initialSectionByBpm: [number, number][] = [],
   ) => {
     const newExercises = [
@@ -42,10 +43,6 @@ export const useExercises = () => {
         bpm, 
         color, 
         instrument,
-        // prepare,
-        // work,
-        // rest,
-        // rounds,
         sectionByBpm: initialSectionByBpm,
       }
     ]

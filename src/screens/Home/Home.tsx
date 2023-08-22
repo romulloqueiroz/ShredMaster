@@ -29,22 +29,27 @@ const Home = () => {
         <NoCardBg title='Create an exercise to begin' />
       )}
 
+      {/* 
+        prepare={item.prepare}
+        work={item.work}
+        rest={item.rest}
+        rounds={item.rounds}
+      */}
       <FlatList
         data={exercises}
-        renderItem={({ item }) => (
-          <HomeCard 
-            key={item.id} 
-            id={item.id}
-            name={item.name} 
-            bpm={item.bpm}
-            color={item.color}
-            instrument={item.instrument}
-            // prepare={item.prepare}
-            // work={item.work}
-            // rest={item.rest}
-            // rounds={item.rounds}
-          />
-        )}
+        renderItem={({ item }) => {
+          console.log('ITEM: ', item)
+          return (
+            <HomeCard 
+              key={item.id} 
+              id={item.id}
+              name={item.name} 
+              bpm={item.bpm}
+              color={item.color}
+              instrument={item.instrument}
+            />
+          )
+        }}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.id}
         ItemSeparatorComponent={() => <View mv={8} />} 
