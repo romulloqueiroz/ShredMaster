@@ -4,7 +4,7 @@ import { BaseLayout } from '@layouts'
 import { 
   Header, 
   PopupModal,
-  Button,
+  // Button,
   RoundButton,
   NoCardBg,
 } from '@components'
@@ -37,14 +37,10 @@ const Home = () => {
       */}
       <FlatList
         data={exercises}
-        renderItem={({ item }) => (
+        renderItem={({ item: { id, name, bpm, color, instrument } }) => (
           <HomeCard 
-            key={item.id} 
-            id={item.id}
-            name={item.name} 
-            bpm={item.bpm}
-            color={item.color}
-            instrument={item.instrument}
+            key={id} 
+            {...{ id, name, bpm, color, instrument }}
           />
         )}
         showsVerticalScrollIndicator={false}
