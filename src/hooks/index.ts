@@ -1,4 +1,5 @@
 import { useRoute } from './useRoute/useRoute'
+import { useStreak } from './useStreak/useStreak'
 import { useTabata } from './useTabata/useTabata'
 import { useCountdown } from './useCountdown/useCountdown'
 import { useSimpleCountdown } from './useSimpleCountdown/useSimpleCountdown'
@@ -10,6 +11,7 @@ import { useNavigation } from './useNavigation/useNavigation'
 
 export {
   useRoute,
+  useStreak,
   useTabata,
   useCountdown,
   useSimpleCountdown,

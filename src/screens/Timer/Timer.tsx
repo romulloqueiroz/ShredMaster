@@ -5,7 +5,8 @@ import {
   // useCountdown, 
   useNavigation, 
   useExercises, 
-  useSimpleCountdown 
+  useSimpleCountdown,
+  useStreak,
 } from '@hooks'
 import { BaseLayout } from '@layouts'
 import { GradientsType, deviceWidth } from '@styles'
@@ -36,6 +37,7 @@ const Timer = () => {
   const { updateExercise, exercises } = useExercises()
   const { navigate } = useNavigation()
   const [toggleRoundBtn, setToggleRoundBtn] = useState(true)
+  const { updateStreak } = useStreak()
   const { params: { 
     id, 
     name, 
@@ -66,6 +68,7 @@ const Timer = () => {
     if (countdown === 0) {
       timeoutId = setTimeout(() => {
         setIsVisible(true)
+        updateStreak()
       }, 1000)
     }
 
