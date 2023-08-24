@@ -1,6 +1,5 @@
 import { Text, Button, Scroll, Input, ModalCard } from '@components'
 import { View } from 'react-native-rom-components'
-import { GradientsType, InstrumentsType, deviceHeight } from '@styles'
 import { useExercises } from '@hooks'
 import { useState } from 'react'
 
