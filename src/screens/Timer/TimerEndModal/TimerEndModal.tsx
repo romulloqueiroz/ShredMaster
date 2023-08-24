@@ -31,7 +31,7 @@ export const TimerEndModal: React.FC<TimerEndModalProps> = ({ onDismiss, id, bpm
 
         <View row mt={18}>
           <Button 
-            title='Cancel' onPress={onDismiss} w={134} />
+            title='Keep Same' onPress={onDismiss} w={134} />
           <View mh={4} />
           <Button 
             title='Update' 
