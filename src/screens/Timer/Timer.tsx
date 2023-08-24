@@ -29,7 +29,6 @@ const getModeColor = (mode: string) => {
   }
 }
 
-const MAX_VALUE = 2
 // const MAX_VALUE = 1800
 
 const Timer = () => {
@@ -42,15 +41,15 @@ const Timer = () => {
     name, 
     bpm, 
     color, 
+    timer,
     // prepare, 
-    // timer 
   } } = useRoute<'Timer'>()
   const { 
     countdown, 
     toggle, 
     // isPaused, 
     // reset 
-  } = useSimpleCountdown(MAX_VALUE)
+  } = useSimpleCountdown(timer)
   // const { countdown, totalTime, flag, toggle, currentTotalTime } = useCountdown(5, 5) // prepare, timer
 
   const DISPLAY_SIZE = useMemo(() => deviceWidth * 0.7, [deviceWidth])
@@ -67,7 +66,6 @@ const Timer = () => {
     if (countdown === 0) {
       timeoutId = setTimeout(() => {
         setIsVisible(true)
-        updateExercise(id, { newSectionBpm: bpm })
       }, 1000)
     }
 
@@ -113,8 +111,8 @@ const Timer = () => {
               size={DISPLAY_SIZE} 
               strokeWidth={18} 
               color={getModeColor('work').slice(0, -1) as keyof GradientsType}
-              maxValue={MAX_VALUE}
-              currentValue={MAX_VALUE - countdown}
+              maxValue={timer}
+              currentValue={timer - countdown}
             />
           </View>
 
@@ -156,7 +154,13 @@ const Timer = () => {
         />
       </View>
 
-      <PopupModal isVisible={isVisible} onDismiss={handleDismiss}>
+      <PopupModal 
+        isVisible={isVisible} 
+        onDismiss={() => {
+          updateExercise(id, { newSectionBpm: bpm })
+          handleDismiss()
+        }}
+      >
         <TimerEndModal 
           onDismiss={handleDismiss} 
           id={id}
