@@ -9,26 +9,34 @@ const Input: React.FC<InputProps> = ({
   placeholder = 'Ex: Speed Burst', 
   numeric = false, 
   title = '',
-}) => (
-  <View>
-    <Text>{title}</Text>
-    <TextInput
-      value={value}
-      textAlign='center'
-      onChangeText={onChangeText}
-      placeholder={placeholder}
-      placeholderTextColor='#ccc'
-      underlineColorAndroid='transparent'
-      keyboardType={numeric ? 'numeric' : 'default'}
-      style={{
-        height: 40,
-        borderBottomWidth: 2,
-        borderBottomColor: 'white',
-        fontWeight: 'bold',
-        color: 'white',
-        width: '100%',
-      }} />
-  </View>
-)
+}) => {
+  const handleTextChange = (text: string) => {
+    if (numeric) 
+      if (/^\d*$/.test(text)) onChangeText(text)
+    else onChangeText(text)
+  }
+
+  return (
+    <View>
+      <Text>{title}</Text>
+      <TextInput
+        value={value}
+        textAlign='center'
+        onChangeText={handleTextChange}
+        placeholder={placeholder}
+        placeholderTextColor='#ccc'
+        underlineColorAndroid='transparent'
+        keyboardType={numeric ? 'numeric' : 'default'}
+        style={{
+          height: 40,
+          borderBottomWidth: 2,
+          borderBottomColor: 'white',
+          fontWeight: 'bold',
+          color: 'white',
+          width: '100%',
+        }} />
+    </View>
+  )
+}
 
 export default Input
