@@ -4,6 +4,47 @@ import { SecureStore } from '@helpers'
 const STREAK_KEY = 'current_streak'
 const LAST_EXERCISE_DATE_KEY = 'last_exercise_date'
 
+export interface ShredderName {
+  starter: string
+  novice: string
+  apprentice: string
+  musician: string
+  virtuoso: string
+  master: string
+  elite: string
+  legend: string
+  maestro: string
+  royal: string
+  divine: string
+}
+
+const chooseShredder = (streak: number) => {
+  switch (true) {
+    case streak < 5:
+      return 'starter'
+    case streak < 10:
+      return 'novice'
+    case streak < 20:
+      return 'apprentice'
+    case streak < 30:
+      return 'musician'
+    case streak < 60:
+      return 'virtuoso'
+    case streak < 90:
+      return 'master'
+    case streak < 120:
+      return 'elite'
+    case streak < 150:
+      return 'legend'
+    case streak < 180:
+      return 'maestro'
+    case streak < 365:
+      return 'royal'
+    default:
+      return 'divine'
+  }
+}
+
 const getCurrentDate = () => {
   const date = new Date()
   return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
@@ -44,8 +85,11 @@ export const useStreak = () => {
     await SecureStore.create(LAST_EXERCISE_DATE_KEY, today)
   }
 
+  const currentShredder = chooseShredder(currentStreak) as keyof ShredderName
+
   return {
     currentStreak,
-    updateStreak
+    updateStreak,
+    currentShredder,
   }
 }

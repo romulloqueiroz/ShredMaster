@@ -9,10 +9,10 @@ import { ListIcon } from '../ListIcon/ListIcon'
 import { list } from '../ShredderModal.utils'
 import { BodyProps } from './Body.types'
 
-export const Body: React.FC<BodyProps> = ({ onDismiss }) => (
+export const Body: React.FC<BodyProps> = ({ onDismiss, currentStreak, currentShredder }) => (
   <ModalCard onDismiss={onDismiss}>
     <View row main='center' mb={12}>
-      <Shredder name='starter' size={120} />
+      <Shredder name={currentShredder} size={120} />
     </View>
 
     <View cross='center' mb={24}>
@@ -21,10 +21,10 @@ export const Body: React.FC<BodyProps> = ({ onDismiss }) => (
         size={20}
         mb={6}
       >
-        Starter
+        {currentShredder.charAt(0).toUpperCase() + currentShredder.slice(1)}
       </Text>
       <Text color='subtitle'>
-        Curent 0 day streak
+        Curent {currentStreak} day streak
       </Text>
     </View>
 
