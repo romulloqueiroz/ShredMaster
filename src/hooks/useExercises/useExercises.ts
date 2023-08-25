@@ -1,4 +1,3 @@
-// import { useState, useEffect } from 'react'
 import { SecureStore } from '@helpers'
 import { useRecoilState } from 'recoil'
 import { exerciseState, nextIdState } from '@state'
@@ -24,14 +23,21 @@ export const useExercises = () => {
     await SecureStore.create(NEXT_ID_KEY, newNextId.toString())
   }
 
-  const addExercise = (
-    name: string, 
-    bpm: number,
-    color: keyof GradientsType,
-    instrument: InstrumentsType,
-    timer: number,
-    initialSectionByBpm: [number, number][] = [],
-  ) => {
+  const addExercise = ({
+    name, 
+    bpm,
+    color,
+    instrument,
+    timer,
+    initialSectionByBpm = [],
+  }: {
+    name: string;
+    bpm: number;
+    color: keyof GradientsType;
+    instrument: InstrumentsType;
+    timer: number;
+    initialSectionByBpm?: [number, number][];
+  }) => {
     const newExercises = [
       ...exercises, 
       { 

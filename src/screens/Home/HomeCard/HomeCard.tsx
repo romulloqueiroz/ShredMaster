@@ -67,12 +67,6 @@ export const HomeCard: React.FC<HomeCardProps> = ({
         isVisible={isPracticeModalVisible} 
         onDismiss={() => setIsPracticeModalVisible(false)}
       >
-        {/* 
-          prepare={prepare}
-          work={work}
-          rest={rest}
-          rounds={rounds}
-        */}
         <StartPracticeModal 
           onDismiss={() => setIsPracticeModalVisible(false)} 
           {...{

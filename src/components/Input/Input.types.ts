@@ -3,5 +3,6 @@ export interface InputProps {
   onChangeText: (text: string | number) => void;
   placeholder?: string;
   numeric?: boolean;
+  timer?: boolean;
   title: string;
 }
