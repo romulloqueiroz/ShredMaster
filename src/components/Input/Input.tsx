@@ -11,9 +11,11 @@ const Input: React.FC<InputProps> = ({
   title = '',
 }) => {
   const handleTextChange = (text: string) => {
-    if (numeric) 
-      if (/^\d*$/.test(text)) onChangeText(text)
-    else onChangeText(text)
+    if (numeric) {
+        if (/^\d*$/.test(text)) onChangeText(text)
+    } else {
+        onChangeText(text)
+    }
   }
 
   return (
