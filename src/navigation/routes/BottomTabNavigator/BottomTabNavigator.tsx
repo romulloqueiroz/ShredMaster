@@ -25,13 +25,13 @@ const BottomTabNavigator = () => {
         name='Progress'
         component={Progress}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         options={{
           tabBarIcon: ({ focused }) => <BTN.Icon active={focused} title='About' icon='account' />
         }}
         name='About'
         component={About}
-      />
+      /> */}
     </Tab.Navigator>
   )
 }
