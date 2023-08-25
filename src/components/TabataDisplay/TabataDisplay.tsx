@@ -5,38 +5,9 @@ import CircularProgress from '../CircularProgress/legacy'
 import { TabataDisplayProps } from './TabataDisplay.types'
 import { STROKE_WIDTH } from './TabataDisplay.utils'
 import { os } from '@styles'
+import { getGradientColor, getModeColor, secondsToMinutes } from '@helpers'
 
-const secondsToMinutes = (seconds: number) => new Date(seconds * 1000).toISOString().slice(14, 19)
 
-const getModeColor = (mode: string) => {
-  switch (mode) {
-    case 'prepare':
-      return 'yellow2'
-    case 'work':
-      return 'green2'
-    case 'rest':
-      return 'red2'
-    case 'finished':
-      return 'blue2'
-    default:
-      return 'blue2'
-  }
-}
-
-const getGradientColor = (mode: string) => {
-  switch (mode) {
-    case 'prepare':
-      return 'yellow'
-    case 'work':
-      return 'green'
-    case 'rest':
-      return 'red'
-    case 'finished':
-      return 'blue'
-    default:
-      return 'blue'
-  }
-}
 
 const TabataDisplay: React.FC<TabataDisplayProps> = ({ 
   size, 
