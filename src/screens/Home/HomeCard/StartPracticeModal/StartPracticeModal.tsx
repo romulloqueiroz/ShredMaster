@@ -6,9 +6,6 @@ import {
 } from '@hooks'
 import { StartPracticeModalProps } from './StartPracticeModal.types'
 
-const tempMode = 'Timer'
-const tempTimer = 3
-
 // Will be added later
 // prepare, 
 // work,
@@ -20,16 +17,9 @@ export const StartPracticeModal: React.FC<StartPracticeModalProps> = ({
   name, 
   bpm, 
   color,
+  timer,
 }) => {
-  const tempParams = {
-    id,
-    name,
-    bpm,
-    color,
-    timer: tempTimer,
-  }
   const { navigate } = useNavigation()
-  // const { updateExercise } = useExercises()
   return (
     <ModalCard noCloseButton>
       <View mb={12} cross='center'>
@@ -53,7 +43,13 @@ export const StartPracticeModal: React.FC<StartPracticeModalProps> = ({
           color='red1' 
           onPress={() => {
             onDismiss()
-            navigate(tempMode, tempParams)
+            navigate('Timer', {
+              id,
+              name,
+              bpm,
+              color,
+              timer,
+            })
             // updateExercise(id, { newSectionBpm: bpm}) 
           }} 
         />

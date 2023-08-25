@@ -8,7 +8,6 @@ import { os } from '@styles'
 import { getGradientColor, getModeColor, secondsToMinutes } from '@helpers'
 
 
-
 const TabataDisplay: React.FC<TabataDisplayProps> = ({ 
   size, 
   sectionTime, 

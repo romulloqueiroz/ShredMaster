@@ -7,6 +7,8 @@ import { ColorPicker } from './ColorPicker/ColorPicker'
 import { AddExerciseModalProps } from './AddExerciseModal.types'
 import { WeaponPicker } from './WeaponPicker/WeaponPicker'
 
+const tempTimer = 7
+
 export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss }) => {
   const { addExercise } = useExercises()
   const [exerciseName, setExerciseName] = useState('')
@@ -116,6 +118,7 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
               exerciseBPM, 
               exerciseColor, 
               exerciseInstrument,
+              tempTimer,
               // prepare,
               // work,
               // rest,

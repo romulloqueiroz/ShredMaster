@@ -29,18 +29,12 @@ const Home = () => {
         <NoCardBg title='Create an exercise to begin' />
       )}
 
-      {/* 
-        prepare={item.prepare}
-        work={item.work}
-        rest={item.rest}
-        rounds={item.rounds}
-      */}
       <FlatList
         data={exercises}
-        renderItem={({ item: { id, name, bpm, color, instrument } }) => (
+        renderItem={({ item: { id, name, bpm, color, instrument, timer } }) => (
           <HomeCard 
             key={id} 
-            {...{ id, name, bpm, color, instrument }}
+            {...{ id, name, bpm, color, instrument, timer }}
           />
         )}
         showsVerticalScrollIndicator={false}

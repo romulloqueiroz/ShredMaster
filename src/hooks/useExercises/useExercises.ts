@@ -9,6 +9,7 @@ type Exercise = {
   name: string
   color: keyof GradientsType
   instrument: InstrumentsType
+  timer: number
 }
 
 const EXERCISES_KEY = 'exercises'
@@ -23,16 +24,12 @@ export const useExercises = () => {
     await SecureStore.create(NEXT_ID_KEY, newNextId.toString())
   }
 
-  // Will be added later:
-  // prepare: number,
-  // work: number,
-  // rest: number,
-  // rounds: number,
   const addExercise = (
     name: string, 
     bpm: number,
     color: keyof GradientsType,
     instrument: InstrumentsType,
+    timer: number,
     initialSectionByBpm: [number, number][] = [],
   ) => {
     const newExercises = [
@@ -43,6 +40,7 @@ export const useExercises = () => {
         bpm, 
         color, 
         instrument,
+        timer,
         sectionByBpm: initialSectionByBpm,
       }
     ]
@@ -96,7 +94,6 @@ export const useExercises = () => {
     setExercises(newExercises)
     saveExercises(newExercises, nextId)
   }
-  
   
   const resetExercises = async () => {
     await SecureStore.remove(EXERCISES_KEY)

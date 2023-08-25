@@ -12,6 +12,7 @@ export type Exercise = {
   bpm: number
   color: keyof GradientsType
   instrument: InstrumentsType
+  timer: number
   sectionByBpm: [number, number][]
 }
 

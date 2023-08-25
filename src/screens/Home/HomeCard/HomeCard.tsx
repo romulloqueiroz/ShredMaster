@@ -6,24 +6,20 @@ import {
   PopupModal,
 } from '@components'
 import { View } from 'react-native-rom-components'
-import { truncateString } from '@helpers'
+import { truncateString, secondsToMinutes } from '@helpers'
 import { HomeCardProps } from './HomeCard.types'
 import { useState } from 'react'
 import { StartPracticeModal } from './StartPracticeModal/StartPracticeModal'
 import { EditModal } from './EditModal/EditModal'
 import { ConfirmDeleteModal } from './ConfirmDeleteModal/ConfirmDeleteModal'
 
-// Will be added later
-// prepare, 
-// work, 
-// rest,
-// rounds
 export const HomeCard: React.FC<HomeCardProps> = ({ 
   name, 
   bpm, 
   color, 
   instrument, 
   id, 
+  timer,
 }) => {
   const [isPracticeModalVisible, setIsPracticeModalVisible] = useState(false)
   const [isEditModalVisible, setIsEditModalVisible] = useState(false)
@@ -58,7 +54,7 @@ export const HomeCard: React.FC<HomeCardProps> = ({
 
           <View row main='space-between'>
             <Text size={16}>{bpm} bpms</Text>
-            {/* <Text size={16}>4/4</Text> */}
+            <Text size={16}>{secondsToMinutes(timer)}</Text>
           </View>
         </View>
 
@@ -79,10 +75,13 @@ export const HomeCard: React.FC<HomeCardProps> = ({
         */}
         <StartPracticeModal 
           onDismiss={() => setIsPracticeModalVisible(false)} 
-          id={id}
-          name={name}
-          bpm={bpm}
-          color={color}
+          {...{
+            id,
+            name,
+            bpm,
+            color,
+            timer,
+          }}
         />
       </PopupModal>
 
