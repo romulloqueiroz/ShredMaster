@@ -15,10 +15,6 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
   const [exerciseColor, setExerciseColor] = useState<keyof GradientsType>('green')
   const [exerciseInstrument, setExerciseInstrument] = useState<InstrumentsType>('guitar')
 
-  useEffect(() => {
-    console.log(exerciseTimer)
-  }, [exerciseTimer])
-
   return (
     <ModalCard onDismiss={onDismiss} >
       <Scroll h={deviceHeight*0.54} hideIndicator>

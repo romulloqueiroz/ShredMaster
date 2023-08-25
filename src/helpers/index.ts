@@ -5,7 +5,8 @@ import {
   truncateString, 
   secondsToMinutes, 
   getModeColor, 
-  getGradientColor 
+  getGradientColor,
+  minutesToSeconds,
 } from './utilities'
 import SecureStore from './SecureStore'
 
@@ -17,5 +18,6 @@ export {
   getPx,
   secondsToMinutes,
   getModeColor,
-  getGradientColor
+  getGradientColor,
+  minutesToSeconds,
 }

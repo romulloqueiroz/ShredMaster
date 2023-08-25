@@ -3,12 +3,7 @@ import Text from '../Text/Text'
 import { TextInput } from 'react-native'
 import { InputProps } from './Input.types'
 import { useEffect, useState } from 'react'
-import { secondsToMinutes } from '@helpers'
-
-const minutesToSeconds = (minutes: number, seconds: number) => {
-  return minutes * 60 + seconds
-}
-
+import { secondsToMinutes, minutesToSeconds } from '@helpers'
 
 const Input: React.FC<InputProps> = ({
   value, 
@@ -33,15 +28,14 @@ const Input: React.FC<InputProps> = ({
     } else {
       onChangeText(text)
     }
-}
+  }
 
-useEffect(() => {
+  useEffect(() => {
     if (timer) {
       const timerValue = secondsToMinutes(Number(value))
       setRawInput(timerValue)
     }
-}, [value])
-
+  }, [value])
 
   return (
     <View>

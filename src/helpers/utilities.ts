@@ -11,6 +11,8 @@ export const truncateString = (str: string) => (str.length > 13 ? str.slice(0, 1
 
 export const secondsToMinutes = (seconds: number) => new Date(seconds * 1000).toISOString().slice(14, 19)
 
+export const minutesToSeconds = (minutes: number, seconds: number) => minutes * 60 + seconds
+
 export const getModeColor = (mode: string) => {
   switch (mode) {
     case 'prepare':
