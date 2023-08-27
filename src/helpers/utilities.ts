@@ -17,8 +17,6 @@ export const secondsToMinutes = (seconds: number) => {
     return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 }
 
-
-
 export const minutesToSeconds = (minutes: number, seconds: number) => minutes * 60 + seconds
 
 export const getModeColor = (mode: string) => {
