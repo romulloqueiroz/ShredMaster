@@ -9,7 +9,15 @@ export const getPx = (px: number) => (deviceWidth * px) / 375
 
 export const truncateString = (str: string) => (str.length > 13 ? str.slice(0, 18) + "..." : str)
 
-export const secondsToMinutes = (seconds: number) => new Date(seconds * 1000).toISOString().slice(14, 19)
+// export const secondsToMinutes = (seconds: number) => new Date(seconds * 1000).toISOString().slice(14, 19)
+
+export const secondsToMinutes = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+}
+
+
 
 export const minutesToSeconds = (minutes: number, seconds: number) => minutes * 60 + seconds
 
