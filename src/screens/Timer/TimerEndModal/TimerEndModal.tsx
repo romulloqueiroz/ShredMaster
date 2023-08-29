@@ -13,6 +13,11 @@ export const TimerEndModal: React.FC<TimerEndModalProps> = ({ onDismiss, id, bpm
   const { updateExercise } = useExercises()
   const [exerciseBPM, setExerciseBPM] = useState(bpm)
 
+  const handleDismiss = () => {
+    onDismiss()
+    updateExercise(id, { newBpm: exerciseBPM, newSectionBpm: exerciseBPM })
+  }
+
   return (
     <ModalCard onDismiss={onDismiss} >
       <Scroll>
@@ -30,16 +35,13 @@ export const TimerEndModal: React.FC<TimerEndModalProps> = ({ onDismiss, id, bpm
 
         <View row mt={18}>
           <Button 
-            title='Keep Same' onPress={onDismiss} w={134} />
+            title='Keep Same' onPress={handleDismiss} w={134} />
           <View mh={4} />
           <Button 
             title='Update' 
             w={134} 
             color='red1' 
-            onPress={() => {
-              onDismiss()
-              updateExercise(id, { newBpm: exerciseBPM, newSectionBpm: exerciseBPM })
-            }} 
+            onPress={handleDismiss} 
           />
         </View>
       </Scroll>
