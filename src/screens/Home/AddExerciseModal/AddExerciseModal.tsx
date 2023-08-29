@@ -1,7 +1,7 @@
 import { Text, Button, Scroll, Input, ModalCard } from '@components'
 import { View } from 'react-native-rom-components'
 import { GradientsType, InstrumentsType, deviceHeight } from '@styles'
-import { useExercises } from '@hooks'
+import { useExercises, useNameValidation } from '@hooks'
 import { useState } from 'react'
 import { ColorPicker } from './ColorPicker/ColorPicker'
 import { AddExerciseModalProps } from './AddExerciseModal.types'
@@ -9,12 +9,11 @@ import { WeaponPicker } from './WeaponPicker/WeaponPicker'
 
 export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss }) => {
   const { addExercise } = useExercises()
-  const [exerciseName, setExerciseName] = useState('')
   const [exerciseBPM, setExerciseBPM] = useState(60)
   const [exerciseTimer, setExerciseTimer] = useState(0)
   const [exerciseColor, setExerciseColor] = useState<keyof GradientsType>('green')
   const [exerciseInstrument, setExerciseInstrument] = useState<InstrumentsType>('guitar')
-  const [exerciseNameError, setExerciseNameError] = useState<string | null>(null)
+  const { exerciseName, exerciseNameError, handleExerciseNameChange } = useNameValidation()
 
   return (
     <ModalCard onDismiss={onDismiss} >
@@ -25,22 +24,12 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
 
         <Input 
           value={exerciseName}
-          onChangeText={(text) => {
-            const stringValue = text as string
-            if (stringValue.trim() === '') {
-              setExerciseNameError('Exercise name cannot be empty!')
-            } else if (stringValue.length > 24) {
-              setExerciseNameError('Exercise name cannot exceed 24 characters!')
-            } else {
-              setExerciseNameError(null)
-              setExerciseName(stringValue)
-            }
-          }}
+          onChangeText={handleExerciseNameChange}
           placeholder='Ex: Speed Burst'
           title='Name'
         />
 
-        {exerciseNameError && <Text color='red1' mt={8}>{exerciseNameError}</Text>}
+        {exerciseNameError && <Text color='red1' mt={9}>{exerciseNameError}</Text>}
 
         <View mv={14} />
 
@@ -83,7 +72,7 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
           title='Create' 
           onPress={() => {
             if (exerciseName.trim() === '') {
-              setExerciseNameError('Exercise name cannot be empty!')
+              handleExerciseNameChange('')
             } else if (!exerciseNameError) { 
               addExercise({
                 name: exerciseName,
