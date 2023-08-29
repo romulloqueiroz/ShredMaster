@@ -1,13 +1,12 @@
-import { GradientsType, ColorType } from '@styles'
+import { GradientsType } from '@styles'
+import { TabataMode } from '@helpers'
 
 export interface CircularProgressProps {
   size?: number
   strokeWidth?: number
   color?: keyof GradientsType
   duration?: number
-  // isPlaying?: boolean
-  mode?: 'prepare' | 'work' | 'rest' | 'finished'
-
+  mode?: TabataMode
   maxValue: number
   currentValue: number
 }

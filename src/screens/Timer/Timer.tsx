@@ -2,35 +2,18 @@ import { Text, HeaderBack, CircularProgress, PopupModal, RoundButton } from '@co
 import { View } from 'react-native-rom-components'
 import { 
   useRoute, 
-  // useCountdown, 
   useNavigation, 
   useExercises, 
   useSimpleCountdown,
   useStreak,
 } from '@hooks'
+import { getModeColor } from '@helpers'
 import { BaseLayout } from '@layouts'
 import { GradientsType, deviceWidth } from '@styles'
 import { useMemo, useState, useEffect } from 'react'
 import { TimerEndModal } from './TimerEndModal/TimerEndModal'
 
 const secondsToMinutes = (seconds: number) => new Date(seconds * 1000).toISOString().slice(14, 19)
-
-const getModeColor = (mode: string) => {
-  switch (mode) {
-    case 'prepare':
-      return 'yellow2'
-    case 'work':
-      return 'green2'
-    case 'rest':
-      return 'red2'
-    case 'finished':
-      return 'blue2'
-    default:
-      return 'blue2'
-  }
-}
-
-// const MAX_VALUE = 1800
 
 const Timer = () => {
   const [isVisible, setIsVisible] = useState(false)

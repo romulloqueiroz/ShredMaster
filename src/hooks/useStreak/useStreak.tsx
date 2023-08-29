@@ -20,31 +20,27 @@ export interface ShredderName {
   divine: string
 }
 
-const chooseShredder = (streak: number) => {
-  switch (true) {
-    case streak < 5:
-      return 'starter'
-    case streak < 10:
-      return 'novice'
-    case streak < 20:
-      return 'apprentice'
-    case streak < 30:
-      return 'musician'
-    case streak < 60:
-      return 'virtuoso'
-    case streak < 90:
-      return 'master'
-    case streak < 120:
-      return 'elite'
-    case streak < 150:
-      return 'legend'
-    case streak < 180:
-      return 'maestro'
-    case streak < 365:
-      return 'royal'
-    default:
-      return 'divine'
+const SHREDDER_THRESHOLDS = [
+  { max: 5, name: 'starter' },
+  { max: 10, name: 'novice' },
+  { max: 20, name: 'apprentice' },
+  { max: 30, name: 'musician' },
+  { max: 60, name: 'virtuoso' },
+  { max: 90, name: 'master' },
+  { max: 120, name: 'elite' },
+  { max: 150, name: 'legend' },
+  { max: 180, name: 'maestro' },
+  { max: 365, name: 'royal' },
+  { max: Infinity, name: 'divine' }
+]
+
+const chooseShredder = (streak: number): string => {
+  for (let threshold of SHREDDER_THRESHOLDS) {
+    if (streak < threshold.max) {
+      return threshold.name
+    }
   }
+  return 'divine'
 }
 
 const getCurrentDate = () => {

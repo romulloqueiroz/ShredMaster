@@ -8,6 +8,7 @@ import {
   getGradientColor,
   minutesToSeconds,
 } from './utilities'
+import type { TabataMode } from './utilities'
 import SecureStore from './SecureStore'
 
 export {
@@ -20,4 +21,8 @@ export {
   getModeColor,
   getGradientColor,
   minutesToSeconds,
+}
+
+export type {
+  TabataMode,
 }
