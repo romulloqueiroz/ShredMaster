@@ -14,6 +14,7 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
   const [exerciseTimer, setExerciseTimer] = useState(0)
   const [exerciseColor, setExerciseColor] = useState<keyof GradientsType>('green')
   const [exerciseInstrument, setExerciseInstrument] = useState<InstrumentsType>('guitar')
+  const [exerciseNameError, setExerciseNameError] = useState<string | null>(null)
 
   return (
     <ModalCard onDismiss={onDismiss} >
@@ -24,10 +25,22 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
 
         <Input 
           value={exerciseName}
-          onChangeText={(text) => setExerciseName(text as string)}
+          onChangeText={(text) => {
+            const stringValue = text as string
+            if (stringValue.trim() === '') {
+              setExerciseNameError('Exercise name cannot be empty!')
+            } else if (stringValue.length > 24) {
+              setExerciseNameError('Exercise name cannot exceed 24 characters!')
+            } else {
+              setExerciseNameError(null)
+              setExerciseName(stringValue)
+            }
+          }}
           placeholder='Ex: Speed Burst'
           title='Name'
         />
+
+        {exerciseNameError && <Text color='red1' mt={8}>{exerciseNameError}</Text>}
 
         <View mv={14} />
 
@@ -69,15 +82,19 @@ export const AddExerciseModal: React.FC<AddExerciseModalProps> = ({ onDismiss })
         <Button 
           title='Create' 
           onPress={() => {
-            addExercise({
-              name: exerciseName, 
-              bpm : exerciseBPM, 
-              color: exerciseColor, 
-              instrument: exerciseInstrument,
-              timer: exerciseTimer,
-            })
-            onDismiss()
-          }} 
+            if (exerciseName.trim() === '') {
+              setExerciseNameError('Exercise name cannot be empty!')
+            } else if (!exerciseNameError) { 
+              addExercise({
+                name: exerciseName,
+                bpm: exerciseBPM,
+                color: exerciseColor,
+                instrument: exerciseInstrument,
+                timer: exerciseTimer,
+              })
+              onDismiss()
+            }
+          }}          
         />
       </View>
     </ModalCard>
