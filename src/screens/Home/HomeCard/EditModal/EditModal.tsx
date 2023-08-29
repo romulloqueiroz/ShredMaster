@@ -23,12 +23,16 @@ export const EditModal: React.FC<EditModalProps> = ({
 
   return (
     <ModalCard onDismiss={onDismiss}>
+      
+      <View row main='center' mb={12}>
+        <Text size={24}>Update Exercise</Text>
+      </View>
 
       <Input 
         value={exerciseName}
         onChangeText={(text) => setExerciseName(text as string)}
         placeholder='Ex: Speed Burst'
-        title='Update name'
+        title='Name'
       />
 
       <View mv={9} />
@@ -37,7 +41,7 @@ export const EditModal: React.FC<EditModalProps> = ({
         value={`${exerciseBPM}`}
         onChangeText={(val) => setExerciseBPM(val as number)}
         placeholder='Ex: 150'
-        title='Update BPMs'
+        title='BPMs'
         numeric
       />
 
