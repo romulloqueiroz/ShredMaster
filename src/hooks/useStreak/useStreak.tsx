@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { SecureStore } from '@helpers'
 import { useRecoilState } from 'recoil'
 import { currentStreakState } from '@state'

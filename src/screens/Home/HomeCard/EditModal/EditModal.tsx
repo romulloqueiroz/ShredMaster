@@ -13,13 +13,14 @@ export const EditModal: React.FC<EditModalProps> = ({
   name, 
   id, 
   bpm, 
+  timer,
   onDismiss, 
   setConfirmDeleteModal 
 }) => {
   const { updateExercise } = useExercises()
   const [exerciseName, setExerciseName] = useState(name)
   const [exerciseBPM, setExerciseBPM] = useState(bpm)
-  const [exerciseTimer, setExerciseTimer] = useState(0)
+  const [exerciseTimer, setExerciseTimer] = useState(timer)
 
   return (
     <ModalCard onDismiss={onDismiss}>

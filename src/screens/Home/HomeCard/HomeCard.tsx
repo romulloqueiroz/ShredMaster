@@ -84,11 +84,9 @@ export const HomeCard: React.FC<HomeCardProps> = ({
         onDismiss={() => setIsEditModalVisible(false)}
       >
         <EditModal 
-          id={id}
-          name={name}
-          bpm={bpm}
           setConfirmDeleteModal={setIsConfirmDeleteModalVisible}
           onDismiss={() => setIsEditModalVisible(false)}
+          {...{ id, name, bpm, timer }}
         />
       </PopupModal>
 
