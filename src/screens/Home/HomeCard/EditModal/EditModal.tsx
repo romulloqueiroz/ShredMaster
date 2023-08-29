@@ -19,6 +19,7 @@ export const EditModal: React.FC<EditModalProps> = ({
   const { updateExercise } = useExercises()
   const [exerciseName, setExerciseName] = useState(name)
   const [exerciseBPM, setExerciseBPM] = useState(bpm)
+  const [exerciseTimer, setExerciseTimer] = useState(0)
 
   return (
     <ModalCard onDismiss={onDismiss}>
@@ -40,6 +41,16 @@ export const EditModal: React.FC<EditModalProps> = ({
         numeric
       />
 
+      <View mv={9} />
+
+      <Input 
+        value={`${exerciseTimer}`}
+        onChangeText={(val) => setExerciseTimer(val as number)}
+        placeholder='20:00'
+        title='Timer'
+        timer
+      />
+
       <View row mt={18}>
         <Button title='Cancel' onPress={onDismiss} w={134} />
         <View mh={4} />
@@ -49,7 +60,11 @@ export const EditModal: React.FC<EditModalProps> = ({
           color='green1' 
           onPress={() => {
             onDismiss()
-            updateExercise(id, { newName: exerciseName, newBpm: exerciseBPM })
+            updateExercise(id, { 
+              newName: exerciseName, 
+              newBpm: exerciseBPM,
+              newTimer: exerciseTimer,
+            })
           }} 
         />
       </View>

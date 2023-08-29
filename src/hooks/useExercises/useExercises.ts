@@ -67,10 +67,12 @@ export const useExercises = () => {
       newName,
       newBpm,
       newSectionBpm,
+      newTimer,
     }: { 
       newName?: string, 
       newBpm?: number, 
-      newSectionBpm?: number 
+      newSectionBpm?: number,
+      newTimer?: number,
     }
   ) => {
     const newExercises = exercises.map((exercise) => {
@@ -79,6 +81,7 @@ export const useExercises = () => {
           ...exercise,
           name: newName !== undefined ? newName : exercise.name,
           bpm: newBpm !== undefined ? newBpm : exercise.bpm,
+          timer: newTimer !== undefined ? newTimer : exercise.timer,
         }
   
         if (newSectionBpm !== undefined) {
@@ -95,7 +98,7 @@ export const useExercises = () => {
       } else {
         return exercise
       }
-    })
+    });
 
     setExercises(newExercises)
     saveExercises(newExercises, nextId)
