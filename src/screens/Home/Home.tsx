@@ -6,10 +6,11 @@ import {
   PopupModal,
   RoundButton,
   NoCardBg,
+  Button,
 } from '@components'
 import { View } from 'react-native-rom-components'
 import { AddExerciseModal } from './AddExerciseModal/AddExerciseModal'
-import { useExercises } from '@hooks'
+import { useExercises, useStreak } from '@hooks'
 import { HomeCard } from './HomeCard/HomeCard'
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
     // resetExercises 
   } = useExercises()
   const [isVisible, setIsVisible] = useState(false)
+  const { resetStreak } = useStreak()
 
   return (
     <BaseLayout view>
@@ -44,6 +46,9 @@ const Home = () => {
       {/* <View row main='center'>
         <Button title='Reset Exercises' onPress={resetExercises} w={200} />
       </View> */}
+
+      {/* <View mv={4} />
+      <Button title='Reset Streak' onPress={resetStreak} w={200} /> */}
 
       <View absolute by={32} rx={16}>
         <RoundButton icon='plus' onPress={() => setIsVisible(true)} />

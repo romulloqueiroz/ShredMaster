@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { SecureStore } from '@helpers'
+import { useRecoilState } from 'recoil'
+import { currentStreakState } from '@state'
 
 const STREAK_KEY = 'current_streak'
 const LAST_EXERCISE_DATE_KEY = 'last_exercise_date'
@@ -57,7 +59,7 @@ const isDateYesterday = (dateString: string) => {
 }
 
 export const useStreak = () => {
-  const [currentStreak, setCurrentStreak] = useState<number>(0)
+  const [currentStreak, setCurrentStreak] = useRecoilState(currentStreakState)
 
   useEffect(() => {
     const fetchStreak = async () => {
@@ -85,11 +87,18 @@ export const useStreak = () => {
     await SecureStore.create(LAST_EXERCISE_DATE_KEY, today)
   }
 
+  const resetStreak = async () => {
+    await SecureStore.create(STREAK_KEY, 0)
+    await SecureStore.create(LAST_EXERCISE_DATE_KEY, '')
+    setCurrentStreak(0)
+  }
+
   const currentShredder = chooseShredder(currentStreak) as keyof ShredderName
 
   return {
     currentStreak,
     updateStreak,
     currentShredder,
+    resetStreak,
   }
 }

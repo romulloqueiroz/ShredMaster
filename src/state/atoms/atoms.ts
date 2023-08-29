@@ -26,7 +26,13 @@ const nextIdState = atom({
   default: 0,
 })
 
+const currentStreakState = atom({
+  key: 'currentStreak',
+  default: 0,
+})
+
 export {
   exerciseState,
   nextIdState,
+  currentStreakState,
 }
