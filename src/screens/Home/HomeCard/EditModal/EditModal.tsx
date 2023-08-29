@@ -21,72 +21,55 @@ export const EditModal: React.FC<EditModalProps> = ({
   const [exerciseBPM, setExerciseBPM] = useState(bpm)
 
   return (
-    <>
-      <ModalCard noCloseButton>
+    <ModalCard onDismiss={onDismiss}>
 
-        <Input 
-          value={exerciseName}
-          onChangeText={(text) => setExerciseName(text as string)}
-          placeholder='Ex: Speed Burst'
-          title='Update name'
+      <Input 
+        value={exerciseName}
+        onChangeText={(text) => setExerciseName(text as string)}
+        placeholder='Ex: Speed Burst'
+        title='Update name'
+      />
+
+      <View mv={9} />
+
+      <Input 
+        value={`${exerciseBPM}`}
+        onChangeText={(val) => setExerciseBPM(val as number)}
+        placeholder='Ex: 150'
+        title='Update BPMs'
+        numeric
+      />
+
+      <View row mt={18}>
+        <Button title='Cancel' onPress={onDismiss} w={134} />
+        <View mh={4} />
+        <Button 
+          title='Update' 
+          w={134} 
+          color='green1' 
+          onPress={() => {
+            onDismiss()
+            updateExercise(id, { newName: exerciseName, newBpm: exerciseBPM })
+          }} 
         />
+      </View>
 
-        <View row mt={18}>
-          <Button title='Cancel' onPress={onDismiss} w={134} />
-          <View mh={4} />
-          <Button 
-            title='Update' 
-            w={134} 
-            color='red1' 
-            onPress={() => {
-              onDismiss()
-              updateExercise(id, { newName: exerciseName })
-            }} 
-          />
-        </View>
+      <View h={1} bw={1} bc='glass2' mv={32} />
 
-        <View h={1} bw={1} bc='glass2' mv={32} />
+      <Text mb={14}>Delete Exercise</Text>
 
-        <Input 
-          value={`${exerciseBPM}`}
-          onChangeText={(val) => setExerciseBPM(val as number)}
-          placeholder='Ex: 150'
-          title='Update BPMs'
-          numeric
+      <View row>
+        <Button 
+          title='Delete' 
+          w={268} 
+          color='red1' 
+          onPress={() => {
+            onDismiss()
+            setConfirmDeleteModal(true)
+          }} 
         />
-
-        <View row mt={18}>
-          <Button title='Cancel' onPress={onDismiss} w={134} />
-          <View mh={4} />
-          <Button 
-            title='Update' 
-            w={134} 
-            color='red1' 
-            onPress={() => {
-              onDismiss()
-              updateExercise(id, { newBpm: exerciseBPM })
-            }} 
-          />
-        </View>
-
-        <View h={1} bw={1} bc='glass2' mv={32} />
-
-        <Text mb={14}>Delete Exercise</Text>
-
-        <View row>
-          <Button title='Cancel' onPress={onDismiss} w={134} />
-          <View mh={4} />
-          <Button 
-            title='Delete' 
-            w={134} 
-            color='red1' 
-            onPress={() => {
-              onDismiss()
-              setConfirmDeleteModal(true)
-            }} 
-          />
-        </View>
-      </ModalCard>
-    </>
+      </View>
+      
+    </ModalCard>
   )
 }
