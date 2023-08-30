@@ -5,8 +5,8 @@ import {
   Button,
 } from '@components'
 import { View } from 'react-native-rom-components'
-import { useExercises } from '@hooks'
-import { useState } from 'react'
+import { useExercises, useNameValidation } from '@hooks'
+import { useState, useEffect } from 'react'
 import { EditModalProps } from './EditModal.types'
 
 export const EditModal: React.FC<EditModalProps> = ({ 
@@ -18,7 +18,10 @@ export const EditModal: React.FC<EditModalProps> = ({
   setConfirmDeleteModal 
 }) => {
   const { updateExercise } = useExercises()
-  const [exerciseName, setExerciseName] = useState(name)
+  const { exerciseName, exerciseNameError, handleExerciseNameChange } = useNameValidation()
+  useEffect(() => {
+    handleExerciseNameChange(name);
+  }, [name]);
   const [exerciseBPM, setExerciseBPM] = useState(bpm)
   const [exerciseTimer, setExerciseTimer] = useState(timer)
 
@@ -31,10 +34,12 @@ export const EditModal: React.FC<EditModalProps> = ({
 
       <Input 
         value={exerciseName}
-        onChangeText={(text) => setExerciseName(text as string)}
+        onChangeText={handleExerciseNameChange}
         placeholder='Ex: Speed Burst'
         title='Name'
       />
+
+      {exerciseNameError && <Text color='red1' mt={9}>{exerciseNameError}</Text>}
 
       <View mv={9} />
 
@@ -64,13 +69,16 @@ export const EditModal: React.FC<EditModalProps> = ({
           w={134} 
           color='green1' 
           onPress={() => {
-            onDismiss()
-            updateExercise(id, { 
+            if (exerciseName.trim() === '') {
+              handleExerciseNameChange('')
+            } else if (!exerciseNameError) { 
+              onDismiss()
+              updateExercise(id, { 
               newName: exerciseName, 
               newBpm: exerciseBPM,
               newTimer: exerciseTimer,
             })
-          }} 
+          }}}
         />
       </View>
 
