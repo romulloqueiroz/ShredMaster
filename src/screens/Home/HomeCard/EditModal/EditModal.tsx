@@ -19,7 +19,7 @@ export const EditModal: React.FC<EditModalProps> = ({
 }) => {
   const { updateExercise } = useExercises()
   const { exerciseName, exerciseNameError, handleExerciseNameChange } = useNameValidation()
-  useEffect(() => {
+  useEffect(() => {       
     handleExerciseNameChange(name);
   }, [name]);
   const [exerciseBPM, setExerciseBPM] = useState(bpm)
