@@ -19,7 +19,7 @@ const Home = () => {
     // resetExercises 
   } = useExercises()
   const [isVisible, setIsVisible] = useState(false)
-  const { resetStreak } = useStreak()
+  // const { resetStreak } = useStreak()
 
   return (
     <BaseLayout view>
