@@ -10,7 +10,10 @@ import {
 } from '@components'
 import { View } from 'react-native-rom-components'
 import { AddExerciseModal } from './AddExerciseModal/AddExerciseModal'
-import { useExercises, useStreak } from '@hooks'
+import { 
+  useExercises, 
+  // useStreak 
+} from '@hooks'
 import { HomeCard } from './HomeCard/HomeCard'
 
 const Home = () => {
