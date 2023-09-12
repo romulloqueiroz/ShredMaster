@@ -5,7 +5,7 @@ export const useSuccessSound = () => {
   const [successSoundLoaded, setSuccessSoundLoaded] = useState(false)
   const successSound = useRef(new Audio.Sound())
 
-  const successSoundSource = require('../../assets/success_sound.mp3')
+  const successSoundSource = require('../../assets/success.mp3')
 
   const loadSuccessSound = async () => {
     try {

@@ -8,6 +8,7 @@ import { useNavigation } from './useNavigation/useNavigation'
 import { useRoute } from './useRoute/useRoute'
 import { useSimpleCountdown } from './useSimpleCountdown/useSimpleCountdown'
 import { useStreak } from './useStreak/useStreak'
+import { useSuccessSound } from './useSuccessSound/useSuccessSound'
 import { useTabata } from './useTabata/useTabata'
 
 export {
@@ -21,5 +22,6 @@ export {
   useRoute,
   useSimpleCountdown,
   useStreak,
+  useSuccessSound,
   useTabata,
 }

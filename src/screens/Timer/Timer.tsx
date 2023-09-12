@@ -6,6 +6,7 @@ import {
   useExercises, 
   useSimpleCountdown,
   useStreak,
+  useSuccessSound,
 } from '@hooks'
 import { getModeColor } from '@helpers'
 import { BaseLayout } from '@layouts'
@@ -35,6 +36,7 @@ const Timer = () => {
     // isPaused, 
     // reset 
   } = useSimpleCountdown(timer)
+  const playSuccessSound = useSuccessSound()
   // const { countdown, totalTime, flag, toggle, currentTotalTime } = useCountdown(5, 5) // prepare, timer
 
   const DISPLAY_SIZE = useMemo(() => deviceWidth * 0.7, [deviceWidth])
@@ -51,6 +53,7 @@ const Timer = () => {
     if (countdown === 0) {
       timeoutId = setTimeout(() => {
         setIsVisible(true)
+        playSuccessSound()
         updateStreak()
       }, 1000)
     }
