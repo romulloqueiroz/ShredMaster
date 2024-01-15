@@ -2,9 +2,11 @@
 
 An exercise tracker for your musical practice sessions.
 ---
-<img src="screen1.png"  width="180px" />
-<img src="screen2.png"  width="180px" />
-<img src="screen3.png"  width="180px" />
+<div style="display: flex; justify-content: space-around;">
+  <img src="screen1.png"  width="180px" />
+  <img src="screen2.png"  width="180px" />
+  <img src="screen3.png"  width="180px" />
+</div>
   ---
 <h3>Technologies used:</h3>
 <ul>
